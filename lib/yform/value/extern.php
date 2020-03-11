@@ -61,8 +61,8 @@ class rex_yform_value_for_extern extends rex_yform_value_text
      *      for_extern|name|label|...
      *
      *  Der Inhalt wird aus dem Namen des feldtyps sowie aus den Namen der Values in der
-     *  Feldbeschreibung automatisch gebildet. So werden alle Felder inkl. der aus der Basisklasse
-     *  (text) eingebaut. Die Beschreibungen fpr "default" und "type" werden zudem aum die
+     *  Feldbeschreibung automatisch gebildet. So werden alle Felder aus der Basisklasse
+     *  (text) übernommen und die Beschreibungen für "default" und "prepend" um die
      *  Auswahlmöglichkeiten erweitert.
      *
      *  @return     string   Short-Description
