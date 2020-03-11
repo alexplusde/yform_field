@@ -46,12 +46,7 @@ class rex_yform_value_for_extern extends rex_yform_value_text
      *  Erzeugt den Auswahl-String für "Mail/Link"
      *
      *  Aufbau:
-     *      for_link|feld1|feld2|...
-     *
-     *  Der Inhalt wird aus dem Namen des feldtyps sowie aus den Namen der Values in der
-     *  Feldbeschreibung automatisch gebildet. So werden alle Felder inkl. der aus der Basisklasse
-     *  (text) eingebaut. Die Beschreibungen fpr "default" und "type" werden zudem aum die
-     *  Auswahlmöglichkeiten erweitert.
+     *      Link=1,Mail=2
      *
      *  @return     string   Auswahloptionen
      */
