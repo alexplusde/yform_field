@@ -14,23 +14,40 @@
  *
  *  - try to re-use code whenever it is possible
  *  - if dedicated data and functions are necessary feel free to establish an internal sub-object
+ *      within forjs
  *  - label any data-object or function with the assosiated php-element (value/action/validate)
- *      to ease maintanance
+ *      to ease maintenance (first line of the comment: "Scope: ....")
  */
 
 var forjs = {
 
-
     /*  Scope:  common
      *
-     *  Validates the the target. Good for turning an ID into a node.
+     *  Validates the the target: does ist exist.
+     *  Good for turning an ID-string into a node.
      *
      *  @param  HTMLElement|string  either an HTMIElement(DOM-Node) or a HTML-ID
-     *  @return HTMLElement
+     *  @return HTMLElement|null
      */
     asNode: function( target ) {
     	if( target instanceof HTMLElement) return target;
     	return document.getElementById( target);
+    },
+
+    /*  Scope:  common
+     *
+     *  Checks whether an input is given (not empty) and valid
+     *
+     *  @param  HTMLElement
+     *  @param  string  the alert-message in case of invalid field-content
+     *  @return boolean
+     */
+    checkValidity: function( target, errormsg='' ) {
+        if( !target || !target.value || !target.reportValidity() ) {
+            if( errormsg ) alert(errormsg);
+            return false;
+        }
+        return true;
     },
 
     /*  Scope:  rex_yform_value_for_extern
@@ -43,10 +60,7 @@ var forjs = {
     */
     openlink: function ( targetName, errormsg='' ){
         let target = this.asNode( targetName );
-        if( !target || !target.value || !target.reportValidity() ) {
-            if( errormsg ) alert(errormsg);
-            return;
-        }
+        if( !this.checkValidity( target, errormsg ) ) return;
         window.open(target.value);
     },
 
@@ -60,10 +74,7 @@ var forjs = {
      */
     openmail: function ( targetName, errormsg='' ){
         let target = this.asNode( targetName );
-        if( !target || !target.value || !target.reportValidity() ) {
-            if( errormsg ) alert(errormsg);
-            return;
-        }
+        if( !this.checkValidity( target, errormsg ) ) return;
         document.location='mailto:'+target.value;
     },
 
