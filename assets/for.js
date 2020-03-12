@@ -23,7 +23,7 @@ var forjs = {
 
     /*  Scope:  common
      *
-     *  Validates the the target: does ist exist.
+     *  Validates the  target: does ist exist?
      *  Good for turning an ID-string into a node.
      *
      *  @param  HTMLElement|string  either an HTMIElement(DOM-Node) or a HTML-ID
@@ -43,20 +43,18 @@ var forjs = {
      *  @return boolean
      */
     checkValidity: function( target, errormsg='' ) {
-        if( !target || !target.value || !target.reportValidity() ) {
-            if( errormsg ) alert(errormsg);
-            return false;
-        }
-        return true;
+        if( target && target.value && target.reportValidity() ) return true;
+        if( errormsg ) alert( errormsg );
+        return false;
     },
 
     /*  Scope:  rex_yform_value_for_extern
      *
-     *  Activated by clicking on a Link-button prepending a textfield with a link-content (URL).
+     *  Activated by clicking on a link-button prepending a textfield with a link-content (URL).
      *  Validate the field-content and if valid: open the link in a new browser-Windows
      *
-     *  @param  string  a HTML-ID referencing the input-Element with the URL
-     *  @param  string  the alert-message in case of invalid field-content
+     *  @param  string  a HTML-ID referencing the input-element with the URL
+     *  @param  string|null  the alert-message in case of invalid field-content
     */
     openlink: function ( targetName, errormsg='' ){
         let target = this.asNode( targetName );
@@ -70,7 +68,7 @@ var forjs = {
      *  Validate the field-content and if valid: open a mail-client-window
      *
      *  @param  string  a HTML-ID referencing the input-Element with the URL
-     *  @param  string  the alert-message in case of invalid field-content
+     *  @param  string|null  the alert-message in case of invalid field-content
      */
     openmail: function ( targetName, errormsg='' ){
         let target = this.asNode( targetName );
