@@ -11,10 +11,10 @@
 ## rex_yform_value_for_extern
 
 for_extern_value_label = Link-Typ
-for_extern_value_description = Externer Link (URL) / Mail-Adresse(n) mit Aufruf-Button
-for_extern_value_option_link = Externer Link
-for_extern_value_option_mail = Mail
-for_extern_value_title_link = Öffnet den Link in einem neuen Fenster
-for_extern_value_title_mail = Öffnet ein Mail-Fenster
-for_extern_value_invalid_link = Kein (formal gültiger) Link angegeben
-for_extern_value_invalid_mail = Keine (formal gültige) Mail-Adresse angegeben
+for_extern_value_description = Externer Link (URL) / eMail-Adresse(n) mit Aufruf-Button
+for_extern_value_option_link = Externer Link (URL)
+for_extern_value_option_mail = eMail
+for_extern_value_title_link = Öffnet den Link (URL) in einem neuen Browser-Fenster
+for_extern_value_title_mail = Öffnet ein eMail-Fenster
+for_extern_value_invalid_link = Kein formal gültiger externer Link (URL) angegeben
+for_extern_value_invalid_mail = Keine formal gültige eMail-Adresse angegeben
