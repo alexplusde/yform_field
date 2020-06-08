@@ -26,7 +26,7 @@ Es sind keine weiteren Einstellungen vorhanden.
 
 ## Tipps und Tricks
 
-Siehe auch: https://github.com/alexplusde/yform_spam_protection/issues
+Siehe auch: ttps://github.com/alexplusde/yform_fields/issues
 
 ## Lizenz
 
