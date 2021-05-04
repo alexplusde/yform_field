@@ -32,6 +32,7 @@ Siehe auch: ttps://github.com/alexplusde/yform_fields/issues
 
 MIT
 
-## Autor
+## Autor und Beitragende
 
-* @alexplusde
+* @alxndr-w
+* @christophboecker
