@@ -1,16 +1,10 @@
-# Feldtypen-Erweiterung für REDAXO 5 YForm 3.x
+# Feldtypen-Erweiterung für REDAXO 5 YForm 4
 
-Das Addon `yform_fields` ergänzt YForm um weitere Feldtypen, Validierungen und Actions aus der Community.
+Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und Actions aus der Community.
 
 ## Features
 
 * **E-Mail Attachments** - nur eine Zeile, um Anhänge aus Formularen an E-Mails zu hängen
-* **geplant** URL-Profile im Frontend
-* **geplant** IBAN-Validierung
-* **geplant** Ausgabe von Bildern
-* **geplant** Eigenes Ausgabe-Markup für verschiedene Feldtypen
-
-Reiche deine Feldtypen inkl. Bootstrap-3-Ausgabetemplate (sofern benötigt) hier ein: https://github.com/alexplusde/yform_fields/
 
 ## Installation
 
@@ -26,7 +20,7 @@ Es sind keine weiteren Einstellungen vorhanden.
 
 ## Tipps und Tricks
 
-Siehe auch: ttps://github.com/alexplusde/yform_fields/issues
+Siehe auch: ttps://github.com/alexplusde/yform_field/issues
 
 ## Lizenz
 

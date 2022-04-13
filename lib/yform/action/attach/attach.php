@@ -1,12 +1,4 @@
 <?php
-
-/**
- * yform.
- *
- */
-
-
-
 class rex_yform_action_attach extends rex_yform_action_abstract
 {
     public function executeAction()

@@ -1,13 +1,13 @@
-package: yform_fields
+package: yform_field
 version: '1.0'
 author: 'Alexander Walther'
-supportpage: https://github.com/alexplusde/yform_fields
+supportpage: https://github.com/alexplusde/yform_field
 
 requires:
     redaxo: ^5.8.1
-    yform: '>=3,<4'
+    yform: '^4'
     php:
-        version: ^7.1
+        version: ^7.4
 
 page:
     hidden: true
