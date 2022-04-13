@@ -1,7 +1,7 @@
 <?php
 class rex_yform_action_attach extends rex_yform_action_abstract
 {
-    public function executeAction()
+    public function executeAction() :void
     {
         $fields = array_filter(explode(",", $this->getElement(2))); // specific fields
         $override = (bool) $this->getElement(3) ?? false; // will replace attached files
@@ -25,7 +25,7 @@ class rex_yform_action_attach extends rex_yform_action_abstract
         }
     }
 
-    public function getDescription()
+    public function getDescription() :string
     {
         return 'action|attach|opt:uploadfields(upload1,upload2,upload3)|opt:replace(0=default/1)';
     }
