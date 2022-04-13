@@ -5,6 +5,7 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 ## Features
 
 * **E-Mail Attachments** - nur eine Zeile, um Anhänge aus Formularen an E-Mails zu hängen
+* **Echtes Datetime-Value** - optimierte HTML5-Ausgabe mit optionaler Einschränkung per min/max-Auswahl
 
 ## Installation
 
@@ -12,7 +13,6 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 * anschließend unter `Hauptmenü` > `AddOns` installieren.
 
 Die gewünschten Feldtypen, Validierungen und Actions stehen automatisch bereit.
-
 
 ## Einstellungen
 
