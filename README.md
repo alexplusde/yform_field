@@ -7,6 +7,7 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 * **E-Mail Attachments** - nur eine Zeile, um Anhänge aus Formularen an E-Mails zu hängen
 * **Echtes Datetime-Value** - optimierte HTML5-Ausgabe mit optionaler Einschränkung per min/max-Auswahl
 * **be_media mit Bildvorschau** - zeigt statt der Dateinamen die gewählten Bilder als Vorschau
+* **IBAN-Validierung** - validiert nach IBAN-Schema
 
 ## Installation
 
