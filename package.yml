@@ -4,10 +4,10 @@ author: 'Alexander Walther'
 supportpage: https://github.com/alexplusde/yform_field
 
 requires:
-    redaxo: ^5.8.1
+    redaxo: ^5.13
     yform: '^4'
     php:
-        version: ^7.4
+        version: ">=7.4,<9"
 
 page:
     hidden: true
