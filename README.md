@@ -20,7 +20,7 @@ Es sind keine weiteren Einstellungen vorhanden.
 
 ## Tipps und Tricks
 
-Siehe auch: ttps://github.com/alexplusde/yform_field/issues
+Siehe auch: https://github.com/alexplusde/yform_field/issues
 
 ## Lizenz
 
@@ -29,4 +29,3 @@ MIT
 ## Autor und Beitragende
 
 * @alxndr-w
-* @christophboecker
