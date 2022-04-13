@@ -1,6 +1,6 @@
 # Feldtypen-Erweiterung für REDAXO 5 YForm 4
 
-Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und Actions aus der Community.
+Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und Actions.
 
 ## Features
 
@@ -23,10 +23,19 @@ Es sind keine weiteren Einstellungen vorhanden.
 
 Siehe auch: https://github.com/alexplusde/yform_field/issues
 
+
 ## Lizenz
 
-MIT
+MIT Lizenz, siehe [LICENSE.md](https://github.com/alexplusde/speed_up/blob/master/LICENSE.md)  
 
-## Autor und Beitragende
+## Autoren
 
-* @alxndr-w
+**Alexander Walther**  
+https://www.alexplus.de
+https://github.com/alexplusde
+
+**Projekt-Lead**  
+[Alexander Walther](https://github.com/alxndr-w)
+
+## Credits
+
