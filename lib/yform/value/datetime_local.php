@@ -4,6 +4,7 @@ class rex_yform_value_datetime_local extends rex_yform_value_abstract
 {
     public const VALUE_DATETIME_DEFAULT_FORMAT = IntlDateFormatter::FULL;
     public const VALUE_DATE_FORMATS = [IntlDateFormatter::NONE => 'ausblenden', IntlDateFormatter::SHORT => 'IntlDateFormatter::SHORT', IntlDateFormatter::MEDIUM => 'IntlDateFormatter::MEDIUM', 'IntlDateFormatter::FULL' => 'IntlDateFormatter::FULL'];
+    public const VALUE_TIME_FORMATS = [IntlDateFormatter::NONE => 'ausblenden', IntlDateFormatter::SHORT => 'IntlDateFormatter::SHORT', IntlDateFormatter::MEDIUM => 'IntlDateFormatter::MEDIUM', 'IntlDateFormatter::FULL' => 'IntlDateFormatter::FULL'];
 
 
     public function preValidateAction(): void
