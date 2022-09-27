@@ -22,7 +22,16 @@ Es sind keine weiteren Einstellungen vorhanden.
 
 ## Tipps und Tricks
 
+### `attach`-Action
+
+Die Aktion `attach` muss vor der Aktion für den E-Mail-Versand notiert werden - logisch, sonst wird erst die Mail versendet und dann der Anhang beigefügt. 
+
+Szenario für Bewerberformulare: Durch geschickte Kombination und Reihenfolge lässt sich zunächst eine Bestätigungs-Mail an eine*n Bewerber*in ohne Anhang versenden, anschließend wird die Action eingetragen und zum Schluss eine weitere Mail-Aktion an das Unternehmen - diese ist dann mit Anhang.
+
+### Weitere Tipps und Tricks 
+
 Siehe auch: https://github.com/alexplusde/yform_field/issues
+
 
 
 ## Lizenz
