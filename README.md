@@ -6,8 +6,9 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 
 * **E-Mail Attachments** - nur eine Zeile, um Anhänge aus Formularen an E-Mails zu hängen
 * **Echtes Datetime-Value** - optimierte HTML5-Ausgabe mit optionaler Einschränkung per min/max-Auswahl
-* **be_media mit Bildvorschau** - zeigt statt der Dateinamen die gewählten Bilder als Vorschau
+* **`be_media` mit Bildvorschau** - zeigt statt der Dateinamen die gewählten Bilder als Vorschau
 * **`be_manager_relation` als SET** - erweitert be_manager_relation um die Möglichkeit, ein Feld als echtes DB-Feld `SET` anzulegen
+* **`domain` - SELECT-Auswahl mit der System-Domain und allen YRewrite-Domains (sofern installiert)
 
 ## Installation
 
