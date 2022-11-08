@@ -1,4 +1,4 @@
-class rex_yform_action_tosession extends rex_yform_action_abstract
+class rex_yform_action_to_session extends rex_yform_action_abstract
 {
 	public function executeAction() :void
 	{
@@ -12,7 +12,7 @@ class rex_yform_action_tosession extends rex_yform_action_abstract
 
 	public function getDescription() :string
 	{
-		return "action|tosession <b>Schreibt alle Feldwerte in $SESSION";
+		return "action|to_session <b>Schreibt alle Feldwerte in $SESSION";
 	}
 	/* TODO: Statische Methode zum Auslesen der $SESSION bereitstellen. */
 }
