@@ -14,3 +14,11 @@ requires:
 
 page:
     hidden: true
+
+pages:
+    yform/yform_field_docs:
+        title: 'Zusätzliche Felder'
+        subPath: README.md
+        icon: rex-icon fa-info-circle
+        itemclass: pull-right
+        perm: yform_field[]
