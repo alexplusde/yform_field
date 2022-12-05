@@ -27,12 +27,12 @@ class rex_yform_value_privacy_policy extends rex_yform_value_abstract
         }
     }
 
-    public function getDescription()
+    public function getDescription() :string
     {
         return 'privacy_policy|name|label|[no_db]|text|linktext|article_id';
     }
 
-    public function getDefinitions()
+    public function getDefinitions() :array
     {
         return [
             'type' => 'value',
@@ -96,10 +96,5 @@ class rex_yform_value_privacy_policy extends rex_yform_value_abstract
         }
 
         return $params['subject'];
-    }
-
-    public function getViewValue()
-    {
-        return 'hihih';
     }
 }
