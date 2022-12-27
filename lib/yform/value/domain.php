@@ -60,7 +60,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
 
     public function getDescription() :string
     {
-        return 'domain|name|label|Frau=w,Herr=m|[no_db]|defaultwert|multiple=1|selectsize';
+        return 'domain|name|label|attributes|notice';
     }
 
     public function getDefinitions() :array
@@ -74,9 +74,9 @@ class rex_yform_value_domain extends rex_yform_value_abstract
                 'attributes' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_attributes'), 'notice' => rex_i18n::msg('yform_values_defaults_attributes_notice')],
                 'notice' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_notice')],
             ],
-            'description' => rex_i18n::msg('yform_values_select_description'),
-            'db_type' => ['text'],
-            'deprecated' => rex_i18n::msg('yform_values_deprecated_select'),
+            'description' => rex_i18n::msg('yform_values_domain_description'),
+            'db_type' => ['text', 'int', 'tinyint(1)', 'varchar(191)'],
+            'famous' => true
         ];
     }
 
