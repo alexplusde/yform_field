@@ -81,7 +81,10 @@ class rex_yform_value_datetime_local extends rex_yform_value_abstract
 
     public static function getListValue($params): string
     {
-        return '<nobr>'.self::date_formatter()->format(strtotime($params['value'])).'</nobr>';
+        if ($params['value'] !== "0000-00-00 00:00:00") {
+            return ''.self::date_formatter()->format(strtotime($params['value'])).'';
+        }
+        return "---";
     }
 
     public static function getSearchField($params)
