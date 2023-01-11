@@ -1,4 +1,15 @@
 yform_field_info_donate = Anders als die meisten Addons aus der REDAXO-Community ist die Entstehung und Weiterentwicklung dieses Addons nicht durch eigene Projekte gedeckt. Mit einer Spende oder einer Beauftragung sicherst du zusätzliche Features, die Stabilität, Funktionsumfang und Weiterentwicklung weiter verbessern können, sowie eine bessere Anleitung. 
 yform_field_donate = Weiterentwicklung unterstützen 
 
-yform_values_domain_description = Stellt ein Auswahl-Feld zur Verfügung, um ein oder mehere Domains auszuwählen.
+yform_values_domain_description = Stellt ein Auswahl-Feld zur Verfügung, um eine oder mehrere Domains auszuwählen.
+
+#
+# rex_yform_value_tabs (Tab-Navigation)
+#
+yform_values_tabs_cluster = Dient der Gruppierung zusammenhängender Tabs in einer Menü-Gruppe (Achtung: keine überlappenden oder verschachtelten Gruppen!)
+yform_values_tabs_description = Tab-Navigation einfügen
+yform_values_tabs_cluster_label = Tab-Gruppe
+yform_values_tabs_active_label = Aktiver Tab
+yform_values_tabs_active_notice = 'Aktiv' hat Vorrang vor 'Dynamisch'. Bei mehreren aktiven Tabs wird der erste genommen.
+yform_values_tabs_active_options = Der erste Tab der Gruppe wid aktiviert=1,Dieser Tab wird aktiviert=2
+
