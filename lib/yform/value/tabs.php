@@ -17,7 +17,6 @@
 
 class rex_yform_value_tabs extends rex_yform_value_abstract
 {
-
     /**
      * Variablen zur Ablage der Tab-Menü-Struktur
      * @var self[] $tabset
@@ -36,7 +35,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
     protected function collectTabElements(): void
     {
         // nur ausführen, wenn noch nicht durch ein anderes Tab derselben Gruppe erledigt
-        if( 0 < count($this->tabset) ) {
+        if (0 < count($this->tabset)) {
             return;
         }
 
@@ -44,26 +43,26 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         /** @var \rex_yform_value_abstract[] $tabElements  */
         $tabElements = $this->params['values'];
         /** @var self[] $tabElements  */
-        $tabElements = array_filter( $tabElements,function($v){
-            return is_a($v,self::class) && $v->getElement('group_by') === $this->getElement('group_by');
+        $tabElements = array_filter($tabElements, function ($v) {
+            return is_a($v, self::class) && $v->getElement('group_by') === $this->getElement('group_by');
         });
 
         // Zu wenig Elemente: dann wird das nix, ignorieren
-        if( 3 > count($tabElements) ) {
+        if (3 > count($tabElements)) {
             return;
         }
 
         // Der letzte Tab (nur Platzhalter für den Abschluss der Tabgruppe) ist nie aktiv.
-        $tabElements[array_key_last($tabElements)]->setElement('default','1');
+        $tabElements[array_key_last($tabElements)]->setElement('default', '1');
 
         // In den Tabs die steuernden Informationen eintragen
         $i = 0;
         $active = -1;
-        foreach($tabElements as $id => $tab ) {
+        foreach ($tabElements as $id => $tab) {
             $tab->tabset = $tabElements;
             $tab->sequence = $i++;
             $tab->selected = false;
-            if( -1 === $active && '2' === $tab->getElement('default') ) {
+            if (-1 === $active && '2' === $tab->getElement('default')) {
                 $active = $id;
             };
         }
@@ -130,7 +129,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
                 ],
                 'label' => [
                     'type' => 'text',
-                    'label' => '#'.rex_i18n::msg('yform_values_defaults_label'),
+                    'label' => rex_i18n::msg('yform_values_defaults_label'),
                 ],
                 'default' => [
                     'type' => 'choice',
@@ -153,4 +152,3 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         ];
     }
 }
-?>
