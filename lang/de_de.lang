@@ -12,4 +12,4 @@ yform_values_tabs_cluster_label = Tab-Gruppe
 yform_values_tabs_active_label = Aktiver Tab
 yform_values_tabs_active_notice = 'Aktiv' hat Vorrang vor 'Dynamisch'. Bei mehreren aktiven Tabs wird der erste genommen.
 yform_values_tabs_active_options = Der erste Tab der Gruppe wid aktiviert=1,Dieser Tab wird aktiviert=2
-
+yform_values_tabs_setup_prio_error = {0}: Überscheidung mit Tab-Gruppe «{1}» bei Feld «{2} [{3}]»!
