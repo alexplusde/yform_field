@@ -24,8 +24,16 @@ if ('open_tabset' === $option) {
         if (PHP_INT_MAX !== $tab->sequence) {
             $tabLabel = $tab->getLabel();
             $tabHTMLid = $tab->getHTMLId();
-            $isActive = $tab->selected ? ' class="active"' : '';
-            echo '  <li role="presentation"',$isActive,'><a data-toggle="tab" href="#',$tabHTMLid,'">',$tabLabel,'</a></li>',PHP_EOL;
+            $class = [];
+            if ($tab->selected) {
+                $class[] = 'active';
+            }
+            if ($tab->hasErrorField) {
+                $class[] = $tab->hasErrorField;
+                $tabLabel = '<span class="text-danger"><i class="fa fa-warning"></i> ' . $tabLabel . '</span>';
+            }
+            $class = $class ? ' class="'.implode(' ', $class).'"' : '';
+            echo '  <li role="presentation"',$class,'><a data-toggle="tab" href="#',$tabHTMLid,'">',$tabLabel,'</a></li>',PHP_EOL;
         }
     }
     echo '</ul>',PHP_EOL;
