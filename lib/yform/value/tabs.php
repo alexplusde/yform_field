@@ -24,6 +24,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
     public array $tabset = [];
     public int $sequence;
     public bool $selected = false;
+    public string $hasErrorField = '';
 
     public string $fragment = 'value.tabs.tpl.php';
 
@@ -70,6 +71,18 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         $tabElements[$active]->selected = true;
         // Das letzte Element erhält die Nummer PHP_INT_MAX;
         $tabElements[array_key_last($tabElements)]->sequence = PHP_INT_MAX;
+
+        // Gibt es Fehlermeldungen in einem Tab-Bereich? Dann den Tab markieren
+        $tabKeys = array_keys($tabElements);
+        foreach ($this->params['warning'] as $needle => $errorClass) {
+            $fields = array_filter($tabKeys, static function ($v) use ($needle) {
+                return $v < $needle;
+            });
+            $errorTab = end($fields);
+            if (false !== $errorTab) {
+                $tabElements[$errorTab]->hasErrorField = $errorClass;
+            }
+        }
     }
 
     /**
