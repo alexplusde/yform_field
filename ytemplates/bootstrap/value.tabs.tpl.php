@@ -21,6 +21,7 @@
 if ('open_tabset' === $option) {
     echo '<ul class="nav nav-tabs">',PHP_EOL;
     foreach ($tabset as $tab) {
+        if (PHP_INT_MAX !== $tab->sequence) {
             $tabLabel = $tab->getLabel();
             $tabHTMLid = $tab->getHTMLId();
             $class = [];
