@@ -158,10 +158,103 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
                     'notice' => rex_i18n::msg('yform_values_tabs_cluster'),
                 ],
             ],
+            'validates' => [
+                ['customfunction' => ['name' => 'prio', 'function' => [$this, 'validateTabOrder']]],
+            ],
             'description' => rex_i18n::msg('yform_values_tabs_description'),
             'dbtype' => 'none',
             'is_searchable' => false,
             'is_hiddeninlist' => true,
         ];
     }
+    /**
+     * Callback für customvalidator auf 'prio'.
+     *
+     * Hintergrund: Tabs können in Gruppen zusammengefasst werden, was notwendig ist,
+     * um mehrere Tabsets in ein Formular zu bekommen. Die Tabs zweier Gruppen dürfen
+     * nur aufeinander folgen, nicht aber überlappen.
+     *
+     * Beim Speichern wird überprüft, ob die in prio ausgewählte Position innerhalb einer
+     * anderen Tab-Gruppe liegt
+     *
+     * Die Parameter sind so belegt:
+     *  - Array mit dem Feldnamen ()
+     *  - Array mit den aktuellen Werten für 'url' und 'subdomain'
+     *  - Rückgabewert als Vorbelegung (sollte leer sein), ignorieren
+     *  - Instanz der aktiven Validator-Klasse
+     *  - Array mit den Instanzen der Felder ('url', 'subdomain')
+     *
+     * @param list<string> $field   Feldname (hier 'prio')
+     * @param int $prio
+     * @param string $return
+     * @param rex_yform_validate_customfunction $self
+     * @param array<string,rex_yform_value_prio> $elements
+     */
+    public static function validateTabOrder($field, $prio, $return, $self, $elements): bool
+    {
+        $table = $self->params['main_table'];
+        $tablename = '';
+        $myGroup = '';
+        foreach ($self->params['values'] as $id => $valueField) {
+            if ('group_by' === $valueField->getName()) {
+                $myGroup = $valueField->getValue();
+                continue;
+            }
+            if ('table_name' === $valueField->getName()) {
+                $tablename = $valueField->getValue();
+                continue;
+            }
+        }
+
+        /**
+         * Die Tab-Felder derselben Tabelle aus rex_yform_field abrufen.
+         */
+        $sql = rex_sql::factory();
+        $query = 'SELECT `id`,`prio`,`label`,`name`,`group_by` FROM '.$table.' WHERE `table_name`=:tablename AND `type_name`=:typename AND `id`!=:id AND `group_by`!=:group ORDER BY `group_by`,`prio` ASC';
+        $tabs = $sql->getArray(
+            'SELECT `id`,`prio`,`label`,`name`,`group_by` FROM '.$table.' WHERE `table_name`=:tablename AND `type_name`=:typename AND `id`!=:id AND `group_by`!=:group ORDER BY `group_by`,`prio` ASC',
+            [
+                ':tablename' => $tablename,
+                ':typename' => substr(self::class, 16),
+                ':id' => $self->params['main_id'],
+                ':group' => $myGroup,
+            ]
+        );
+
+        /**
+         * Die Gruppen bilden. Dabei den Prio-Wert für alle Felder ab
+         * demjenigen, dessen Position dieses Feld einnehmen soll ($prio),
+         * um 1 heraufsetzen.
+         */
+        $groups = [];
+        foreach ($tabs as $tab) {
+            if ($prio <= $tab['prio']) {
+                ++$tab['prio'];
+            }
+            $groups[$tab['group_by']][$tab['prio']] = $tab;
+        }
+
+        /**
+         * Überlappung mit einer der Gruppen ermitteln.
+         * Wenn gefunden: den Fehlertext zusammenbauen und
+         * mit true abbrechen.
+         */
+
+        foreach ($groups as $group) {
+            $start = current($group);
+            $end = end($group);
+            if ($prio > $start['prio'] && $prio < $end['prio']) {
+                $error = rex_i18n::msg(
+                    'yform_values_tabs_setup_prio_error',
+                    $elements[$field]->getLabel(),
+                    $start['group_by'],
+                    $start['label'],
+                    $start['name']
+                );
+                $self->setElement('message', $error);
+                return true;
+            }
+        }
+        return false;
+    }    
 }
