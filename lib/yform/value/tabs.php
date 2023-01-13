@@ -22,7 +22,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
      * @var self[] $tabset
      */
     public array $tabset = [];
-    public int $sequence;
+    public int $sequence = -1;
     public bool $selected = false;
     public string $hasErrorField = '';
 
@@ -118,6 +118,8 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         if (PHP_INT_MAX === $this->sequence) {
             $output .= $this->parse($this->fragment, ['option' => 'close_tabset']);
         }
+
+        // wenn (-1 === $this->sequence) => nix tun
 
         $this->params['form_output'][$this->getId()] = $output;
     }
