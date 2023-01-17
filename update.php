@@ -4,4 +4,4 @@
  * @var rex_addon $this
  */
  
-$this->includeFile('install.php');
+$this->includeFile(__DIR__.'/install.php');
