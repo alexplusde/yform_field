@@ -2,3 +2,7 @@ yform_field_info_donate = Anders als die meisten Addons aus der REDAXO-Community
 yform_field_donate = Weiterentwicklung unterstützen 
 
 yform_values_domain_description = Stellt ein Auswahl-Feld zur Verfügung, um ein oder mehere Domains auszuwählen.
+
+
+yform_values_submit_once_loading = Label (z.B. "Bitte warten...")
+yform_values_submit_once_label = Label
