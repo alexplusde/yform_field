@@ -75,7 +75,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
                 'notice' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_notice')],
             ],
             'description' => rex_i18n::msg('yform_values_domain_description'),
-            'db_type' => ['text', 'int', 'tinyint(1)', 'varchar(191)'],
+            'db_type' => ['text', 'int', 'varchar(191)'],
             'famous' => true
         ];
     }

@@ -1,0 +1,11 @@
+/**
+ * rey_yform_value_tabs
+ *  - Hintergrund transparent, damit die Felder "wie immer" aussehen (weiß auf hellgrün)
+ *  - Felder im Tab etwas einrücken, damit der Rahmen, der den Tabset umschließt, zur Geltung kommt
+ */
+ .yform .tab-content {
+    background-color: transparent;
+}
+.yform .tab-content .tab-pane {
+    margin: $padding-base-vertical $padding-base-horizontal; /* 6px 12px */
+}
