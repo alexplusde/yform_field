@@ -119,8 +119,4 @@ class rex_yform_value_radio extends rex_yform_value_abstract
         }
     }
 
-    public function isDeprecated()
-    {
-        return true;
-    }
 }
