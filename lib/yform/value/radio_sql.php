@@ -46,7 +46,7 @@ class rex_yform_value_radio_sql extends rex_yform_value_abstract
         }
     }
 
-    public function getDescription()
+    public function getDescription():string
     {
         return 'radio_sql|name|label|select id,name from table order by name|[defaultvalue]|';
     }
@@ -71,7 +71,7 @@ class rex_yform_value_radio_sql extends rex_yform_value_abstract
         ];
     }
 
-    public static function getListValue($params) :string
+    public static function getListValue($params)
     {
         $return = [];
 
