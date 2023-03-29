@@ -1,14 +1,14 @@
 package: yform_field
-version: '2.2.3'
+version: '2.3.0'
 author: 'Alexander Walther'
 supportpage: https://github.com/alexplusde/yform_field
 
 requires:
-    redaxo: ^5.13
-    yform: '^4'
+    redaxo: ^5.15
+    yform: '^4.1'
     media_manager: '2.12.1'
     php:
-        version: ">=7.4,<9"
+        version: ">=8.1,<9"
         extensions: [intl]
 
 
