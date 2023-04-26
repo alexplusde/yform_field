@@ -6,12 +6,12 @@
  */
 
 $label = $label ?? "";
- 
+
 $classes = [];
 $classes[] = 'btn';
 
-if (isset($css_classes[$index]) && '' != trim($css_classes[$index])) {
-    $classes[] = trim($css_classes[$index]);
+if (isset($css_classes) && '' != trim($css_classes)) {
+    $classes[] = trim($css_classes);
 }
 if ('' != $this->getWarningClass()) {
     $classes[] = $this->getWarningClass();
