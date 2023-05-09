@@ -13,6 +13,9 @@
  * Nutzt in rex_yform_field die Felder ...
  *  - group-by: Clusterung als Tab-Gruppe
  *  - default:  Beim Anzeigen ausgewählter Default-Tab (1= Der erste / 2 = der ausgewählte)
+ *
+ * Wenn in einem Tab ein feld mit Fehlermeldung steckt, wird der Tab optisch markiert
+ * und aktiviert, unabhängig von den Einstellungen in "default".
  */
 
 class rex_yform_value_tabs extends rex_yform_value_abstract
@@ -68,12 +71,12 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
             };
         }
         $active = -1 === $active ? array_key_first($tabElements) : $active;
-        $tabElements[$active]->selected = true;
         // Das letzte Element erhält die Nummer PHP_INT_MAX;
         $tabElements[array_key_last($tabElements)]->sequence = PHP_INT_MAX;
 
         // Gibt es Fehlermeldungen in einem Tab-Bereich? Dann den Tab markieren
         $tabKeys = array_keys($tabElements);
+        $firstErrorTab = PHP_INT_MAX;
         foreach ($this->params['warning'] as $needle => $errorClass) {
             $fields = array_filter($tabKeys, static function ($v) use ($needle) {
                 return $v < $needle;
@@ -81,8 +84,15 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
             $errorTab = end($fields);
             if (false !== $errorTab) {
                 $tabElements[$errorTab]->hasErrorField = $errorClass;
+                $firstErrorTab = min($firstErrorTab,$errorTab);
             }
         }
+        // Wenn es Fehlermeldungen gibt: dann den ersten Fehlertab aktiv setzen
+        // ansonsten den zuvor ermittelten
+        if( $firstErrorTab < PHP_INT_MAX) {
+            $active = $firstErrorTab;
+        }
+        $tabElements[$active]->selected = true;
     }
 
     /**
