@@ -2,20 +2,29 @@
 
 class rex_yform_action_to_session extends rex_yform_action_abstract
 {
-	public function executeAction() :void
-	{
-		/* TODO: Session starten, falls noch nicht geschehen? */
-		foreach($this->params['value_pool']['sql'] as $key => $value) 
-		{
-			/* TODO: rex_set_session('meine_var', $meine_var) - Tabellen-Key berücksichtigen, um Action mehrfach einsetzen zu können. */
-			$_SESSION['yform']['session'][$key] = htmlspecialchars($value);
-		}
-	}
+    public function executeAction() :void
+    {
+        $label = $this->getElement(2);
+        $fields = array_filter(explode(",",$this->getElement(3)));
+        $values = [];
 
-	public function getDescription() :string
-	{
-		return "action|to_session <b>Schreibt alle Feldwerte in \$SESSION </b>";
-	}
-	/* TODO: Statische Methode zum Auslesen der $SESSION bereitstellen. */
+        if (!empty($label) && $fields && isset($this->params['value_pool']['email'])) {
+
+            foreach($fields as $field) {
+                if(!isset($this->params['value_pool']['email'][$field])) {
+                    continue;
+                }
+                $values[$field] = $this->params['value_pool']['email'][$field];
+            }
+
+        } else if (!empty($label) && isset($this->params['value_pool']['email'])) {
+            $values = $this->params['value_pool']['email'];
+        }
+        rex_set_session($label, $values);
+    }
+
+    public function getDescription() :string
+    {
+        return 'action|to_session|session_variable_name|opt:field1,field2';
+    }
 }
-
