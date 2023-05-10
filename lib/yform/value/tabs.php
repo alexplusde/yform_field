@@ -14,8 +14,11 @@
  *  - group-by: Clusterung als Tab-Gruppe
  *  - default:  Beim Anzeigen ausgewählter Default-Tab (1= Der erste / 2 = der ausgewählte)
  *
- * Wenn in einem Tab ein feld mit Fehlermeldung steckt, wird der Tab optisch markiert
+ * Wenn in einem Tab ein Feld mit Fehlermeldung steckt, wird der Tab optisch markiert
  * und aktiviert, unabhängig von den Einstellungen in "default".
+ * 
+ * Wurde das Formulat mit "Übernehmen" gespeichert wird der zuletzt aktive Tab wieder aktiv
+ * gesetzt. Ausnahme: in einem anderen Tab ist ein Feld mit Fehlermeldung. 
  */
 
 class rex_yform_value_tabs extends rex_yform_value_abstract
@@ -59,9 +62,11 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         // Der letzte Tab (nur Platzhalter für den Abschluss der Tabgruppe) ist nie aktiv.
         $tabElements[array_key_last($tabElements)]->setElement('default', '1');
 
+        // Zuletzt aktivierten Tab zwecks Wiederaktivierung aus dem REQUEST holen
+        $active = rex_request::request(md5($this->getFieldName()),'int',-1);
+
         // In den Tabs die steuernden Informationen eintragen
         $i = 0;
-        $active = -1;
         foreach ($tabElements as $id => $tab) {
             $tab->tabset = $tabElements;
             $tab->sequence = $i++;
@@ -92,6 +97,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         if( $firstErrorTab < PHP_INT_MAX) {
             $active = $firstErrorTab;
         }
+        // den aktiven Tab als solchen markieren
         $tabElements[$active]->selected = true;
     }
 
