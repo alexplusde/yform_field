@@ -19,7 +19,9 @@
  * Platzhalter zum Schließen ohne eigenen Menüeintrag.
  */
 if ('open_tabset' === $option) {
-    echo '<ul class="nav nav-tabs">',PHP_EOL;
+    $activeId = $tabset[array_key_first($tabset)]->getId();
+    $uid = 'yff'.uniqid();
+    echo '<ul class="nav nav-tabs" id="',$uid,'-t">',PHP_EOL;
     foreach ($tabset as $tab) {
         if (PHP_INT_MAX !== $tab->sequence) {
             $tabLabel = $tab->getLabel();
@@ -27,16 +29,19 @@ if ('open_tabset' === $option) {
             $class = [];
             if ($tab->selected) {
                 $class[] = 'active';
+                $activeId = $tab->getId();
             }
             if ($tab->hasErrorField) {
                 $class[] = $tab->hasErrorField;
                 $tabLabel = '<span class="text-danger"><i class="fa fa-warning"></i> ' . $tabLabel . '</span>';
             }
             $class = $class ? ' class="'.implode(' ', $class).'"' : '';
-            echo '  <li role="presentation"',$class,'><a data-toggle="tab" href="#',$tabHTMLid,'">',$tabLabel,'</a></li>',PHP_EOL;
+            echo '  <li role="presentation"',$class,'><a data-toggle="tab" href="#',$tabHTMLid,'" data-field="',$tab->getId(),'">',$tabLabel,'</a></li>',PHP_EOL;
         }
     }
     echo '</ul>',PHP_EOL;
+    echo '<input type="hidden" name="',md5($this->getFieldName()),'" value="',$activeId,'" />';
+    echo '<script>$(\'#',$uid,'-t\').on("show.bs.tab",e=>{e.currentTarget.nextElementSibling.value=e.target.dataset.field;});</script>';
     echo '<div class="panel panel-default tab-content">',PHP_EOL;
 }
 
