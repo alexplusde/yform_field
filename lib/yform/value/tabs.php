@@ -14,8 +14,11 @@
  *  - group-by: Clusterung als Tab-Gruppe
  *  - default:  Beim Anzeigen ausgewählter Default-Tab (1= Der erste / 2 = der ausgewählte)
  *
- * Wenn in einem Tab ein feld mit Fehlermeldung steckt, wird der Tab optisch markiert
+ * Wenn in einem Tab ein Feld mit Fehlermeldung steckt, wird der Tab optisch markiert
  * und aktiviert, unabhängig von den Einstellungen in "default".
+ * 
+ * Wurde das Formulat mit "Übernehmen" gespeichert wird der zuletzt aktive Tab wieder aktiv
+ * gesetzt. Ausnahme: in einem anderen Tab ist ein Feld mit Fehlermeldung. 
  */
 
 class rex_yform_value_tabs extends rex_yform_value_abstract
