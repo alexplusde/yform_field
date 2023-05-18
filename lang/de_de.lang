@@ -7,6 +7,10 @@ yform_values_domain_description = Stellt ein Auswahl-Feld zur Verfügung, um ein
 yform_values_submit_once_loading = Label (z.B. "Bitte warten...")
 yform_values_submit_once_label = Label
 
+yform_values_datestamp_offset = Zeitstempel-Offset
+yform_values_datestamp_offset_notice =in PHP-Format <code>strtotime()</code>, z.B. <code>+ 6 months</code> oder <code>next Monday</code> oder <code>31 December 2025</code>. Siehe <a href="https://www.php.net/manual/de/function.strtotime.php" target="_blank">PHP-Docs</a>
+yform_values_datestamp_offset_description = Ein <code>datestamp</code>-Feld, mit einem Offset in die Zukunft.
+
 #
 # rex_yform_value_tabs (Tab-Navigation)
 #
