@@ -1,6 +1,12 @@
 <?php
+/**
+ * yform.
+ *
+ * @author jan.kristinus[at]redaxo[dot]org Jan Kristinus
+ * @author <a href="http://www.yakamara.de">www.yakamara.de</a>
+ */
 
-class rex_yform_value_choice_html extends rex_yform_value_choice
+class rex_yform_value_choice extends rex_yform_value_abstract
 {
     public static $yform_list_values = [];
 
@@ -75,14 +81,23 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
 
             $choiceListView = $choiceList->createView($choiceAttributes);
 
-            $template = $choiceList->isExpanded() ? 'value.choice.check_html.tpl.php' : 'value.choice.select.tpl.php';
+            $template = $choiceList->isExpanded() ? 'value.choice.check.tpl.php' : 'value.choice.select.tpl.php';
 
             if (!$this->isEditable()) {
                 $template = str_replace('choice', 'choice-view', $template);
-                $options = [];
-                foreach ($choiceListView->choices as $choice) {
-                    $options[$choice->getValue()] = $choice->getLabel();
-                }
+                $getChoices = static function ($choices, $options) use (&$getChoices) {
+                    foreach ($choices as $choice) {
+                        if ('rex_yform_choice_group_view' == get_class($choice)) {
+                            /** @var rex_yform_choice_group_view $choice */
+                            $options = $getChoices($choice->choices, $options);
+                        } else {
+                            /* @var rex_yform_choice_view $choice */
+                            $options[$choice->getValue()] = $choice->getLabel();
+                        }
+                    }
+                    return $options;
+                };
+                $options = $getChoices($choiceListView->choices, []);
                 $html = $this->parse([$template, 'value.view.tpl.php'], compact('options', 'choiceList', 'choiceListView', 'elementAttributes', 'groupAttributes'));
             } else {
                 $html = $this->parse($template, compact('choiceList', 'choiceListView', 'elementAttributes', 'groupAttributes'));
@@ -105,14 +120,14 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
 
     public function getDescription(): string
     {
-        return 'choice_html|name|label|choices|[expanded type: boolean; default: 0, 0,1]|[multiple type: boolean; default: 0, 0,1]|[default]|[group_by]|[preferred_choices]|[placeholder]|[group_attributes]|[attributes]|[choice_attributes]|[notice]|[no_db]';
+        return 'choice|name|label|choices|[expanded type: boolean; default: 0, 0,1]|[multiple type: boolean; default: 0, 0,1]|[default]|[group_by]|[preferred_choices]|[placeholder]|[group_attributes]|[attributes]|[choice_attributes]|[notice]|[no_db]';
     }
 
     public function getDefinitions(): array
     {
         return [
             'type' => 'value',
-            'name' => 'choice_html',
+            'name' => 'choice',
             'values' => [
                 'name' => ['type' => 'name', 'label' => rex_i18n::msg('yform_values_defaults_name')],
                 'label' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_label')],
@@ -131,7 +146,7 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
                 'choice_label' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_choice_choice_label'), 'notice' => rex_i18n::msg('yform_values_choice_choice_label_notice')],
             ],
             'description' => rex_i18n::msg('yform_values_choice_description'),
-            'db_type' => ['text', 'int', 'tinyint(1)', 'varchar(191)'],
+            'db_type' => ['text', 'int', 'int(10) unsigned', 'tinyint(1)', 'varchar(191)'],
             'famous' => true,
         ];
     }
@@ -171,7 +186,7 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
                 self::$yform_list_values[$fieldName][$value] = $label;
             }
         }
-        return self::$yform_list_values[$fieldName];
+        return self::$yform_list_values[$fieldName] ?? '';
     }
 
     public function getAttributes($element, array $attributes = [], array $directAttributes = [])
@@ -191,7 +206,7 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
         }
 
         foreach ($directAttributes as $attribute) {
-            if (($element = $this->getElement($attribute))) {
+            if ($element = $this->getElement($attribute)) {
                 $attributes[$attribute] = $element;
             }
         }
@@ -225,12 +240,12 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
         $params['searchForm']->setValueField(
             'choice',
             [
-            'name' => $params['field']->getName(),
-            'label' => $params['field']->getLabel(),
-            'choices' => $choices,
-            'multiple' => 1,
-            'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
-        ]
+                'name' => $params['field']->getName(),
+                'label' => $params['field']->getLabel(),
+                'choices' => $choices,
+                'multiple' => 1,
+                'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
+            ]
         );
     }
 
@@ -300,7 +315,7 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
         if (false !== $elements['choice_attributes']) {
             $options['choice_attributes'] = $elements['choice_attributes'];
         }
-        if ($elements['choice_label'] !== false) {
+        if (false !== $elements['choice_label']) {
             $options['choice_label'] = $elements['choice_label'];
         }
         $choicesElement = $elements['choices'];
