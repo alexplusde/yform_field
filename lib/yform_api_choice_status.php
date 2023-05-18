@@ -15,7 +15,7 @@ class rex_api_choice_status extends rex_api_function
         $data_id = rex_request('data_id', 'int', 0);
         $field = rex_request('field', 'string', '');
         $value = rex_request('value', 'string', '');
-        $secret = rex_config::get('choice_status', 'secret');
+        $secret = rex_config::get('yform_field', 'choice_status_secret');
 
         $check = password_verify($secret . $data_id . $table, $token);
 

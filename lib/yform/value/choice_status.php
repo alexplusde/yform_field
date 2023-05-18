@@ -2,7 +2,6 @@
 
 class rex_yform_value_choice_status extends rex_yform_value_choice
 {
-
     public function getDescription(): string
     {
         return 'choice_status|name|label|choices|[expanded type: boolean; default: 0, 0,1]|[multiple type: boolean; default: 0, 0,1]|[default]|[group_by]|[preferred_choices]|[placeholder]|[group_attributes]|[attributes]|[choice_attributes]|[notice]|[no_db]';
@@ -32,92 +31,42 @@ class rex_yform_value_choice_status extends rex_yform_value_choice
             ],
             'description' => rex_i18n::msg('yform_values_choice_description'),
             'db_type' => ['text', 'int', 'tinyint(1)', 'varchar(191)'],
-            'famous' => true,
         ];
     }
-
-    public static function getListValue($params)
+    
+    public static function select($a)
     {
-        $listValues = self::getListValues($params);
-        $return = [];
-        foreach (explode(',', $params['value']) as $value) {
-            if (isset($listValues[$value])) {
-                $return[] = rex_i18n::translate($listValues[$value]);
-            }
-        }
-
-        return implode('<br />', $return);
-    }
-
-    public static function getListValues($params)
-    {
-        $fieldName = $params['field'];
-        if (!isset(self::$yform_list_values[$fieldName])) {
-            $field = $params['params']['field'];
-
-            $choiceList = self::createChoiceList([
-                'choice_attributes' => (isset($field['choice_attributes'])) ? $field['choice_attributes'] : '',
-                'choice_label' => (isset($field['choice_label'])) ? $field['choice_label'] : '',
-                'choices' => (isset($field['choices'])) ? $field['choices'] : [],
-                'expanded' => (isset($field['expanded'])) ? $field['expanded'] : '',
-                'group_by' => (isset($field['group_by'])) ? $field['group_by'] : '',
-                'multiple' => (isset($field['multiple'])) ? $field['multiple'] : false,
-                'placeholder' => (isset($field['placeholder'])) ? $field['placeholder'] : '',
-                'preferred_choices' => (isset($field['preferred_choices'])) ? $field['preferred_choices'] : [],
-            ]);
-
-            $choices = $choiceList->getChoicesByValues();
-            foreach ($choices as $value => $label) {
-                self::$yform_list_values[$fieldName][$value] = $label;
-            }
-        }
-        return self::$yform_list_values[$fieldName];
-    }
-
-
-    /* Spezifisches */
-    public static function yform_data_list_action_button(\rex_extension_point $ep)
-    {
-        $table_name = $ep->getParam('table')->getTableName();
-
-        if ($table_name == "rex_akkreditieren") {
-            $subject = $ep->getSubject();
-            $subject[] = '<hr />';
-            $subject[] = '<a href="index.php?rex-api-call=status&id=___id___&status=___status___">✅ akzeptieren</a>';
-            $subject[] = '<a href="index.php?rex-api-call=status&id=___id___&status=___status___">❌ ablehnen</a>';
-            $subject[] = '<hr />';
-            return $subject;
-        }
-    }
-
-    public static function yform_data_list_status($a)
-    {
-        $status_field = $a['params']['table']->getValueField('status');
-        if ($status_field->getTypeName() == "choice") {
-            $status_options = \rex_yform_value_choice::getListValues([
-                'field'  => 'status',
-                'params' => ['field' => $status_field],
-            ]);
+        $field = $a['field'];
+        $status_field = $a['params']['table']->getValueField($field);
+        $status_options = \rex_yform_value_choice::getListValues([
+            'field'  => $field,
+            'params' => ['field' => $status_field],
+        ]);
             
-            $table_name  = $a['params']['table']->getTableName();
-            $data_id = $a['list']->getValue('id');
-            $token = self::yform_data_list_status_token($data_id, $table_name);
-            $selected = $a['value'];
+        $table_name  = $a['params']['table']->getTableName();
+        $data_id = $a['list']->getValue('id');
+        $token = self::getToken($data_id, $table_name);
+        $selected_status = $a['value'];
 
-            $fragment = new rex_fragment();
-            $fragment->setVar("options", $status_options);
-            $fragment->setVar("selected", $selected);
-            $fragment->setVar("table", $table_name);
-            $fragment->setVar("data_id", $data_id);
-            $fragment->setVar("token", $token);
-            return $fragment->parse('akkreditieren/status_select.php');
-        }
+        $fragment = new rex_fragment();
+        $fragment->setVar("options", $status_options);
+        $fragment->setVar("selected", $selected_status);
+        $fragment->setVar("table", $table_name);
+        $fragment->setVar("field", $field);
+        $fragment->setVar("data_id", $data_id);
+        $fragment->setVar("token", $token);
+
+        // if ($selected_status == 0) {
+        return $fragment->parse('choice_status_select.php');
+        // }
+        return $status_options[$selected_status];
     }
 
-    public static function yform_data_list_status_token($data_id, $table_name)
+    public static function getToken($data_id, $table_name)
     {
         $secret = rex_config::get('yform_field', 'choice_status_secret');
 
         return password_hash($secret . $data_id . $table_name, PASSWORD_DEFAULT);
     }
+
 }
