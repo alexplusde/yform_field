@@ -1,6 +1,6 @@
 <?php
 
-class rex_yform_value_choice_html extends rex_yform_value_abstract
+class rex_yform_value_choice_html extends rex_yform_value_choice
 {
     public static $yform_list_values = [];
 
@@ -105,14 +105,14 @@ class rex_yform_value_choice_html extends rex_yform_value_abstract
 
     public function getDescription(): string
     {
-        return 'choice|name|label|choices|[expanded type: boolean; default: 0, 0,1]|[multiple type: boolean; default: 0, 0,1]|[default]|[group_by]|[preferred_choices]|[placeholder]|[group_attributes]|[attributes]|[choice_attributes]|[notice]|[no_db]';
+        return 'choice_html|name|label|choices|[expanded type: boolean; default: 0, 0,1]|[multiple type: boolean; default: 0, 0,1]|[default]|[group_by]|[preferred_choices]|[placeholder]|[group_attributes]|[attributes]|[choice_attributes]|[notice]|[no_db]';
     }
 
     public function getDefinitions(): array
     {
         return [
             'type' => 'value',
-            'name' => 'choice',
+            'name' => 'choice_html',
             'values' => [
                 'name' => ['type' => 'name', 'label' => rex_i18n::msg('yform_values_defaults_name')],
                 'label' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_label')],
