@@ -11,7 +11,7 @@
 if (class_exists('rex_scss_compiler')) {
     $compiler = new rex_scss_compiler();
 
-    if( rex::isDebugMode() || false === $this->getProperty('compress_assets',true)) {
+    if(rex::isDebugMode() || false === $this->getProperty('compress_assets', true)) {
         // Klartext-Ausgabe falls man für Tests "lesbares" CSS erzeugen möchte
         $compiler->setFormatter(\ScssPhp\ScssPhp\Formatter\Expanded::class);
     }
@@ -26,4 +26,8 @@ if (class_exists('rex_scss_compiler')) {
 
     $compiler->setCssFile(__DIR__ . '/assets/be.min.css');
     $compiler->compile();
+}
+
+if (null == (rex_config::get('yform_field', 'choice_status_secret'))) {
+    rex_config::set('yform_field', 'choice_status_secret', bin2hex(random_bytes(16)));
 }
