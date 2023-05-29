@@ -14,14 +14,14 @@ class rex_api_choice_status extends rex_api_function
         $table = rex_request('table', 'string', "");
         $data_id = rex_request('data_id', 'int', 0);
         $field = rex_request('field', 'string', '');
-        $value = rex_request('value', 'string', '');
+        $value = rex_request('value', 'string');
         $secret = rex_config::get('yform_field', 'choice_status_secret');
 
         $check = password_verify($secret . $data_id . $table, $token);
 
         rex_response::cleanOutputBuffers();
 
-        if ($data_id && $table && $token && $field && $value && $check) {
+        if ($data_id && $table && $token && $field && $check) {
             $dataset = rex_yform_manager_dataset::get($data_id, $table);
 
             if ($dataset) {
