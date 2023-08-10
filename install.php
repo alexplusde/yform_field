@@ -1,8 +1,6 @@
 <?php
 
-/**
- * @var rex_addon $this
- */
+/** @var rex_addon $this */
 
 /**
  * Erstellt eine CSS-Datei basierend auf den Backend-Styles aus dem Addon be_style (falls aktiv).
@@ -11,7 +9,7 @@
 if (class_exists('rex_scss_compiler')) {
     $compiler = new rex_scss_compiler();
 
-    if(rex::isDebugMode() || false === $this->getProperty('compress_assets', true)) {
+    if (rex::isDebugMode() || false === $this->getProperty('compress_assets', true)) {
         // Klartext-Ausgabe falls man für Tests "lesbares" CSS erzeugen möchte
         $compiler->setFormatter(\ScssPhp\ScssPhp\Formatter\Expanded::class);
     }
@@ -28,6 +26,6 @@ if (class_exists('rex_scss_compiler')) {
     $compiler->compile();
 }
 
-if (null == (rex_config::get('yform_field', 'choice_status_secret'))) {
+if (null == rex_config::get('yform_field', 'choice_status_secret')) {
     rex_config::set('yform_field', 'choice_status_secret', bin2hex(random_bytes(16)));
 }

@@ -7,15 +7,13 @@ class rex_yform_value_datestamp_offset extends rex_yform_value_datestamp
         return 'datestamp_offset|name|label|Y-m-d H:i:s|offset|[0-always,1-only if empty,2-never]|offset';
     }
 
-    
     public function preValidateAction(): void
     {
         parent::preValidateAction();
-        $value = date('Y-m-d h:i:s', strtotime($this->getValue(). ' '.$this->getElement('offset')));
+        $value = date('Y-m-d h:i:s', strtotime($this->getValue() . ' ' . $this->getElement('offset')));
 
         $this->setValue($value);
     }
-
 
     public function getDefinitions(): array
     {

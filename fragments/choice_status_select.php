@@ -1,10 +1,10 @@
 <?php
-$data_id  = $this->getVar("data_id");
-$table  = $this->getVar("table");
+$data_id = $this->getVar('data_id');
+$table = $this->getVar('table');
 $field = $this->getVar('field');
-$options  = $this->getVar("options");
-$selected = $this->getVar("selected");
-$token = $this->getVar("token");
+$options = $this->getVar('options');
+$selected = $this->getVar('selected');
+$token = $this->getVar('token');
 ?>
 <select data-table="<?= $table ?>"
 	data-token="<?= $token ?>"
@@ -12,11 +12,11 @@ $token = $this->getVar("token");
 	data-id="<?= $data_id ?>" class="form-control btn btn-sm btn-default dropdown-toggle"
 	data-status="choice_status_select" style="width: auto;">
 	<?php foreach ($options as $value => $option) {
-	    ?>
+        ?>
 	<option value="<?= $value ?>" <?php if ($value == $selected) {
-	    echo "selected";
-	} ?>><?= $option ?></option>
+        echo 'selected';
+    } ?>><?= $option ?></option>
 	<?php
-	} // foreach $options
+    } // foreach $options
 ?>
 </select>

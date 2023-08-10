@@ -13,7 +13,7 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
 
     public function enterObject()
     {
-        $multiple = $this->getElement('multiple') == 1;
+        $multiple = 1 == $this->getElement('multiple');
 
         $sql = $this->getElement('query');
 
@@ -52,7 +52,7 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
         } else {
             $size = 1;
 
-            if ($this->getElement('empty_option') == 1) {
+            if (1 == $this->getElement('empty_option')) {
                 $options = ['0' => (string) $this->getElement('empty_value')] + $options;
             }
 
@@ -63,7 +63,7 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
             $value = (string) $this->getValue();
 
             if (!array_key_exists($value, $options)) {
-                if ($default || $default === '0') {
+                if ($default || '0' === $default) {
                     $this->setValue([$default]);
                 } else {
                     reset($options);
@@ -100,12 +100,12 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
         }
     }
 
-    public function getDescription() :string
+    public function getDescription(): string
     {
         return 'select_sql|name|label| select id,name from table order by name | [defaultvalue] | [no_db] |1/0 Leeroption|Leeroptionstext|1/0 Multiple Feld|selectsize';
     }
 
-    public function getDefinitions() :array
+    public function getDefinitions(): array
     {
         return [
             'type' => 'value',
@@ -135,17 +135,17 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
         $query = $params['params']['field']['query'];
         $query_params = [];
         $pos = mb_strrpos(mb_strtoupper($query), 'ORDER BY ');
-        if ($pos !== false) {
+        if (false !== $pos) {
             $query = mb_substr($query, 0, $pos);
         }
 
         $pos = mb_strrpos(mb_strtoupper($query), 'LIMIT ');
-        if ($pos !== false) {
+        if (false !== $pos) {
             $query = mb_substr($query, 0, $pos);
         }
 
         $multiple = (isset($params['params']['field']['multiple'])) ? (int) $params['params']['field']['multiple'] : 0;
-        if ($multiple != 1) {
+        if (1 != $multiple) {
             $where = ' `id` = ?';
             $query_params[] = $params['value'];
         } else {
@@ -154,7 +154,7 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
         }
 
         $pos = mb_strrpos(mb_strtoupper($query), 'WHERE ');
-        if ($pos !== false) {
+        if (false !== $pos) {
             $query = mb_substr($query, 0, $pos) . ' WHERE ' . $where . ' AND ' . mb_substr($query, $pos + strlen('WHERE '));
         } else {
             $query .= ' WHERE ' . $where;
@@ -167,7 +167,7 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
             $return[] = $entry['name'];
         }
 
-        if (count($return) == 0 && $params['value'] != '' && $params['value'] != '0') {
+        if (0 == count($return) && '' != $params['value'] && '0' != $params['value']) {
             $return[] = $params['value'];
         }
 
@@ -190,13 +190,13 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
         $params['searchForm']->setValueField(
             'select',
             [
-            'name' => $params['field']->getName(),
-            'label' => $params['field']->getLabel(),
-            'options' => $options,
-            'multiple' => 1,
-            'size' => 5,
-            'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
-        ]
+                'name' => $params['field']->getName(),
+                'label' => $params['field']->getLabel(),
+                'options' => $options,
+                'multiple' => 1,
+                'size' => 5,
+                'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
+            ],
         );
     }
 
@@ -206,16 +206,16 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
         $field = $params['field']->getName();
         $values = (array) $params['value'];
 
-        $multiple = $params['field']->getElement('multiple') == 1;
+        $multiple = 1 == $params['field']->getElement('multiple');
 
         $where = [];
         foreach ($values as $value) {
             switch ($value) {
                 case '(empty)':
-                    $where[] = $sql->escapeIdentifier($field).' = ""';
+                    $where[] = $sql->escapeIdentifier($field) . ' = ""';
                     break;
                 case '!(empty)':
-                    $where[] = $sql->escapeIdentifier($field).' != ""';
+                    $where[] = $sql->escapeIdentifier($field) . ' != ""';
                     break;
                 default:
                     if ($multiple) {
@@ -231,5 +231,4 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
             return ' ( ' . implode(' or ', $where) . ' )';
         }
     }
-
 }

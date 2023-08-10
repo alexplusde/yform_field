@@ -22,17 +22,17 @@ class rex_yform_value_privacy_policy extends rex_yform_value_abstract
         }
 
         $this->params['value_pool']['email'][$this->getName()] = $this->getValue();
-        if ($this->saveInDb() &&  $this->getValue() == 1) {
-            $this->params['value_pool']['sql'][$this->getName()] = date("Y-m-d H:i:s");
+        if ($this->saveInDb() && 1 == $this->getValue()) {
+            $this->params['value_pool']['sql'][$this->getName()] = date('Y-m-d H:i:s');
         }
     }
 
-    public function getDescription() :string
+    public function getDescription(): string
     {
         return 'privacy_policy|name|label|[no_db]|text|linktext|article_id';
     }
 
-    public function getDefinitions() :array
+    public function getDefinitions(): array
     {
         return [
             'type' => 'value',
@@ -46,7 +46,7 @@ class rex_yform_value_privacy_policy extends rex_yform_value_abstract
                 'output_values' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_status_output_values'), 'notice' => rex_i18n::msg('yform_values_status_output_values_notice')],
                 'text' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_privacy_policy_text')],
                 'linktext' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_privacy_policy_linktext')],
-                'article_id' => ['type' => 'be_link', 'label' => rex_i18n::msg('yform_values_privacy_policy_article_id')]
+                'article_id' => ['type' => 'be_link', 'label' => rex_i18n::msg('yform_values_privacy_policy_article_id')],
             ],
             'description' => rex_i18n::msg('yform_values_privacy_policy_description'),
             'db_type' => ['datetime'],

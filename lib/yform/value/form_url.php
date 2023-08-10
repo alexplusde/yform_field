@@ -19,7 +19,7 @@ class rex_yform_value_form_url extends rex_yform_value_abstract
         }
     }
 
-    public function getDescription() :string
+    public function getDescription(): string
     {
         return 'form_url|fieldname|[no_db]';
     }

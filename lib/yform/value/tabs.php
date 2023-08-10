@@ -16,16 +16,16 @@
  *
  * Wenn in einem Tab ein Feld mit Fehlermeldung steckt, wird der Tab optisch markiert
  * und aktiviert, unabhängig von den Einstellungen in "default".
- * 
+ *
  * Wurde das Formulat mit "Übernehmen" gespeichert wird der zuletzt aktive Tab wieder aktiv
- * gesetzt. Ausnahme: in einem anderen Tab ist ein Feld mit Fehlermeldung. 
+ * gesetzt. Ausnahme: in einem anderen Tab ist ein Feld mit Fehlermeldung.
  */
 
 class rex_yform_value_tabs extends rex_yform_value_abstract
 {
     /**
-     * Variablen zur Ablage der Tab-Menü-Struktur
-     * @var self[] $tabset
+     * Variablen zur Ablage der Tab-Menü-Struktur.
+     * @var self[]
      */
     public array $tabset = [];
     public int $sequence = -1;
@@ -47,9 +47,9 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         }
 
         // Alle Tab-Elemente derselben Gruppe ermitteln
-        /** @var \rex_yform_value_abstract[] $tabElements  */
+        /** @var \rex_yform_value_abstract[] $tabElements */
         $tabElements = $this->params['values'];
-        /** @var self[] $tabElements  */
+        /** @var self[] $tabElements */
         $tabElements = array_filter($tabElements, function ($v) {
             return is_a($v, self::class) && $v->getElement('group_by') === $this->getElement('group_by');
         });
@@ -63,7 +63,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         $tabElements[array_key_last($tabElements)]->setElement('default', '1');
 
         // Zuletzt aktivierten Tab zwecks Wiederaktivierung aus dem REQUEST holen
-        $active = rex_request::request(md5($this->getFieldName()),'int',-1);
+        $active = rex_request::request(md5($this->getFieldName()), 'int', -1);
 
         // In den Tabs die steuernden Informationen eintragen
         $i = 0;
@@ -73,7 +73,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
             $tab->selected = false;
             if (-1 === $active && '2' === $tab->getElement('default')) {
                 $active = $id;
-            };
+            }
         }
         $active = -1 === $active ? array_key_first($tabElements) : $active;
         // Das letzte Element erhält die Nummer PHP_INT_MAX;
@@ -89,12 +89,12 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
             $errorTab = end($fields);
             if (false !== $errorTab) {
                 $tabElements[$errorTab]->hasErrorField = $errorClass;
-                $firstErrorTab = min($firstErrorTab,$errorTab);
+                $firstErrorTab = min($firstErrorTab, $errorTab);
             }
         }
         // Wenn es Fehlermeldungen gibt: dann den ersten Fehlertab aktiv setzen
         // ansonsten den zuvor ermittelten
-        if( $firstErrorTab < PHP_INT_MAX) {
+        if ($firstErrorTab < PHP_INT_MAX) {
             $active = $firstErrorTab;
         }
         // den aktiven Tab als solchen markieren
@@ -185,6 +185,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
             'is_hiddeninlist' => true,
         ];
     }
+
     /**
      * Callback für customvalidator auf 'prio'.
      *
@@ -215,7 +216,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
          * Problem: die Spalte rex_yform_field.group_by ist womöglich nicht vorhanden; sie wird
          * erst angelegt, wenn es das Feld gespeichert ist und tatsächlich einen gefüllten(!)
          * Gruppen-Namen hat (leer gilt nicht). Wenn es keine Spalte group_by gibt, gibt es auch
-         * noch keine Gruppen und damit keine Notwendigkeit der Überprüfung. 
+         * noch keine Gruppen und damit keine Notwendigkeit der Überprüfung.
          */
         $sql = rex_sql::factory();
         $columns = $sql::showColumns(rex::getTable('yform_field'));
@@ -244,15 +245,15 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
          * Die Tab-Felder derselben Tabelle aus rex_yform_field abrufen.
          */
         $sql = rex_sql::factory();
-        $query = 'SELECT `id`,`prio`,`label`,`name`,`group_by` FROM '.$table.' WHERE `table_name`=:tablename AND `type_name`=:typename AND `id`!=:id AND `group_by`!=:group ORDER BY `group_by`,`prio` ASC';
+        $query = 'SELECT `id`,`prio`,`label`,`name`,`group_by` FROM ' . $table . ' WHERE `table_name`=:tablename AND `type_name`=:typename AND `id`!=:id AND `group_by`!=:group ORDER BY `group_by`,`prio` ASC';
         $tabs = $sql->getArray(
-            'SELECT `id`,`prio`,`label`,`name`,`group_by` FROM '.$table.' WHERE `table_name`=:tablename AND `type_name`=:typename AND `id`!=:id AND `group_by`!=:group ORDER BY `group_by`,`prio` ASC',
+            'SELECT `id`,`prio`,`label`,`name`,`group_by` FROM ' . $table . ' WHERE `table_name`=:tablename AND `type_name`=:typename AND `id`!=:id AND `group_by`!=:group ORDER BY `group_by`,`prio` ASC',
             [
                 ':tablename' => $tablename,
                 ':typename' => substr(self::class, 16),
                 ':id' => $self->params['main_id'],
                 ':group' => $myGroup,
-            ]
+            ],
         );
 
         /**
@@ -283,12 +284,12 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
                     $elements[$field]->getLabel(),
                     $start['group_by'],
                     $start['label'],
-                    $start['name']
+                    $start['name'],
                 );
                 $self->setElement('message', $error);
                 return true;
             }
         }
         return false;
-    }    
+    }
 }

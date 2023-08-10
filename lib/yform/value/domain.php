@@ -2,19 +2,20 @@
 
 class rex_yform_value_domain extends rex_yform_value_abstract
 {
-    public static function domains() :array
+    public static function domains(): array
     {
-        $domains = [0 => rex::getServer() . " [alle]"];
+        $domains = [0 => rex::getServer() . ' [alle]'];
 
         if (rex_addon::get('yrewrite')->isAvailable()) {
             $domains_sql = rex_sql::factory()->getArray('SELECT id, domain FROM rex_yrewrite_domain ORDER BY domain');
             foreach ($domains_sql as $domain) {
                 $domains[$domain['id']] = $domain['domain'];
             }
-        };
+        }
         return $domains;
     }
-    public function enterObject() :void
+
+    public function enterObject(): void
     {
         $options = self::domains();
         $multiple = true;
@@ -58,12 +59,12 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         }
     }
 
-    public function getDescription() :string
+    public function getDescription(): string
     {
         return 'domain|name|label|attributes|notice';
     }
 
-    public function getDefinitions() :array
+    public function getDefinitions(): array
     {
         return [
             'type' => 'value',
@@ -76,11 +77,11 @@ class rex_yform_value_domain extends rex_yform_value_abstract
             ],
             'description' => rex_i18n::msg('yform_values_domain_description'),
             'db_type' => ['text', 'int', 'varchar(191)'],
-            'famous' => true
+            'famous' => true,
         ];
     }
 
-    public static function getListValue(array $params) :string
+    public static function getListValue(array $params): string
     {
         $return = [];
 
@@ -96,7 +97,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         return implode('<br />', $return);
     }
 
-    public static function getSearchField(array $params) :void
+    public static function getSearchField(array $params): void
     {
         $options = self::domains();
         $options['(empty)'] = '(empty)';
@@ -108,17 +109,17 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         $params['searchForm']->setValueField(
             'select',
             [
-            'name' => $params['field']->getName(),
-            'label' => $params['field']->getLabel(),
-            'options' => $options,
-            'multiple' => 1,
-            'size' => 5,
-            'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
-        ]
+                'name' => $params['field']->getName(),
+                'label' => $params['field']->getLabel(),
+                'options' => $options,
+                'multiple' => 1,
+                'size' => 5,
+                'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
+            ],
         );
     }
 
-    public static function getSearchFilter(array $params) :string
+    public static function getSearchFilter(array $params): string
     {
         $sql = rex_sql::factory();
 
@@ -152,6 +153,6 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         if (count($where) > 0) {
             return ' ( ' . implode(' or ', $where) . ' )';
         }
-        return "";
+        return '';
     }
 }

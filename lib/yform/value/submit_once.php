@@ -11,12 +11,11 @@ class rex_yform_value_submit_once extends rex_yform_value_submit
     {
         $label = $this->getElement('label');
 
-
         if ('' == $this->getElement('css_classes')) {
             $this->setElement('css_classes', 'btn-primary');
         }
         $css_classes = $this->getElement('css_classes');
-        
+
         if ('' == $this->getElement('loading')) {
             $this->setElement('loading', 'loading');
         }
@@ -48,7 +47,7 @@ class rex_yform_value_submit_once extends rex_yform_value_submit
                 ],
             ],
             'description' => rex_i18n::msg('yform_values_submit_once_description'),
-            'db_type' => ['none']
+            'db_type' => ['none'],
         ];
     }
 }

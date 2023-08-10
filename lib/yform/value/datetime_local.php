@@ -6,14 +6,13 @@ class rex_yform_value_datetime_local extends rex_yform_value_abstract
     public const VALUE_DATE_FORMATS = [IntlDateFormatter::NONE => 'ausblenden', IntlDateFormatter::SHORT => 'IntlDateFormatter::SHORT', IntlDateFormatter::MEDIUM => 'IntlDateFormatter::MEDIUM', 'IntlDateFormatter::FULL' => 'IntlDateFormatter::FULL'];
     public const VALUE_TIME_FORMATS = [IntlDateFormatter::NONE => 'ausblenden', IntlDateFormatter::SHORT => 'IntlDateFormatter::SHORT', IntlDateFormatter::MEDIUM => 'IntlDateFormatter::MEDIUM', 'IntlDateFormatter::FULL' => 'IntlDateFormatter::FULL'];
 
-
     public function preValidateAction(): void
     {
         $value = $this->getValue();
         if (1 == $this->getElement('current_date') && '' == $this->getValue() && $this->params['main_id'] < 1) {
             $value = date('Y-m-d H:i:s');
         } else {
-            $value = str_replace("T", " ", (string) $value);
+            $value = str_replace('T', ' ', (string) $value);
         }
         $this->setValue($value);
     }
@@ -22,7 +21,7 @@ class rex_yform_value_datetime_local extends rex_yform_value_abstract
     {
         $value = (string) $this->getValue();
 
-        $this->setValue(str_replace("T", " ", (string) $this->getValue()));
+        $this->setValue(str_replace('T', ' ', (string) $this->getValue()));
 
         $this->params['value_pool']['email'][$this->getName()] = $this->getValue();
         if ($this->saveInDb()) {
@@ -36,19 +35,19 @@ class rex_yform_value_datetime_local extends rex_yform_value_abstract
         if (!$this->isEditable()) {
             $this->params['form_output'][$this->getId()] = $this->parse(
                 ['value.datetime-view.tpl.php', 'value.date-view.tpl.php', 'value.view.tpl.php'],
-                ['type' => 'text', 'value' => $this->getValue()]
+                ['type' => 'text', 'value' => $this->getValue()],
             );
         } else {
             $dateValue = date_create($this->getValue());
 
             $this->params['form_output'][$this->getId()] = $this->parse(
                 ['value.text.tpl.php'],
-                ['type' => 'datetime-local', 'min' => $this->getElement('min'), 'max' => $this->getElement('max'), 'value' => date_format($dateValue, 'Y-m-d\TH:i')]
+                ['type' => 'datetime-local', 'min' => $this->getElement('min'), 'max' => $this->getElement('max'), 'value' => date_format($dateValue, 'Y-m-d\TH:i')],
             );
         }
     }
 
-    public static function date_formatter($format_date = IntlDateFormatter::FULL, $format_time = IntlDateFormatter::SHORT, $lang = "de")
+    public static function date_formatter($format_date = IntlDateFormatter::FULL, $format_time = IntlDateFormatter::SHORT, $lang = 'de')
     {
         return datefmt_create($lang, $format_date, $format_time, null, IntlDateFormatter::GREGORIAN);
     }
@@ -75,16 +74,16 @@ class rex_yform_value_datetime_local extends rex_yform_value_abstract
             ],
             'description' => 'Datum & Uhrzeit Eingabe',
             'db_type' => ['datetime'],
-            'famous'          => true
+            'famous' => true,
         ];
     }
 
     public static function getListValue($params): string
     {
-        if ($params['value'] !== "0000-00-00 00:00:00") {
-            return ''.self::date_formatter()->format(strtotime($params['value'])).'';
+        if ('0000-00-00 00:00:00' !== $params['value']) {
+            return '' . self::date_formatter()->format(strtotime($params['value'])) . '';
         }
-        return "---";
+        return '---';
     }
 
     public static function getSearchField($params)

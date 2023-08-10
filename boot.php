@@ -10,15 +10,15 @@ if (rex::isBackend()) {
 
 }
 
-rex_extension::register('YFORM_DATA_LIST', function ($ep) {
+rex_extension::register('YFORM_DATA_LIST', static function ($ep) {
     $list = $ep->getSubject();
 
     $table = $ep->getParam('table');
 
-    foreach($table->getFields() as $field) {
-        if($field->getTypeName() == "choice_status") {
-            $list->setColumnFormat($field->getName(), 'custom', ["rex_yform_value_choice_status", "select"], ["table" => $ep->getParam('table')]);
+    foreach ($table->getFields() as $field) {
+        if ('choice_status' == $field->getTypeName()) {
+            $list->setColumnFormat($field->getName(), 'custom', ['rex_yform_value_choice_status', 'select'], ['table' => $ep->getParam('table')]);
         }
-    };
+    }
 
 });
