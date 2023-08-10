@@ -202,6 +202,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
      *  - Instanz der aktiven Validator-Klasse
      *  - Array mit den Instanzen der Felder ('url', 'subdomain')
      *
+     * @api
      * @param list<string> $field   Feldname (hier 'prio')
      * @param int $prio
      * @param string $return
@@ -210,6 +211,21 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
      */
     public static function validateTabOrder($field, $prio, $return, $self, $elements): bool
     {
+        /**
+         * Problem: die Spalte rex_yform_field.group_by ist womöglich nicht vorhanden; sie wird
+         * erst angelegt, wenn es das Feld gespeichert ist und tatsächlich einen gefüllten(!)
+         * Gruppen-Namen hat (leer gilt nicht). Wenn es keine Spalte group_by gibt, gibt es auch
+         * noch keine Gruppen und damit keine Notwendigkeit der Überprüfung. 
+         */
+        $sql = rex_sql::factory();
+        $columns = $sql::showColumns(rex::getTable('yform_field'));
+        $groupByColumn = array_filter($columns, static function ($v) {
+            return 'group_by' === $v['name'];
+        });
+        if (0 === count($groupByColumn)) {
+            return false;
+        }
+
         $table = $self->params['main_table'];
         $tablename = '';
         $myGroup = '';
