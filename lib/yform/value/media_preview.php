@@ -29,7 +29,7 @@ class rex_yform_value_be_media_preview extends rex_yform_value_be_media
         $return = [];
         foreach ($files as $file) {
             if (rex_media::get($file)) {
-                $return[] = '<img style="width: 40px;" src="' . rex_url::frontend() . rex_media_manager::getUrl('rex_media_small', $files[0]) . '">';
+                $return[] = '<img style="width: 40px;" src="' . rex_media_manager::getUrl('rex_media_small', $files[0]) . '">';
             }
         }
 
