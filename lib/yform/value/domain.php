@@ -22,7 +22,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
 
         $values = $this->getValue();
         if (!is_array($values)) {
-            $values = explode(',', $values);
+            $values = explode(',', $values ?? '');
         }
 
         $real_values = [];
