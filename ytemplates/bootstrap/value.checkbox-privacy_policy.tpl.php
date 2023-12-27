@@ -34,7 +34,8 @@ $attributes = $this->getAttributeElements($attributes, ['required', 'disabled', 
     <label>
         <input <?= implode(' ', $attributes) ?> />
         <i class="form-helper"></i>
-        <?= $this->getElement('text') ?> <a target="_blank" href="<?= rex_getUrl($this->getElement('article_id')) ?>"><?= $this->getElement('linktext') ?></a>
+        <?= $this->getElement('text') ?>
     </label>
+    <p><a target="_blank" href="<?= rex_getUrl($this->getElement('article_id')) ?>"><?= $this->getElement('linktext') ?></a></p>
     <?= $notice ?>
 </div>
