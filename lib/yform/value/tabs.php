@@ -47,7 +47,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         }
 
         // Alle Tab-Elemente derselben Gruppe ermitteln
-        /** @var \rex_yform_value_abstract[] $tabElements */
+        /** @var rex_yform_value_abstract[] $tabElements */
         $tabElements = $this->params['values'];
         /** @var self[] $tabElements */
         $tabElements = array_filter($tabElements, function ($v) {

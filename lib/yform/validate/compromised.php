@@ -26,7 +26,7 @@ class rex_yform_compromised extends \rex_yform_validate_abstract
 
             $body = $rex_socket_response->getBody();
             $candidates = json_decode($body, true);
-            if(!$candidates) {
+            if (!$candidates) {
                 return;
             }
 
