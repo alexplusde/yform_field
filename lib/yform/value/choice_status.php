@@ -29,7 +29,7 @@ class rex_yform_value_choice_status extends rex_yform_value_choice
                 'no_db' => ['type' => 'no_db', 'label' => rex_i18n::msg('yform_values_defaults_table'), 'default' => 0],
                 'choice_label' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_choice_choice_label'), 'notice' => rex_i18n::msg('yform_values_choice_choice_label_notice')],
             ],
-            'description' => rex_i18n::msg('yform_values_choice_description'),
+            'description' => rex_i18n::msg('yform_values_choice_status_description'),
             'db_type' => ['text', 'int', 'tinyint(1)', 'varchar(191)'],
         ];
     }

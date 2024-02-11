@@ -112,7 +112,7 @@ class rex_yform_value_choice_html extends rex_yform_value_abstract
     {
         return [
             'type' => 'value',
-            'name' => 'choice',
+            'name' => 'choice_html',
             'values' => [
                 'name' => ['type' => 'name', 'label' => rex_i18n::msg('yform_values_defaults_name')],
                 'label' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_label')],
@@ -130,9 +130,8 @@ class rex_yform_value_choice_html extends rex_yform_value_abstract
                 'no_db' => ['type' => 'no_db', 'label' => rex_i18n::msg('yform_values_defaults_table'), 'default' => 0],
                 'choice_label' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_choice_choice_label'), 'notice' => rex_i18n::msg('yform_values_choice_choice_label_notice')],
             ],
-            'description' => rex_i18n::msg('yform_values_choice_description'),
+            'description' => rex_i18n::msg('yform_values_choice_html_description'),
             'db_type' => ['text', 'int', 'tinyint(1)', 'varchar(191)'],
-            'famous' => true,
         ];
     }
 
