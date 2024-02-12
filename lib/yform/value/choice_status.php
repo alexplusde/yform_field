@@ -38,7 +38,7 @@ class rex_yform_value_choice_status extends rex_yform_value_choice
     {
         $field = $a['field'];
         $status_field = $a['params']['table']->getValueField($field);
-        $status_options = \rex_yform_value_choice::getListValues([
+        $status_options = rex_yform_value_choice::getListValues([
             'field' => $field,
             'params' => ['field' => $status_field],
         ]);

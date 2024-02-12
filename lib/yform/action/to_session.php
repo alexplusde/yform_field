@@ -9,14 +9,12 @@ class rex_yform_action_to_session extends rex_yform_action_abstract
         $values = [];
 
         if (!empty($label) && $fields && isset($this->params['value_pool']['email'])) {
-
             foreach ($fields as $field) {
                 if (!isset($this->params['value_pool']['email'][$field])) {
                     continue;
                 }
                 $values[$field] = $this->params['value_pool']['email'][$field];
             }
-
         } elseif (!empty($label) && isset($this->params['value_pool']['email'])) {
             $values = $this->params['value_pool']['email'];
         }

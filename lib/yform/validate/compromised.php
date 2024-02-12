@@ -1,10 +1,9 @@
 <?php
 
-class rex_yform_compromised extends \rex_yform_validate_abstract
+class rex_yform_compromised extends rex_yform_validate_abstract
 {
     public function enterObject()
     {
-
         $Object = $this->getValueObject($this->getElement('name'));
 
         if (!$this->isObject($Object)) {
@@ -23,10 +22,9 @@ class rex_yform_compromised extends \rex_yform_validate_abstract
         $rex_socket_response = $rex_socket->doPost(['partialSHA256' => $partitalSHA256]);
 
         if (!$rex_socket_response->isOk()) {
-
             $body = $rex_socket_response->getBody();
             $candidates = json_decode($body, true);
-            if(!$candidates) {
+            if (!$candidates) {
                 return;
             }
 
