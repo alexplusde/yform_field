@@ -1,6 +1,5 @@
 <?php
 
-
 echo rex_view::title(rex_i18n::msg('yform_field_settings'));
 
 $addon = rex_addon::get('yform_field');
@@ -19,7 +18,6 @@ $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit', false);
 $fragment->setVar('title', $addon->i18n('stellenangebote_config'), false);
 $fragment->setVar('body', $form->get(), false);
-
 
 ?>
 

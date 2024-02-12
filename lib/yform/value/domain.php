@@ -88,7 +88,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         $new_select = new self();
         $values = self::domains();
 
-        foreach (explode(',', $params['value'] ??) as $k) {
+        foreach (explode(',', $params['value'] ??)) as $k) {
             if (isset($values[$k])) {
                 $return[] = rex_i18n::translate($values[$k]);
             }
