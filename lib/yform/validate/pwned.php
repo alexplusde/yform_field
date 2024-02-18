@@ -1,38 +1,37 @@
 <?php
 
-class rex_yform_validate_pwned extends \rex_yform_validate_abstract
+class rex_yform_validate_pwned extends rex_yform_validate_abstract
 {
     public function enterObject()
     {
-
         $PasswordObject = $this->getValueObject();
 
         if (!$this->isObject($PasswordObject)) {
             return;
         }
-        
+
         if ('' == $PasswordObject->getValue()) {
             return;
         }
-        
+
         $password = $PasswordObject->getValue();
         $hash = strtoupper(sha1($password));
         $range = substr($hash, 0, 5);
         $suffix = substr($hash, 5);
-        
+
         $url = "https://api.pwnedpasswords.com/range/$range";
         $rex_socket = rex_socket::factoryUrl($url);
         $rex_socket_response = $rex_socket->doGet();
-        
+
         if (!$rex_socket_response->isOk()) {
-            rex_logger::logError(E_WARNING, "Failed to connect to pwnedpasswords.com", "", 0);
+            rex_logger::logError(E_WARNING, 'Failed to connect to pwnedpasswords.com', '', 0);
             return;
         }
-        
+
         $output = $rex_socket_response->getBody();
         $lines = explode("\n", $output);
         foreach ($lines as $line) {
-            list($hashSuffix, $count) = explode(":", $line);
+            [$hashSuffix, $count] = explode(':', $line);
             if (trim($hashSuffix) == $suffix) {
                 $PasswordObject->setValue('');
                 $this->params['warning'][$PasswordObject->getId()] = $this->params['error_class'];
@@ -40,7 +39,6 @@ class rex_yform_validate_pwned extends \rex_yform_validate_abstract
                 return;
             }
         }
-        return;
     }
 
     public function getDescription(): string
