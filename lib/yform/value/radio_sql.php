@@ -65,9 +65,8 @@ class rex_yform_value_radio_sql extends rex_yform_value_abstract
                 'notice' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_notice')],
                 'no_db' => ['type' => 'no_db', 'label' => rex_i18n::msg('yform_values_defaults_table'), 'default' => 0],
             ],
-            'description' => 'Hiermit kann man SQL Abfragen als Radioliste nutzen',
+            'description' => rex_i18n::msg('yform_values_radio_sql_description'),
             'db_type' => ['int', 'text'],
-            'deprecated' => rex_i18n::msg('yform_values_deprecated_radio_sql'),
         ];
     }
 

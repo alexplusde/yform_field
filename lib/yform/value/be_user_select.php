@@ -72,9 +72,8 @@ class rex_yform_value_be_user_select extends rex_yform_value_abstract
                 'attributes' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_attributes'), 'notice' => rex_i18n::msg('yform_values_defaults_attributes_notice')],
                 'notice' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_notice')],
             ],
-            'description' => rex_i18n::msg('yform_values_select_description'),
+            'description' => rex_i18n::msg('yform_values_be_user_select_description'),
             'db_type' => ['text'],
-            'deprecated' => rex_i18n::msg('yform_values_deprecated_select'),
         ];
     }
 

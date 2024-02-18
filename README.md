@@ -1,6 +1,6 @@
-# Feldtypen-Erweiterung für REDAXO 5 YForm 4
+# 🧩 Zusätzliche Values, Validates und Actions für REDAXO 5 YForm 4
 
-Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und Actions.
+Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und Aktionen.
 
 ## Features
 
@@ -9,6 +9,9 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 * **`be_media` mit Bildvorschau** - zeigt statt der Dateinamen die gewählten Bilder als Vorschau
 * **`be_manager_relation` als SET** - erweitert be_manager_relation um die Möglichkeit, ein Feld als echtes DB-Feld `SET` anzulegen
 * **YRewrite-Domains** - SELECT-Auswahl mit der System-Domain und allen YRewrite-Domains (sofern installiert)
+* **Tabs** - Formular-Felder in Tabs gruppieren
+
+![blaupause test_redaxo_index php_page=yform_manager_table_field table_name=rex_staff func=choosenadd list=731ec268](https://github.com/alexplusde/yform_field/assets/3855487/21f9cfe5-0900-48ee-bec0-a1608125e37f)
 
 ## Installation
 
@@ -62,6 +65,25 @@ Nützlich für statistische Zwecke, wenn ein Formular seitenübergreifend eingeb
 Stellt auf Basis einer regulären Checkbox weitere Eingabe-Informationen zur Verfügung, um bspw. auf AGB oder Datenschutzerklärung hinzuweisen, wie in diesem Beispiel:
 
 ![image](https://user-images.githubusercontent.com/3855487/209686556-46de60ad-985f-4c7b-a223-83a1cadee164.png)
+
+### `tabs` - Formular-Felder in Tabs gruppieren
+
+Ähnlich wie bei Fieldsets können Formulare über Tab-Sets optisch strukturiert werden. Dazu wird das Tab-Value am Anfang einer Feldgruppe eingefügt. Nach der letzten Gruppe muss ein abschließendes Tab-Value gesetzt werden. 
+
+Im Formular sind mehrere Tab-Sets möglich, die dann aber eindeutig benannt sein müssen und sich nicht überlappen dürfen.
+
+Es müssen mindestens drei Tab-Values (derselben Gruppe) im Formular sein:
+- erster Tab: beginnt einen Tab und baut das Tab-Menü über alle Tabs des Tab-Sets auf.
+- innerer Tab: jeder innere Tab schließt den vorhergehenden ab und öffnet den eigenen Container
+- letzter Tab: ohne eigenen Eintrag im Tab-Menü, schließt den vorhergehenden Container und die Gruppe
+
+Wenn in einem Tab ein Feld mit Fehlermeldung steckt, wird der Tab optisch markiert
+und aktiviert.
+
+Wurde das Formulat mit "Übernehmen" gespeichert, wird der zuletzt aktive Tab bei der
+Wiederanzeige aktiv gesetzt. Ausnahme: in einem anderen Tab ist ein Feld mit Fehlermeldung.
+
+Ein Formular kann mehrere Tab-Sets enthalten, allerdings nicht geschachtelt. In dem Fall müssel alle zu einem Tab-Set gehörenden Tab-Value denselben Gruppennamen bekommen.
 
 ## Einstellungen
 

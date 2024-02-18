@@ -1,5 +1,6 @@
 package: yform_field
-version: '2.3.3'
+version: '2.3.6'
+
 author: 'Alexander Walther'
 supportpage: https://github.com/alexplusde/yform_field
 
@@ -18,7 +19,6 @@ page:
 pages:
     yform/yform_field_docs:
         title: 'Zusätzliche Felder'
-        subPath: README.md
-        icon: rex-icon fa-info-circle
+        icon: rex-icon fa-puzzle-piece
         itemclass: pull-right
         perm: yform_field[]
