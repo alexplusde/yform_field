@@ -1,0 +1,40 @@
+<?php
+
+echo rex_view::title(rex_i18n::msg('yform_field_settings'));
+
+$addon = rex_addon::get('yform_field');
+
+$form = rex_config_form::factory($addon->getName());
+
+$field = $form->addTextField('enzoic_api_key');
+$field->setLabel('enzoic API-Schlüssel');
+$field->setNotice('für die <a href="https://docs.enzoic.com/enzoic-api-developer-documentation/api-reference/passwords-api" target="_blank">Enzoic Passwords API</a>');
+
+$field = $form->addTextField('enzoic_api_key');
+$field->setLabel('enzoic API-Secret');
+$field->setNotice('für die <a href="https://docs.enzoic.com/enzoic-api-developer-documentation/api-reference/passwords-api" target="_blank">Enzoic Passwords API</a>');
+
+$fragment = new rex_fragment();
+$fragment->setVar('class', 'edit', false);
+$fragment->setVar('title', $addon->i18n('stellenangebote_config'), false);
+$fragment->setVar('body', $form->get(), false);
+
+?>
+
+<div class="row">
+	<div class="col-lg-8">
+		<?= $fragment->parse('core/page/section.php') ?>
+	</div>
+	<div class="col-lg-4">
+		<?php
+
+$anchor = '<a target="_blank" href="https://donate.alexplus.de/?addon=yform_field"><img src="' . rex_url::addonAssets('yform_field', 'jetzt-spenden.svg') . '" style="width: 100% max-width: 400px;"></a>';
+
+$fragment = new rex_fragment();
+$fragment->setVar('class', 'info', false);
+$fragment->setVar('title', $this->i18n('yform_field_donate'), false);
+$fragment->setVar('body', '<p>' . $this->i18n('yform_field_info_donate') . '</p>' . $anchor, false);
+echo !rex_config::get('alexplusde', 'donated') ? $fragment->parse('core/page/section.php') : '';
+?>
+	</div>
+</div>
