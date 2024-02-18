@@ -26,6 +26,10 @@ yform_values_privacy_policy_description = 🧩 YForm Field: Ein <code>checkbox</
 
 yform_values_submit_once_description = 🧩 YForm Field: Ein <code>submit</code>-Feld, das einen Doppelklick verhindert.
 
+yform_validate_password_compromised_description = 🧩 YForm Field: Überprüft, ob das Passwort in einer Datenbank von kompromittierten Passwörtern enthalten ist.
+
+yform_field_config = Einstellungen
+
 yform_values_submit_once_loading = Label (z.B. "Bitte warten...")
 yform_values_submit_once_label = Label
 

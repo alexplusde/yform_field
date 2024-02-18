@@ -6,17 +6,9 @@ $addon = rex_addon::get('yform_field');
 
 $form = rex_config_form::factory($addon->getName());
 
-$field = $form->addTextField('enzoic_api_key');
-$field->setLabel('enzoic API-Schlüssel');
-$field->setNotice('für die <a href="https://docs.enzoic.com/enzoic-api-developer-documentation/api-reference/passwords-api" target="_blank">Enzoic Passwords API</a>');
-
-$field = $form->addTextField('enzoic_api_key');
-$field->setLabel('enzoic API-Secret');
-$field->setNotice('für die <a href="https://docs.enzoic.com/enzoic-api-developer-documentation/api-reference/passwords-api" target="_blank">Enzoic Passwords API</a>');
-
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit', false);
-$fragment->setVar('title', $addon->i18n('stellenangebote_config'), false);
+$fragment->setVar('title', $addon->i18n('yform_field_config'), false);
 $fragment->setVar('body', $form->get(), false);
 
 ?>
