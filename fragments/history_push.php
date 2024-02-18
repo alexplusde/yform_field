@@ -1,10 +1,10 @@
 <?php
 
-/** @var $this rex_fragment */
+/** @var rex_fragment $this */
 
-$nonce = $this->getVar('nonce') ?? "";
-$target_url = $this->getVar('target_url') ?? "";
-$target_title = $this->getVar('target_title') ?? "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧";
+$nonce = $this->getVar('nonce') ?? '';
+$target_url = $this->getVar('target_url') ?? '';
+$target_title = $this->getVar('target_title') ?? '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧';
 ?>
 
 <script type="text/javascript" nonce="<?= $nonce ?>">
