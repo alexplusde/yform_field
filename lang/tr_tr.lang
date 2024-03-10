@@ -1,0 +1,54 @@
+yform_field_info_donate = REDAXO topluluğundaki çoğu eklenti gibi, bu eklentinin oluşturulması ve daha fazla geliştirilmesi kendi projeleri tarafından karşılanmamaktadır. Sipariş vererek, ek özellikler, stabilite, işlevsellik ve daha fazla geliştirme, ayrıca daha iyi talimatlar sağlarsınız.
+
+yform_field_donate = Daha fazla geliştirmeyi destekleyin
+
+yform_values_select_sql_description = 🧩 YForm Alanı: YForm 3.x'ten <code>select_sql</code> alanı
+
+yform_values_radio_description = 🧩 YForm Alanı: YForm 3.x'ten <code>radio</code> alanı
+
+yform_values_radio_sql_description = 🧩 YForm Alanı: YForm 3.x'ten <code>radio_sql</code> alanı
+
+yform_values_domain_description = 🧩 YForm Alanı: Bir veya daha fazla alan adını seçmek için bir seçim alanı sağlar.
+
+yform_values_datetime_local_description = 🧩 YForm Alanı: Zaman dilimi olmadan tarih ve saati gösteren bir <code>datetime-local</code> alanı.
+
+yform_values_choice_status_description = 🧩 YForm Alanı: Genel bakışta bir durum anahtarı gösteren bir <code>choice</code> alanı.
+
+yform_values_choice_html_description = 🧩 YForm Alanı: Çıktıda HTML koduna izin veren bir <code>choice</code> alanı.
+
+yform_values_select_description = 🧩 YForm Alanı: YForm 3.x'ten <code>select</code> alanı
+
+yform_values_be_user_select_description = 🧩 YForm Alanı: Arka uçtan kullanıcıları seçen bir <code>select</code> alanı.
+
+yform_values_be_media_preview_description = 🧩 YForm Alanı: Genel bakışta görüntünün bir önizlemesini gösteren bir <code>be_media</code> alanı.
+
+yform_values_privacy_policy_description = 🧩 YForm Alanı: Daha fazla bilgiye bağlantı içeren bir onayı gösteren bir <code>checkbox</code> alanı.
+
+yform_values_submit_once_description = 🧩 YForm Alanı: Çift tıklamayı önleyen bir <code>submit</code> alanı.
+
+yform_validate_password_compromised_description = 🧩 YForm Alanı: Parolanın, tehlikeye girmiş parolaların bir veritabanında olup olmadığını kontrol eder.
+
+yform_field_config = Ayarlar
+
+yform_values_submit_once_loading = Etiket (ör. "Lütfen bekleyin...")
+yform_values_submit_once_label = Etiket
+
+yform_values_datestamp_offset = Zaman damgası ofseti
+yform_values_datestamp_offset_notice = PHP formatında <code>strtotime()</code>, ör. <code>+ 6 ay</code> veya <code>gelecek Pazartesi</code> veya <code>31 Aralık 2025</code>. Bakınız <a href="https://www.php.net/manual/de/function.strtotime.php" target="_blank">PHP-Docs</a>
+yform_values_datestamp_offset_description = 🧩 YForm Alanı: Geleceğe bir ofseti olan bir <code>datestamp</code> alanı.
+
+#
+# rex_yform_value_tabs (Sekme navigasyonu)
+#
+yform_values_tabs_cluster = İlgili sekmeleri bir menü grubunda gruplamaya yarar (Dikkat: hiçbir örtüşme veya iç içe gruplar yok!)
+yform_values_tabs_description = 🧩 YForm Alanı: Sekme navigasyonu ekle
+yform_values_tabs_cluster_label = Sekme grubu
+yform_values_tabs_active_label = Aktif sekme
+yform_values_tabs_active_notice = 'Aktif', 'Dinamik' üzerinde önceliklidir. Birden fazla aktif sekme varsa, ilk olan alınır.
+yform_values_tabs_active_options = Grubun ilk sekmesi etkinleştirilir=1,Bu sekme etkinleştirilir=2
+yform_values_tabs_setup_prio_error = {0}: «{1}» sekme grubu ile «{2} [{3}]» alanında örtüşme!
+
+# YForm E-Posta Şablonları Testi
+yform_email_list_send_preview = Önizlemeyi test adresine gönder
+yform_email_list_send_preview_success = E-posta şablonunun "%s" önizlemesi <b>%s</b> adresine gönderildi.
+yform_email_list_send_preview_subject = E-posta şablonunun "%s" önizlemesi
