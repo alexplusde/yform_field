@@ -20,3 +20,11 @@ rex_extension::register('YFORM_DATA_LIST', static function ($ep) {
         }
     }
 });
+
+
+
+if(rex::isBackend() && rex_be_controller::getCurrentPage() == "yform/email/index") {
+
+        yform_field::email_template_test();
+
+}
