@@ -47,3 +47,8 @@ yform_values_tabs_active_label = Aktiver Tab
 yform_values_tabs_active_notice = 'Aktiv' hat Vorrang vor 'Dynamisch'. Bei mehreren aktiven Tabs wird der erste genommen.
 yform_values_tabs_active_options = Der erste Tab der Gruppe wid aktiviert=1,Dieser Tab wird aktiviert=2
 yform_values_tabs_setup_prio_error = {0}: Überscheidung mit Tab-Gruppe «{1}» bei Feld «{2} [{3}]»!
+
+# YForm E-Mail-Templates Test
+yform_email_list_send_preview = Vorschau an Test-Adresse senden 
+yform_email_list_send_preview_success = Die Vorschau des E-Mail-Templates "%s" wurde an <b>%s</b> verschickt. 
+yform_email_list_send_preview_subject = Vorschau des E-Mail-Templates "%s"
