@@ -66,6 +66,8 @@ Stellt auf Basis einer regulären Checkbox weitere Eingabe-Informationen zur Ver
 
 ![image](https://user-images.githubusercontent.com/3855487/209686556-46de60ad-985f-4c7b-a223-83a1cadee164.png)
 
+Pipe-Schreibweise: `name|label|no_db|attributes|notice|output_values|text|linktext|article_id`
+
 ### `tabs` - Formular-Felder in Tabs gruppieren
 
 Ähnlich wie bei Fieldsets können Formulare über Tab-Sets optisch strukturiert werden. Dazu wird das Tab-Value am Anfang einer Feldgruppe eingefügt. Nach der letzten Gruppe muss ein abschließendes Tab-Value gesetzt werden. 

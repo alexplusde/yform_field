@@ -10,7 +10,7 @@
 /**
  * @var rex_yform_value_tabs $this
  * @var string $option
- * @var rex_yform_value_tabs[] $tabset
+ * @var array<rex_yform_value_tabs> $tabset
  */
 
 /**
