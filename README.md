@@ -22,7 +22,7 @@ Die gewünschten Feldtypen, Validierungen und Actions stehen automatisch bereit.
 
 ## Feldtypen
 
-### `datetime_local` HTML5-Eingabefeld 
+### `datetime_local` HTML5-Eingabefeld
 
 Stellt ein Eingabefeld für Datum + Uhrzeit zur Verfügung
 
@@ -42,7 +42,7 @@ Erzeugt in der YForm Datentabelle eine Vorschau des aktuell gewählten Bilds
 
 ### be_manager_relation_set SET als Datenbankfeldtyp
 
-Exakt dasselbe Feld wie `be_manager_relation` nur mit der zusätzlichen Auswahlmöglichkeit des Datenbankfeldtyps `SET`, verwendbar in allen `1:n`-Beziehungen, die direkt im Feldwert gespeichert werden. 
+Exakt dasselbe Feld wie `be_manager_relation` nur mit der zusätzlichen Auswahlmöglichkeit des Datenbankfeldtyps `SET`, verwendbar in allen `1:n`-Beziehungen, die direkt im Feldwert gespeichert werden.
 
 > **Tipp:** Ändere in der Datenbanktabelle `yform_field` die Felddefinition deines bestehenden `be_manager_relation`-Felds zu `be_manager_relation_set` und lösche den REDAXO-Cache, statt das Feld zu löschen und neu anzulegen.
 
@@ -56,7 +56,7 @@ Erlaubt HTML in der Ausgabe des Labels von `choice`, was auch gemäß HTML5 mög
 
 > **Tipp:** Ändere in der Datenbanktabelle `yform_field` die Felddefinition deines bestehenden `choice`-Felds zu `choice_html` und lösche den REDAXO-Cache, statt das Feld zu löschen und neu anzulegen.
 
-### `form_url` - Erfahre, von wo das Formular abgeschickt wurde.
+### `form_url` - Erfahre, von wo das Formular abgeschickt wurde
 
 Nützlich für statistische Zwecke, wenn ein Formular seitenübergreifend eingebunden wurde und man wissen möchte, von wo es ausgefüllt wurde.
 
@@ -70,14 +70,15 @@ Pipe-Schreibweise: `name|label|no_db|attributes|notice|output_values|text|linkte
 
 ### `tabs` - Formular-Felder in Tabs gruppieren
 
-Ähnlich wie bei Fieldsets können Formulare über Tab-Sets optisch strukturiert werden. Dazu wird das Tab-Value am Anfang einer Feldgruppe eingefügt. Nach der letzten Gruppe muss ein abschließendes Tab-Value gesetzt werden. 
+Ähnlich wie bei Fieldsets können Formulare über Tab-Sets optisch strukturiert werden. Dazu wird das Tab-Value am Anfang einer Feldgruppe eingefügt. Nach der letzten Gruppe muss ein abschließendes Tab-Value gesetzt werden.
 
 Im Formular sind mehrere Tab-Sets möglich, die dann aber eindeutig benannt sein müssen und sich nicht überlappen dürfen.
 
 Es müssen mindestens drei Tab-Values (derselben Gruppe) im Formular sein:
-- erster Tab: beginnt einen Tab und baut das Tab-Menü über alle Tabs des Tab-Sets auf.
-- innerer Tab: jeder innere Tab schließt den vorhergehenden ab und öffnet den eigenen Container
-- letzter Tab: ohne eigenen Eintrag im Tab-Menü, schließt den vorhergehenden Container und die Gruppe
+
+* erster Tab: beginnt einen Tab und baut das Tab-Menü über alle Tabs des Tab-Sets auf.
+* innerer Tab: jeder innere Tab schließt den vorhergehenden ab und öffnet den eigenen Container
+* letzter Tab: ohne eigenen Eintrag im Tab-Menü, schließt den vorhergehenden Container und die Gruppe
 
 Wenn in einem Tab ein Feld mit Fehlermeldung steckt, wird der Tab optisch markiert
 und aktiviert.
@@ -87,23 +88,72 @@ Wiederanzeige aktiv gesetzt. Ausnahme: in einem anderen Tab ist ein Feld mit Feh
 
 Ein Formular kann mehrere Tab-Sets enthalten, allerdings nicht geschachtelt. In dem Fall müssel alle zu einem Tab-Set gehörenden Tab-Value denselben Gruppennamen bekommen.
 
+### Actions
+
+#### `attach` - Anhänge an E-Mails hängen
+
+Die Aktion `attach` muss vor der Aktion für den E-Mail-Versand notiert werden - logisch, sonst wird erst die Mail versendet und dann der Anhang beigefügt.
+
+Szenario für Bewerberformulare: Durch geschickte Kombination und Reihenfolge lässt sich zunächst eine Bestätigungs-Mail an eine*n Bewerber*in ohne Anhang versenden, anschließend wird die Action eingetragen und zum Schluss eine weitere Mail-Aktion an das Unternehmen - diese ist dann mit Anhang.
+
+#### `conversion_push` - Conversion-Tracking
+
+Die Aktion `conversion_push` sendet ein Conversion-Tracking-Event an Google Analytics (gtag.js), wenn die Seite mit dem Formular aufgerufen wird.
+
+##### Voraussetzung
+
+Der Google Tag Manager ist initialisiert, bspw. über einen Consent-Manager. Und dieser erstellt einen eigenen EventListener `gtagLoaded`, z.B. auf diese Art und Weise:
+
+```javascript
+script = document.createElement('script');
+script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+script.async = 'async';
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-XXXXXXXXXX');
+
+// Fügen Sie einen EventListener für das load-Ereignis hinzu
+script.addEventListener('load', function() {
+    // Erstellen Sie ein neues Event
+    var event = new Event('gtagLoaded');
+
+    // Lösen Sie das Event aus
+    window.dispatchEvent(event);
+});
+
+// Fügen Sie das Skript-Tag zum Dokument hinzu
+document.head.appendChild(script);
+```
+
+##### Pipe-Schreibweise
+
+```text
+// action|conversion_push|google_ads|event:conversion|send_to:AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX|value:1|currency:EUR
+```
+
+z.B.: `action|conversion_push|google_ads|conversion|AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX|999|EUR`
+
+##### Standalone-Implementierung
+
+```php
+// Conversion nur zählen, wenn kein REDAXO-Benutzer eingeloggt ist
+if(rex_backend_login::createUser() == null) {
+    echo conversion_push::google_ads('conversion', "AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX", 999, 'EUR');
+}
+```
+
 ## Einstellungen
 
 Es sind keine weiteren Einstellungen vorhanden.
 
 ## Tipps und Tricks
 
-### `attach`-Action
+### Weitere Tipps und Tricks
 
-Die Aktion `attach` muss vor der Aktion für den E-Mail-Versand notiert werden - logisch, sonst wird erst die Mail versendet und dann der Anhang beigefügt. 
-
-Szenario für Bewerberformulare: Durch geschickte Kombination und Reihenfolge lässt sich zunächst eine Bestätigungs-Mail an eine*n Bewerber*in ohne Anhang versenden, anschließend wird die Action eingetragen und zum Schluss eine weitere Mail-Aktion an das Unternehmen - diese ist dann mit Anhang.
-
-### Weitere Tipps und Tricks 
-
-Siehe auch: https://github.com/alexplusde/yform_field/issues
-
-
+Siehe auch: <https://github.com/alexplusde/yform_field/issues>
 
 ## Lizenz
 
@@ -112,11 +162,10 @@ MIT Lizenz, siehe [LICENSE.md](https://github.com/alexplusde/speed_up/blob/maste
 ## Autoren
 
 **Alexander Walther**  
-https://www.alexplus.de
-https://github.com/alexplusde
+<https://www.alexplus.de>
+<https://github.com/alexplusde>
 
 **Projekt-Lead**  
 [Alexander Walther](https://github.com/alxndr-w)
 
 ## Credits
-
