@@ -7,7 +7,7 @@
 
 $page = rex_be_controller::getPageObject('yform/yform_field_docs');
 
-echo rex_view::title($this->i18n('product_title'));
+echo rex_view::title($this->i18n('yform_field_title'));
 
 [$Toc, $Content] = rex_markdown::factory()->parseWithToc(rex_file::get(rex_path::addon('yform_field', 'README.md')), 2, 3, [
     rex_markdown::SOFT_LINE_BREAKS => false,
