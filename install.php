@@ -1,5 +1,7 @@
 <?php
 
+use ScssPhp\ScssPhp\Formatter\Expanded;
+
 /** @var rex_addon $this */
 
 /**
@@ -11,7 +13,7 @@ if (class_exists('rex_scss_compiler')) {
 
     if (rex::isDebugMode() || false === $this->getProperty('compress_assets', true)) {
         // Klartext-Ausgabe falls man für Tests "lesbares" CSS erzeugen möchte
-        $compiler->setFormatter(ScssPhp\ScssPhp\Formatter\Expanded::class);
+        $compiler->setFormatter(Expanded::class);
     }
 
     $compiler->setRootDir(__DIR__ . '/scss');
