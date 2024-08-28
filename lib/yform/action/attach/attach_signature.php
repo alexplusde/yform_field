@@ -1,4 +1,5 @@
 <?php
+
 class rex_yform_action_attach_signature extends rex_yform_action_abstract
 {
     public function executeAction(): void
@@ -6,7 +7,7 @@ class rex_yform_action_attach_signature extends rex_yform_action_abstract
         $fieldname = $this->getElement(2) ?? '';
         $filenname = $this->getElement(3) ?? 'signature.png';
 
-        if ($fieldname == '') {
+        if ('' == $fieldname) {
             return;
         }
 
@@ -17,7 +18,7 @@ class rex_yform_action_attach_signature extends rex_yform_action_abstract
         try {
             rex_file::put(rex_path::cache($filenname), $imageData);
             if (file_exists(rex_path::cache($filenname))) {
-                $this->params['value_pool']['email_attachments']['signature_attach'] = [ 0 => $filenname, 1 => rex_path::cache($filenname)];
+                $this->params['value_pool']['email_attachments']['signature_attach'] = [0 => $filenname, 1 => rex_path::cache($filenname)];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
