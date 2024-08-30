@@ -57,32 +57,32 @@ if (isset($elementAttributes['class']) && is_array($elementAttributes['class']))
 } ?>
 
 <?php $choiceGroupOutput = static function (rex_yform_choice_group_view $view) use ($choiceOutput) {
-        ?>
+    ?>
 <optgroup label="<?= rex_escape($view->getLabel()) ?>">
     <?php foreach ($view->getChoices() as $choiceView): ?>
     <?php $choiceOutput($choiceView) ?>
     <?php endforeach ?>
 </optgroup>
 <?php
-    } ?>
+} ?>
 
 <?php
-    if (!isset($groupAttributes['id'])) {
-        $groupAttributes['id'] = $this->getHTMLId();
-    }
+if (!isset($groupAttributes['id'])) {
+    $groupAttributes['id'] = $this->getHTMLId();
+}
 
-    // RexSelectStyle im Backend nutzen
-    $useRexSelectStyle = rex::isBackend();
+// RexSelectStyle im Backend nutzen
+$useRexSelectStyle = rex::isBackend();
 
-    // RexSelectStyle nicht nutzen, wenn die Klasse `.selectpicker` gesetzt ist
-    if (isset($elementAttributes['class']) && str_contains($elementAttributes['class'], 'selectpicker')) {
-        $useRexSelectStyle = false;
-    }
-    // RexSelectStyle nicht nutzen, wenn das Selectfeld mehrzeilig ist
-    if (isset($elementAttributes['size']) && (int) $elementAttributes['size'] > 1) {
-        $useRexSelectStyle = false;
-    }
- ?>
+// RexSelectStyle nicht nutzen, wenn die Klasse `.selectpicker` gesetzt ist
+if (isset($elementAttributes['class']) && str_contains($elementAttributes['class'], 'selectpicker')) {
+    $useRexSelectStyle = false;
+}
+// RexSelectStyle nicht nutzen, wenn das Selectfeld mehrzeilig ist
+if (isset($elementAttributes['size']) && (int) $elementAttributes['size'] > 1) {
+    $useRexSelectStyle = false;
+}
+?>
 <div<?= rex_string::buildAttributes($groupAttributes) ?>>
     <?php if ($this->getLabel()): ?>
     <label class="control-label" for="<?= $this->getFieldId() ?>">

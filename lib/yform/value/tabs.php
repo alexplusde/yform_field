@@ -25,7 +25,7 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
 {
     /**
      * Variablen zur Ablage der Tab-Menü-Struktur.
-     * @var self[]
+     * @var array<self>
      */
     public array $tabset = [];
     public int $sequence = -1;
@@ -47,9 +47,9 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
         }
 
         // Alle Tab-Elemente derselben Gruppe ermitteln
-        /** @var \rex_yform_value_abstract[] $tabElements */
+        /** @var array<rex_yform_value_abstract> $tabElements */
         $tabElements = $this->params['values'];
-        /** @var self[] $tabElements */
+        /** @var array<self> $tabElements */
         $tabElements = array_filter($tabElements, function ($v) {
             return is_a($v, self::class) && $v->getElement('group_by') === $this->getElement('group_by');
         });

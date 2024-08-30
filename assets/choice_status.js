@@ -35,7 +35,8 @@ function updateDatasetStatus($this, status, callback) {
     $('#rex-js-ajax-loader').addClass('rex-visible');
     if (confirm('Ändern?')) {
         url = window.location.origin;
-        $.get(url + '/redaxo/index.php?page=content&rex-api-call=choice_status', {
+        path = window.location.pathname;
+        $.get(url + path + '?page=content&rex-api-call=choice_status', {
             data_id: $this.data('id'),
             table: $this.data('table'),
             field: $this.data('field'),

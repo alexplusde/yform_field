@@ -46,6 +46,7 @@ class rex_yform_value_submit_once extends rex_yform_value_submit
                 'css_classes' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_submit_css_classes'),
                 ],
             ],
+            'deprecated' => false,
             'description' => rex_i18n::msg('yform_values_submit_once_description'),
             'db_type' => ['none'],
         ];

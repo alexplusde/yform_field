@@ -1,26 +1,53 @@
-yform_field_info_donate = Anders als die meisten Addons aus der REDAXO-Community ist die Entstehung und Weiterentwicklung dieses Addons nicht durch eigene Projekte gedeckt. mit einer einer Beauftragung sicherst du zusätzliche Features, die Stabilität, Funktionsumfang und Weiterentwicklung weiter verbessern können, sowie eine bessere Anleitung. 
+yform_field_info_donate = Anders als die meisten Addons aus der REDAXO-Community ist die Entstehung und Weiterentwicklung dieses Addons nicht durch eigene Projekte gedeckt. Mit einer Beauftragung sicherst du zusätzliche Features, die Stabilität, Funktionsumfang und Weiterentwicklung weiter verbessern können, sowie eine bessere Anleitung. 
+
 yform_field_donate = Weiterentwicklung unterstützen 
 
-yform_values_domain_description = Stellt ein Auswahl-Feld zur Verfügung, um eine oder mehrere Domains auszuwählen.
+yform_values_select_sql_description = 🧩 YForm Field: Das <code>select_sql</code>-Feld aus YForm 3.x
 
+yform_values_radio_description = 🧩 YForm Field: Das <code>radio</code>-Feld aus YForm 3.x
+
+yform_values_radio_sql_description = 🧩 YForm Field: Das <code>radio_sql</code>-Feld aus YForm 3.x
+
+yform_values_domain_description = 🧩 YForm Field: Stellt ein Auswahl-Feld zur Verfügung, um eine oder mehrere Domains auszuwählen.
+
+yform_values_datetime_local_description = 🧩 YForm Field: Ein <code>datetime-local</code>-Feld, das Datum und Uhrzeit ohne Zeitzone anzeigt.
+
+yform_values_choice_status_description = 🧩 YForm Field: Ein <code>choice</code>-Feld, das einen Status-Wechsler in der Übersicht anzeigt.
+
+yform_values_choice_html_description = 🧩 YForm Field: Ein <code>choice</code>-Feld, das HTML-Code in der Ausgabe erlaubt.
+
+yform_values_select_description = 🧩 YForm Field: Das <code>select</code>-Feld aus YForm 3.x
+
+yform_values_be_user_select_description = 🧩 YForm Field: Ein <code>select</code>-Feld, das Benutzer aus dem Backend auswählt.
+
+yform_values_be_media_preview_description = 🧩 YForm Field: Ein <code>be_media</code>-Feld, das in der Übersicht eine Vorschau des Bildes anzeigt.
+
+yform_values_privacy_policy_description = 🧩 YForm Field: Ein <code>checkbox</code>-Feld, das eine Einwilligung inkl. einem Link zu mehr Informationen anzeigt.
+
+yform_values_submit_once_description = 🧩 YForm Field: Ein <code>submit</code>-Feld, das einen Doppelklick verhindert.
+
+yform_validate_password_compromised_description = 🧩 YForm Field: Überprüft, ob das Passwort in einer Datenbank von kompromittierten Passwörtern enthalten ist.
+
+yform_field_config = Einstellungen
 
 yform_values_submit_once_loading = Label (z.B. "Bitte warten...")
 yform_values_submit_once_label = Label
 
 yform_values_datestamp_offset = Zeitstempel-Offset
 yform_values_datestamp_offset_notice =in PHP-Format <code>strtotime()</code>, z.B. <code>+ 6 months</code> oder <code>next Monday</code> oder <code>31 December 2025</code>. Siehe <a href="https://www.php.net/manual/de/function.strtotime.php" target="_blank">PHP-Docs</a>
-yform_values_datestamp_offset_description = Ein <code>datestamp</code>-Feld, mit einem Offset in die Zukunft.
+yform_values_datestamp_offset_description = 🧩 YForm Field: Ein <code>datestamp</code>-Feld, mit einem Offset in die Zukunft.
 
 #
 # rex_yform_value_tabs (Tab-Navigation)
 #
 yform_values_tabs_cluster = Dient der Gruppierung zusammenhängender Tabs in einer Menü-Gruppe (Achtung: keine überlappenden oder verschachtelten Gruppen!)
-yform_values_tabs_description = Tab-Navigation einfügen
+yform_values_tabs_description = 🧩 YForm Field: Tab-Navigation einfügen
 yform_values_tabs_cluster_label = Tab-Gruppe
 yform_values_tabs_active_label = Aktiver Tab
 yform_values_tabs_active_notice = 'Aktiv' hat Vorrang vor 'Dynamisch'. Bei mehreren aktiven Tabs wird der erste genommen.
 yform_values_tabs_active_options = Der erste Tab der Gruppe wid aktiviert=1,Dieser Tab wird aktiviert=2
 yform_values_tabs_setup_prio_error = {0}: Überscheidung mit Tab-Gruppe «{1}» bei Feld «{2} [{3}]»!
+
 
 yform_values_custom_url_description = Stellt ein Link-Widget für mehrere Link-Typen bereit. Medien-, externe, interne und E-Mail-Links
 yform_values_custom_url_media = Schaltfläche für Medienpool-Datei
@@ -32,3 +59,8 @@ yform_values_custom_url_intern = Schaltfläche für internen Link
 yform_values_custom_url_link_category = Link-Kategorie
 yform_values_custom_url_phone = Schaltfläche für Telefon-Link 
 yform_values_custom_url_ylink = YForm-Link-Widget (label_text::yform_tabelle::anzeige_column,label_text2::yform_tabelle_2::anzeige_column_2)
+
+# YForm E-Mail-Templates Test
+yform_email_list_send_preview = Vorschau an Test-Adresse senden 
+yform_email_list_send_preview_success = Die Vorschau des E-Mail-Templates "%s" wurde an <b>%s</b> verschickt. 
+yform_email_list_send_preview_subject = Vorschau des E-Mail-Templates "%s"

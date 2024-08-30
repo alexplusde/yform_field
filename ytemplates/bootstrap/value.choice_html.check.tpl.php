@@ -71,7 +71,7 @@ if (isset($elementAttributes['class']) && is_array($elementAttributes['class']))
     if (!isset($groupAttributes['id'])) {
         $groupAttributes['id'] = $this->getHTMLId();
     }
- ?>
+?>
 
     <div<?= rex_string::buildAttributes($groupAttributes) ?>>
         <?php if ($this->getLabel()): ?>
