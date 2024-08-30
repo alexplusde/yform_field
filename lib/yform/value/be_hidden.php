@@ -19,7 +19,7 @@ class rex_yform_value_be_hidden extends rex_yform_value_hidden
                 'no_db' => ['type' => 'no_db', 'label' => rex_i18n::msg('yform_values_defaults_table'),  'default' => 0],
             ],
             'description' => 'Versteckte Eingabe',
-            'db_type' => ['varchar(191)', 'text'],
+            'db_type' => ['varchar(191)', 'text',  'int', 'set', 'datetime', 'date'],
         ];
     }
 }
