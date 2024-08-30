@@ -48,6 +48,18 @@ yform_values_tabs_active_notice = 'Aktiv' hat Vorrang vor 'Dynamisch'. Bei mehre
 yform_values_tabs_active_options = Der erste Tab der Gruppe wid aktiviert=1,Dieser Tab wird aktiviert=2
 yform_values_tabs_setup_prio_error = {0}: Überscheidung mit Tab-Gruppe «{1}» bei Feld «{2} [{3}]»!
 
+
+yform_values_custom_url_description = Stellt ein Link-Widget für mehrere Link-Typen bereit. Medien-, externe, interne und E-Mail-Links
+yform_values_custom_url_media = Schaltfläche für Medienpool-Datei
+yform_values_custom_url_media_types = Medien-Typen (komma-getrennt)
+yform_values_custom_url_media_category = Medien-Kategorie (ID)
+yform_values_custom_url_external = Schaltfläche für externen Link
+yform_values_custom_url_mailto = Schaltfläche für E-Mail-Link
+yform_values_custom_url_intern = Schaltfläche für internen Link
+yform_values_custom_url_link_category = Link-Kategorie
+yform_values_custom_url_phone = Schaltfläche für Telefon-Link 
+yform_values_custom_url_ylink = YForm-Link-Widget (label_text::yform_tabelle::anzeige_column,label_text2::yform_tabelle_2::anzeige_column_2)
+
 # YForm E-Mail-Templates Test
 yform_email_list_send_preview = Vorschau an Test-Adresse senden 
 yform_email_list_send_preview_success = Die Vorschau des E-Mail-Templates "%s" wurde an <b>%s</b> verschickt. 
