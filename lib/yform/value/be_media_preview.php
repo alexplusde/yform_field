@@ -16,7 +16,7 @@ class rex_yform_value_be_media_preview extends rex_yform_value_be_media
                 'types' => ['type' => 'text',   'label' => rex_i18n::msg('yform_values_be_media_types'),   'notice' => rex_i18n::msg('yform_values_be_media_types_notice')],
                 'notice' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_notice')],
             ],
-            'description' => rex_i18n::msg('yform_values_be_media_description'),
+            'description' => rex_i18n::msg('yform_values_be_media_preview_description'),
             'formbuilder' => false,
             'db_type' => ['text'],
         ];

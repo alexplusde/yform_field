@@ -72,7 +72,7 @@ class rex_yform_value_datetime_local extends rex_yform_value_abstract
                 'attributes' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_attributes'), 'notice' => rex_i18n::msg('yform_values_defaults_attributes_notice')],
                 'notice' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_notice')],
             ],
-            'description' => 'Datum & Uhrzeit Eingabe',
+            'description' => rex_i18n::msg('yform_values_datetime_local_description'),
             'db_type' => ['datetime'],
             'famous' => true,
         ];

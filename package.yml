@@ -1,12 +1,14 @@
 package: yform_field
-version: '2.3.3'
-author: 'Alexander Walther'
+version: '2.6.0'
+
+author: 'alex+ Digitales Marketing: Alexander Walther, Paul Götz'
 supportpage: https://github.com/alexplusde/yform_field
 
 requires:
     redaxo: ^5.15
-    yform: '^4.1'
-    media_manager: '2.12.1'
+    packages:
+        yform: '^4.1'
+        media_manager: '2.12.1'
     php:
         version: ">=8.1,<9"
         extensions: [intl]
@@ -14,11 +16,11 @@ requires:
 
 page:
     hidden: true
+    title: 'Zusätzliche Felder'
 
 pages:
     yform/yform_field_docs:
         title: 'Zusätzliche Felder'
-        subPath: README.md
-        icon: rex-icon fa-info-circle
-        itemclass: pull-right
+        icon: rex-icon fa-puzzle-piece
+        itemClass: pull-right
         perm: yform_field[]

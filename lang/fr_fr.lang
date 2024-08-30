@@ -1,0 +1,54 @@
+yform_field_info_donate = Contrairement à la plupart des addons de la communauté REDAXO, la création et le développement ultérieur de cet addon ne sont pas couverts par des projets propres. En commandant, vous assurez des fonctionnalités supplémentaires, la stabilité, la fonctionnalité et le développement ultérieur, ainsi que de meilleures instructions.
+
+yform_field_donate = Soutenir le développement ultérieur
+
+yform_values_select_sql_description = 🧩 Champ YForm : Le champ <code>select_sql</code> de YForm 3.x
+
+yform_values_radio_description = 🧩 Champ YForm : Le champ <code>radio</code> de YForm 3.x
+
+yform_values_radio_sql_description = 🧩 Champ YForm : Le champ <code>radio_sql</code> de YForm 3.x
+
+yform_values_domain_description = 🧩 Champ YForm : Fournit un champ de sélection pour sélectionner un ou plusieurs domaines.
+
+yform_values_datetime_local_description = 🧩 Champ YForm : Un champ <code>datetime-local</code> qui affiche la date et l'heure sans fuseau horaire.
+
+yform_values_choice_status_description = 🧩 Champ YForm : Un champ <code>choice</code> qui affiche un commutateur de statut dans l'aperçu.
+
+yform_values_choice_html_description = 🧩 Champ YForm : Un champ <code>choice</code> qui permet le code HTML dans la sortie.
+
+yform_values_select_description = 🧩 Champ YForm : Le champ <code>select</code> de YForm 3.x
+
+yform_values_be_user_select_description = 🧩 Champ YForm : Un champ <code>select</code> qui sélectionne les utilisateurs à partir de l'arrière-plan.
+
+yform_values_be_media_preview_description = 🧩 Champ YForm : Un champ <code>be_media</code> qui affiche un aperçu de l'image dans l'aperçu.
+
+yform_values_privacy_policy_description = 🧩 Champ YForm : Un champ <code>checkbox</code> qui affiche le consentement incluant un lien vers plus d'informations.
+
+yform_values_submit_once_description = 🧩 Champ YForm : Un champ <code>submit</code> qui empêche le double-clic.
+
+yform_validate_password_compromised_description = 🧩 Champ YForm : Vérifie si le mot de passe est contenu dans une base de données de mots de passe compromis.
+
+yform_field_config = Paramètres
+
+yform_values_submit_once_loading = Étiquette (par exemple "Veuillez attendre...")
+yform_values_submit_once_label = Étiquette
+
+yform_values_datestamp_offset = Décalage de l'horodatage
+yform_values_datestamp_offset_notice = au format PHP <code>strtotime()</code>, par exemple <code>+ 6 mois</code> ou <code>lundi prochain</code> ou <code>31 décembre 2025</code>. Voir <a href="https://www.php.net/manual/fr/function.strtotime.php" target="_blank">PHP-Docs</a>
+yform_values_datestamp_offset_description = 🧩 Champ YForm : Un champ <code>datestamp</code> avec un décalage dans le futur.
+
+#
+# rex_yform_value_tabs (Navigation par onglets)
+#
+yform_values_tabs_cluster = Sert à regrouper les onglets liés dans un groupe de menu (Attention : pas de groupes superposés ou imbriqués !)
+yform_values_tabs_description = 🧩 Champ YForm : Insérer la navigation par onglets
+yform_values_tabs_cluster_label = Groupe d'onglets
+yform_values_tabs_active_label = Onglet actif
+yform_values_tabs_active_notice = 'Actif' a la priorité sur 'Dynamique'. S'il y a plusieurs onglets actifs, le premier est pris.
+yform_values_tabs_active_options = Le premier onglet du groupe est activé=1,Cet onglet est activé=2
+yform_values_tabs_setup_prio_error = {0} : Chevauchement avec le groupe d'onglets « {1} » au champ « {2} [{3}] » !
+
+# Test des modèles d'e-mails YForm
+yform_email_list_send_preview = Envoyer l'aperçu à l'adresse de test
+yform_email_list_send_preview_success = L'aperçu du modèle d'e-mail "%s" a été envoyé à <b>%s</b>.
+yform_email_list_send_preview_subject = Aperçu du modèle d'e-mail "%s"

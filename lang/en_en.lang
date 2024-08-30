@@ -1,0 +1,54 @@
+yform_field_info_donate = Unlike most addons from the REDAXO community, the creation and further development of this addon is not covered by own projects. By commissioning, you ensure additional features, stability, functionality and further development, as well as better instructions.
+
+yform_field_donate = Support further development
+
+yform_values_select_sql_description = 🧩 YForm Field: The <code>select_sql</code> field from YForm 3.x
+
+yform_values_radio_description = 🧩 YForm Field: The <code>radio</code> field from YForm 3.x
+
+yform_values_radio_sql_description = 🧩 YForm Field: The <code>radio_sql</code> field from YForm 3.x
+
+yform_values_domain_description = 🧩 YForm Field: Provides a selection field to select one or more domains.
+
+yform_values_datetime_local_description = 🧩 YForm Field: A <code>datetime-local</code> field that displays date and time without timezone.
+
+yform_values_choice_status_description = 🧩 YForm Field: A <code>choice</code> field that displays a status switcher in the overview.
+
+yform_values_choice_html_description = 🧩 YForm Field: A <code>choice</code> field that allows HTML code in the output.
+
+yform_values_select_description = 🧩 YForm Field: The <code>select</code> field from YForm 3.x
+
+yform_values_be_user_select_description = 🧩 YForm Field: A <code>select</code> field that selects users from the backend.
+
+yform_values_be_media_preview_description = 🧩 YForm Field: A <code>be_media</code> field that displays a preview of the image in the overview.
+
+yform_values_privacy_policy_description = 🧩 YForm Field: A <code>checkbox</code> field that displays consent including a link to more information.
+
+yform_values_submit_once_description = 🧩 YForm Field: A <code>submit</code> field that prevents double-clicking.
+
+yform_validate_password_compromised_description = 🧩 YForm Field: Checks if the password is contained in a database of compromised passwords.
+
+yform_field_config = Settings
+
+yform_values_submit_once_loading = Label (e.g. "Please wait...")
+yform_values_submit_once_label = Label
+
+yform_values_datestamp_offset = Timestamp offset
+yform_values_datestamp_offset_notice = in PHP format <code>strtotime()</code>, e.g. <code>+ 6 months</code> or <code>next Monday</code> or <code>31 December 2025</code>. See <a href="https://www.php.net/manual/de/function.strtotime.php" target="_blank">PHP-Docs</a>
+yform_values_datestamp_offset_description = 🧩 YForm Field: A <code>datestamp</code> field with an offset into the future.
+
+#
+# rex_yform_value_tabs (Tab navigation)
+#
+yform_values_tabs_cluster = Serves to group related tabs in a menu group (Attention: no overlapping or nested groups!)
+yform_values_tabs_description = 🧩 YForm Field: Insert tab navigation
+yform_values_tabs_cluster_label = Tab group
+yform_values_tabs_active_label = Active tab
+yform_values_tabs_active_notice = 'Active' takes precedence over 'Dynamic'. If there are multiple active tabs, the first one is taken.
+yform_values_tabs_active_options = The first tab of the group is activated=1,This tab is activated=2
+yform_values_tabs_setup_prio_error = {0}: Overlap with tab group «{1}» at field «{2} [{3}]»!
+
+# YForm E-Mail-Templates Test
+yform_email_list_send_preview = Send preview to test address
+yform_email_list_send_preview_success = The preview of the email template "%s" was sent to <b>%s</b>.
+yform_email_list_send_preview_subject = Preview of the email template "%s"
