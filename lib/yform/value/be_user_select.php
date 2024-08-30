@@ -73,7 +73,7 @@ class rex_yform_value_be_user_select extends rex_yform_value_abstract
                 'notice' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_notice')],
             ],
             'description' => rex_i18n::msg('yform_values_be_user_select_description'),
-            'db_type' => ['text'],
+            'db_type' => ['text', 'varchar(191)', 'int'],
         ];
     }
 

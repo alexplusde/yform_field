@@ -123,6 +123,7 @@ class rex_yform_value_select_sql extends rex_yform_value_abstract
                 'attributes' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_attributes'), 'notice' => rex_i18n::msg('yform_values_defaults_attributes_notice')],
                 'notice' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_notice')],
             ],
+            'deprecated' => false,
             'description' => rex_i18n::msg('yform_values_select_sql_description'),
             'db_type' => ['int', 'text'],
         ];

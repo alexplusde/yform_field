@@ -66,7 +66,7 @@ class rex_yform_value_radio_sql extends rex_yform_value_abstract
                 'no_db' => ['type' => 'no_db', 'label' => rex_i18n::msg('yform_values_defaults_table'), 'default' => 0],
             ],
             'description' => rex_i18n::msg('yform_values_radio_sql_description'),
-            'db_type' => ['int', 'text'],
+            'db_type' => ['int', 'text', 'varchar(191)'],
         ];
     }
 
