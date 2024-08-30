@@ -7,21 +7,21 @@ class rex_api_choice_status extends rex_api_function
     public function execute()
     {
         if (!rex::isBackend() || !rex_backend_login::hasSession()) {
-            exit();
+            exit;
         }
 
-        $token = rex_request('token', 'string', "");
-        $table = rex_request('table', 'string', "");
+        $token = rex_request('token', 'string', '');
+        $table = rex_request('table', 'string', '');
         $data_id = rex_request('data_id', 'int', 0);
         $field = rex_request('field', 'string', '');
-        $value = rex_request('value', 'string', '');
+        $value = rex_request('value', 'string');
         $secret = rex_config::get('yform_field', 'choice_status_secret');
 
         $check = password_verify($secret . $data_id . $table, $token);
 
         rex_response::cleanOutputBuffers();
 
-        if ($data_id && $table && $token && $field && $value && $check) {
+        if ($data_id && $table && $token && $field && $check) {
             $dataset = rex_yform_manager_dataset::get($data_id, $table);
 
             if ($dataset) {
@@ -34,9 +34,9 @@ class rex_api_choice_status extends rex_api_function
                 }
             }
         } else {
-            rex_logger::factory()->log('Error', 'error: API Parameter not correct: token:'.$token);
+            rex_logger::factory()->log('Error', 'error: API Parameter not correct: token:' . $token);
             rex_response::setStatus(rex_response::HTTP_BAD_REQUEST);
         }
-        exit();
+        exit;
     }
 }

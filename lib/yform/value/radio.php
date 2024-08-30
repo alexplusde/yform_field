@@ -31,12 +31,12 @@ class rex_yform_value_radio extends rex_yform_value_abstract
         }
     }
 
-    public function getDescription() :string
+    public function getDescription(): string
     {
         return 'radio|name|label|Frau=w,Herr=m|[defaultwert]|[attributes]|[notice]|[no_db]';
     }
 
-    public function getDefinitions() :array
+    public function getDefinitions(): array
     {
         return [
             'type' => 'value',
@@ -83,12 +83,12 @@ class rex_yform_value_radio extends rex_yform_value_abstract
         $params['searchForm']->setValueField(
             'select',
             [
-            'name' => $params['field']->getName(),
-            'label' => $params['field']->getLabel(),
-            'options' => $options,
-            'multiple' => 1,
-            'size' => 5,
-        ]
+                'name' => $params['field']->getName(),
+                'label' => $params['field']->getLabel(),
+                'options' => $options,
+                'multiple' => 1,
+                'size' => 5,
+            ],
         );
     }
 
@@ -118,5 +118,4 @@ class rex_yform_value_radio extends rex_yform_value_abstract
             return ' ( ' . implode(' or ', $where) . ' )';
         }
     }
-
 }

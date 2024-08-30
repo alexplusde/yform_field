@@ -11,7 +11,7 @@ class rex_yform_value_select extends rex_yform_value_abstract
 {
     public function enterObject()
     {
-        $multiple = $this->getElement('multiple') == 1;
+        $multiple = 1 == $this->getElement('multiple');
         $options = $this->getArrayFromString($this->getElement('options'));
 
         if ($multiple) {
@@ -22,7 +22,7 @@ class rex_yform_value_select extends rex_yform_value_abstract
 
             $values = $this->getValue();
             if (!is_array($values)) {
-                $values = explode(',', $values);
+                $values = explode(',', $values ?? '');
             }
 
             $real_values = [];
@@ -43,7 +43,7 @@ class rex_yform_value_select extends rex_yform_value_abstract
             $value = (string) $this->getValue();
 
             if (!isset($options[$value])) {
-                if ($default !== null) {
+                if (null !== $default) {
                     $this->setValue([$default]);
                 } else {
                     reset($options);
@@ -79,12 +79,12 @@ class rex_yform_value_select extends rex_yform_value_abstract
         }
     }
 
-    public function getDescription() :string
+    public function getDescription(): string
     {
         return 'select|name|label|Frau=w,Herr=m|[no_db]|defaultwert|multiple=1|selectsize';
     }
 
-    public function getDefinitions() :array
+    public function getDefinitions(): array
     {
         return [
             'type' => 'value',
@@ -137,13 +137,13 @@ class rex_yform_value_select extends rex_yform_value_abstract
         $params['searchForm']->setValueField(
             'select',
             [
-            'name' => $params['field']->getName(),
-            'label' => $params['field']->getLabel(),
-            'options' => $options,
-            'multiple' => 1,
-            'size' => 5,
-            'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
-        ]
+                'name' => $params['field']->getName(),
+                'label' => $params['field']->getLabel(),
+                'options' => $options,
+                'multiple' => 1,
+                'size' => 5,
+                'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
+            ],
         );
     }
 
@@ -156,7 +156,7 @@ class rex_yform_value_select extends rex_yform_value_abstract
         $self = new self();
         $values = $self->getArrayFromString($params['value']);
 
-        $multiple = $params['field']->getElement('multiple') == 1;
+        $multiple = 1 == $params['field']->getElement('multiple');
 
         $where = [];
         foreach ($values as $value) {

@@ -30,11 +30,11 @@ if (1 == $value) {
 $attributes = $this->getAttributeElements($attributes, ['required', 'disabled', 'autofocus']);
 
 ?>
-<div class="<?= $class_group ?>" id="<?php echo $this->getHTMLId() ?>">
+<div class="<?= $class_group ?>" id="<?= $this->getHTMLId() ?>">
     <label>
         <input <?= implode(' ', $attributes) ?> />
         <i class="form-helper"></i>
-        <?php echo $this->getElement('text') ?> <a target="_blank" href="<?php rex_getUrl($this->getElement('article_id')); ?>"><?php echo $this->getElement('linktext') ?></a>
+        <?= $this->getElement('text') ?> <a target="_blank" href="<?= rex_getUrl($this->getElement('article_id')) ?>"><?= $this->getElement('linktext') ?></a>
     </label>
-    <?php echo $notice; ?>
+    <?= $notice ?>
 </div>

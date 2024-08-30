@@ -3,14 +3,14 @@
  * Template für den privaten YForm-Datentyp "rex_yform_value_tabs".
  */
 
-#namespace Project;
+// namespace Project;
 
-#use rex_yform_value_tabs;
+// use rex_yform_value_tabs;
 
 /**
  * @var rex_yform_value_tabs $this
  * @var string $option
- * @var rex_yform_value_tabs[] $tabset
+ * @var array<rex_yform_value_tabs> $tabset
  */
 
 /**
@@ -20,7 +20,7 @@
  */
 if ('open_tabset' === $option) {
     $activeId = $tabset[array_key_first($tabset)]->getId();
-    $uid = 'yff'.uniqid();
+    $uid = 'yff' . uniqid();
     echo '<ul class="nav nav-tabs" id="',$uid,'-t">',PHP_EOL;
     foreach ($tabset as $tab) {
         if (PHP_INT_MAX !== $tab->sequence) {
@@ -35,7 +35,7 @@ if ('open_tabset' === $option) {
                 $class[] = $tab->hasErrorField;
                 $tabLabel = '<span class="text-danger"><i class="fa fa-warning"></i> ' . $tabLabel . '</span>';
             }
-            $class = $class ? ' class="'.implode(' ', $class).'"' : '';
+            $class = $class ? ' class="' . implode(' ', $class) . '"' : '';
             echo '  <li role="presentation"',$class,'><a data-toggle="tab" href="#',$tabHTMLid,'" data-field="',$tab->getId(),'">',$tabLabel,'</a></li>',PHP_EOL;
         }
     }
@@ -68,4 +68,3 @@ if ('close_tab' === $option) {
     $tabHTMLid = $this->getHTMLId();
     echo '</div> <!-- close tab (',$tabHTMLid,')-->',PHP_EOL;
 }
-?>

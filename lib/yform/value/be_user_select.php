@@ -2,16 +2,17 @@
 
 class rex_yform_value_be_user_select extends rex_yform_value_abstract
 {
-    public static function user() :array
+    public static function user(): array
     {
         $users = [];
         $user_sql = rex_sql::factory()->getArray('SELECT id, `name` FROM rex_user ORDER BY `name`');
         foreach ($user_sql as $user) {
             $users[$user['id']] = $user['name'];
-        };
+        }
         return $users;
     }
-    public function enterObject() :void
+
+    public function enterObject(): void
     {
         $options = self::user();
         $multiple = true;
@@ -55,12 +56,12 @@ class rex_yform_value_be_user_select extends rex_yform_value_abstract
         }
     }
 
-    public function getDescription() :string
+    public function getDescription(): string
     {
         return 'be_user_select|name|label|attributes|';
     }
 
-    public function getDefinitions() :array
+    public function getDefinitions(): array
     {
         return [
             'type' => 'value',
@@ -71,13 +72,12 @@ class rex_yform_value_be_user_select extends rex_yform_value_abstract
                 'attributes' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_attributes'), 'notice' => rex_i18n::msg('yform_values_defaults_attributes_notice')],
                 'notice' => ['type' => 'text',    'label' => rex_i18n::msg('yform_values_defaults_notice')],
             ],
-            'description' => rex_i18n::msg('yform_values_select_description'),
+            'description' => rex_i18n::msg('yform_values_be_user_select_description'),
             'db_type' => ['text'],
-            'deprecated' => rex_i18n::msg('yform_values_deprecated_select'),
         ];
     }
 
-    public static function getListValue(array $params) :string
+    public static function getListValue(array $params): string
     {
         $return = [];
 
@@ -93,7 +93,7 @@ class rex_yform_value_be_user_select extends rex_yform_value_abstract
         return implode('<br />', $return);
     }
 
-    public static function getSearchField(array $params) :void
+    public static function getSearchField(array $params): void
     {
         $options = self::user();
         $options['(empty)'] = '(empty)';
@@ -105,17 +105,17 @@ class rex_yform_value_be_user_select extends rex_yform_value_abstract
         $params['searchForm']->setValueField(
             'select',
             [
-            'name' => $params['field']->getName(),
-            'label' => $params['field']->getLabel(),
-            'options' => $options,
-            'multiple' => 1,
-            'size' => 5,
-            'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
-        ]
+                'name' => $params['field']->getName(),
+                'label' => $params['field']->getLabel(),
+                'options' => $options,
+                'multiple' => 1,
+                'size' => 5,
+                'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
+            ],
         );
     }
 
-    public static function getSearchFilter(array $params) :string
+    public static function getSearchFilter(array $params): string
     {
         $sql = rex_sql::factory();
 
@@ -149,6 +149,6 @@ class rex_yform_value_be_user_select extends rex_yform_value_abstract
         if (count($where) > 0) {
             return ' ( ' . implode(' or ', $where) . ' )';
         }
-        return "";
+        return '';
     }
 }

@@ -32,7 +32,7 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
                 $defaultChoices = explode(',', $this->getElement('default'));
             }
             if (!$choiceList->isMultiple() && count($defaultChoices) >= 2) {
-                throw new InvalidArgumentException('Expecting one default value for '.$this->getFieldName().', but '.count($defaultChoices).' given!');
+                throw new InvalidArgumentException('Expecting one default value for ' . $this->getFieldName() . ', but ' . count($defaultChoices) . ' given!');
             }
             $this->setValue($choiceList->getDefaultValues($defaultChoices));
         }
@@ -104,8 +104,8 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
         $this->setValue(implode(',', $proofedValues));
 
         $this->params['value_pool']['email'][$this->getName()] = $this->getValue();
-        $this->params['value_pool']['email'][$this->getName().'_LABELS'] = implode(', ', $choiceList->getSelectedListForEmail($values));
-        $this->params['value_pool']['email'][$this->getName().'_LIST'] = implode("\n", $choiceList->getCompleteListForEmail($values));
+        $this->params['value_pool']['email'][$this->getName() . '_LABELS'] = implode(', ', $choiceList->getSelectedListForEmail($values));
+        $this->params['value_pool']['email'][$this->getName() . '_LIST'] = implode("\n", $choiceList->getCompleteListForEmail($values));
 
         if ($this->saveInDb()) {
             $this->params['value_pool']['sql'][$this->getName()] = $this->getValue();
@@ -125,9 +125,9 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
             'values' => [
                 'name' => ['type' => 'name', 'label' => rex_i18n::msg('yform_values_defaults_name')],
                 'label' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_label')],
-                'choices' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_choice_choices'), 'notice' => rex_i18n::msg('yform_values_choice_choices_notice').rex_i18n::rawMsg('yform_values_choice_choices_table')],
+                'choices' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_choice_choices'), 'notice' => rex_i18n::msg('yform_values_choice_choices_notice') . rex_i18n::rawMsg('yform_values_choice_choices_table')],
                 'expanded' => ['type' => 'boolean', 'label' => rex_i18n::msg('yform_values_choice_expanded'), 'notice' => rex_i18n::msg('yform_values_choice_expanded_notice')],
-                'multiple' => ['type' => 'boolean', 'label' => rex_i18n::msg('yform_values_choice_multiple'), 'notice' => rex_i18n::msg('yform_values_choice_multiple_notice').rex_i18n::rawMsg('yform_values_choice_expanded_multiple_table')],
+                'multiple' => ['type' => 'boolean', 'label' => rex_i18n::msg('yform_values_choice_multiple'), 'notice' => rex_i18n::msg('yform_values_choice_multiple_notice') . rex_i18n::rawMsg('yform_values_choice_expanded_multiple_table')],
                 'default' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_choice_default'), 'notice' => rex_i18n::msg('yform_values_choice_default_notice')],
                 'group_by' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_choice_group_by'), 'notice' => rex_i18n::msg('yform_values_choice_group_by_notice')],
                 'preferred_choices' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_choice_preferred_choices'), 'notice' => rex_i18n::msg('yform_values_choice_preferred_choices_notice')],
