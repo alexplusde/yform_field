@@ -5,12 +5,12 @@ author: 'alex+ Digitales Marketing: Alexander Walther, Paul Götz'
 supportpage: https://github.com/alexplusde/yform_field
 
 requires:
-    redaxo: ^5.15
+    redaxo: ^5.17
     packages:
         yform: '^4.1'
-        media_manager: '2.12.1'
+        media_manager: '^2.16.0'
     php:
-        version: ">=8.1,<9"
+        version: ">=8.2,<9"
         extensions: [intl]
 
 
