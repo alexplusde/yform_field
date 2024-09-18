@@ -50,6 +50,6 @@ class rex_yform_value_custom_url extends rex_yform_value_abstract
         if ('' == $params['value']) {
             return '-';
         }
-        return rex_var_custom_url::getCustomUrlText($params['value']);
+        return rex_var_custom_link::getCustomUrlText($params['value']);
     }
 }

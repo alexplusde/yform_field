@@ -16,7 +16,7 @@ $parameters = [
     'yurl' => $this->getElement('yurl'),
 ];
 
-$widget = rex_var_custom_url::getWidget($buttonId, $name, $value, $parameters);
+$widget = rex_var_custom_link::getWidget($buttonId, $name, $value, $parameters);
 
 $class_group = trim('form-group ' . $this->getHTMLClass() . ' ' . $this->getWarningClass());
 

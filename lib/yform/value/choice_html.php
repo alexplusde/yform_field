@@ -81,7 +81,7 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
                 $template = str_replace('choice', 'choice-view', $template);
                 $getChoices = static function ($choices, $options) use (&$getChoices) {
                     foreach ($choices as $choice) {
-                        if ('rex_yform_choice_group_view' == get_class($choice)) {
+                        if ('rex_yform_choice_group_view' == $choice::class) {
                             /** @var rex_yform_choice_group_view $choice */
                             $options = $getChoices($choice->choices, $options);
                         } else {
