@@ -117,41 +117,4 @@ class rex_yform_value_domain extends rex_yform_value_abstract
             ],
         );
     }
-
-    public static function getSearchFilter(array $params): string
-    {
-        $sql = rex_sql::factory();
-
-        $field = $params['field']->getName();
-
-        $self = new self();
-        $values = $self->getArrayFromString($params['value']);
-
-        $multiple = true;
-
-        $where = [];
-        foreach ($values as $value) {
-            switch ($value) {
-                case '(empty)':
-                    $where[] = ' ' . $sql->escapeIdentifier($field) . ' = ""';
-                    break;
-                case '!(empty)':
-                    $where[] = ' ' . $sql->escapeIdentifier($field) . ' != ""';
-                    break;
-                default:
-                    if ($multiple) {
-                        $where[] = ' ( FIND_IN_SET( ' . $sql->escape($value) . ', ' . $sql->escapeIdentifier($field) . ') )';
-                    } else {
-                        $where[] = ' ( ' . $sql->escape($value) . ' = ' . $sql->escapeIdentifier($field) . ' )';
-                    }
-
-                    break;
-            }
-        }
-
-        if (count($where) > 0) {
-            return ' ( ' . implode(' or ', $where) . ' )';
-        }
-        return '';
-    }
 }
