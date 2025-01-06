@@ -24,13 +24,10 @@ class rex_yform_value_openai_prompt extends rex_yform_value_abstract
         $frequencyPenalty = $this->getElement(12) ?? 0.0;
         $presencePenalty = $this->getElement(13) ?? 0.0;
 
-
-
         if (!isset($this->params['value_pool']['sql'][$targetField])) {
-            dump('Zielfeld ' .$targetField. ' nicht gefunden');
+            dump('Zielfeld ' . $targetField . ' nicht gefunden');
             return;
         }
-
 
         if (!$overwrite && isset($this->params['value_pool']['sql'][$targetField]) && !empty($this->params['value_pool']['sql'][$targetField])) {
             dump('Zielfeld ' . $targetField . ' bereits befüllt');
@@ -51,7 +48,7 @@ class rex_yform_value_openai_prompt extends rex_yform_value_abstract
 
     public static function getChatGPTResponse($fieldValues, $apiKey, $systemMessage, $model, $maxTokens, $temperature, $topP, $frequencyPenalty, $presencePenalty)
     {
-        $apiUrl = "https://api.openai.com/v1/chat/completions";
+        $apiUrl = 'https://api.openai.com/v1/chat/completions';
 
         $userMessage = '';
         foreach ($fieldValues as $value) {
@@ -63,18 +60,18 @@ class rex_yform_value_openai_prompt extends rex_yform_value_abstract
             'messages' => [
                 [
                     'role' => 'system',
-                    'content' => $systemMessage
+                    'content' => $systemMessage,
                 ],
                 [
                     'role' => 'user',
-                    'content' => $userMessage
+                    'content' => $userMessage,
                 ],
             ],
             'max_tokens' => (int) $maxTokens,
             'temperature' => (float) $temperature,
             'top_p' => (float) $topP,
             'frequency_penalty' => (float) $frequencyPenalty,
-            'presence_penalty' => (float) $presencePenalty
+            'presence_penalty' => (float) $presencePenalty,
         ];
 
         $content = json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -98,7 +95,7 @@ class rex_yform_value_openai_prompt extends rex_yform_value_abstract
 
             return $response['choices'][0]['message']['content'];
         } catch (rex_socket_exception $e) {
-            dump("Fehler bei der API-Anfrage: " . $e->getMessage());
+            dump('Fehler bei der API-Anfrage: ' . $e->getMessage());
             return '';
         }
     }
@@ -110,7 +107,6 @@ class rex_yform_value_openai_prompt extends rex_yform_value_abstract
 
     public function getDefinitions(): array
     {
-
         return [
             'type' => 'value',
             'name' => 'openai_prompt',

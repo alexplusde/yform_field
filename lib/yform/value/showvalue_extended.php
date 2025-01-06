@@ -22,5 +22,4 @@ class rex_yform_value_showvalue_extended extends rex_yform_value_showvalue
             'db_type' => ['text', 'varchar(191)', 'mediumtext', 'longtext'],
         ];
     }
-
 }
