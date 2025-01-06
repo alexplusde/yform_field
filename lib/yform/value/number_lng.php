@@ -2,7 +2,6 @@
 
 class rex_yform_value_number_lng extends rex_yform_value_number
 {
-
     public function getDescription(): string
     {
         return 'number_lng|name|label|precision|scale|defaultwert|[no_db]|[unit]|[notice]|[attributes]';

@@ -26,9 +26,8 @@ class rex_yform_value_seo_title extends rex_yform_value_index
                 if (isset($this->params['value_pool']['sql'][$name])) {
                     $value .= ' ' . $this->params['value_pool']['sql'][$name];
                     continue;
-                } else {
-                    $value .= trim($name, '"\'');
                 }
+                $value .= trim($name, '"\'');
 
                 $name = explode('.', $name);
                 if (count($name) > 1) {
