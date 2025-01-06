@@ -2,11 +2,11 @@ yform_field_info_donate = Anders als die meisten Addons aus der REDAXO-Community
 
 yform_field_donate = Weiterentwicklung unterstützen 
 
-yform_values_select_sql_description = 🧩 YForm Field: Das <code>select_sql</code>-Feld aus YForm 3.x
+yform_values_select_sql_description = 🧩 YForm Field: Das <code>select_sql</code>-Feld aus YForm 3.x <strong>In kommender Version von YForm Field wird dieses Feld entfernt!</strong>
 
-yform_values_radio_description = 🧩 YForm Field: Das <code>radio</code>-Feld aus YForm 3.x
+yform_values_radio_description = 🧩 YForm Field: Das <code>radio</code>-Feld aus YForm 3.x. <strong>In kommender Version von YForm Field wird dieses Feld entfernt!</strong>
 
-yform_values_radio_sql_description = 🧩 YForm Field: Das <code>radio_sql</code>-Feld aus YForm 3.x
+yform_values_radio_sql_description = 🧩 YForm Field: Das <code>radio_sql</code>-Feld aus YForm 3.x <strong>In kommender Version von YForm Field wird dieses Feld entfernt!</strong>
 
 yform_values_domain_description = 🧩 YForm Field: Stellt ein Auswahl-Feld zur Verfügung, um eine oder mehrere Domains auszuwählen.
 
