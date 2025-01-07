@@ -1,10 +1,7 @@
 <?php
 
 /**
- * yform.
- *
- * @author jan.kristinus[at]redaxo[dot]org Jan Kristinus
- * @author <a href="http://www.yakamara.de">www.yakamara.de</a>
+ * @deprecated In Version 3.x von yform_field wird dieses Feld voraussichtlich gelöscht, oder nicht weiter gewartet.
  */
 
 class rex_yform_value_select_sql extends rex_yform_value_abstract
