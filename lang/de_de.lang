@@ -64,3 +64,11 @@ yform_values_custom_url_ylink = YForm-Link-Widget (label_text::yform_tabelle::an
 yform_email_list_send_preview = Vorschau an Test-Adresse senden 
 yform_email_list_send_preview_success = Die Vorschau des E-Mail-Templates "%s" wurde an <b>%s</b> verschickt. 
 yform_email_list_send_preview_subject = Vorschau des E-Mail-Templates "%s"
+
+# YForm Lat-Field (Breitengrade)
+yform_values_numberlat_description = 🧩 YForm Field: Eingabefeld für einen <b>Breitengrad (-90°...90°)</b>
+yform_values_numberlat_range_error = {0}: der Wert muss im Bereich -90°...90° liegen.
+
+# YForm Lng-Field (Längengrade)
+yform_values_numberlng_description = 🧩 YForm Field: Eingabefeld für einen: <b>Längengrad (-180°...180°)</b>
+yform_values_numberlng_range_error = {0}: der Wert muss im Bereich -180°...180° liegen.
