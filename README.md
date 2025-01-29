@@ -1,15 +1,54 @@
-# 🧩 Zusätzliche Values, Validates und Actions für REDAXO 5 YForm 4
+# 🧩 Zusätzliche Feldtypen, Validierungen und Aktionen für REDAXO 5 YForm 4
 
 Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und Aktionen.
 
 ## Features
 
-* **E-Mail Attachments** - nur eine Zeile, um Anhänge aus Formularen an E-Mails zu hängen
-* **Echtes Datetime-Value** - optimierte HTML5-Ausgabe mit optionaler Einschränkung per min/max-Auswahl
-* **`be_media` mit Bildvorschau** - zeigt statt der Dateinamen die gewählten Bilder als Vorschau
-* **`be_manager_relation` als SET** - erweitert be_manager_relation um die Möglichkeit, ein Feld als echtes DB-Feld `SET` anzulegen
-* **YRewrite-Domains** - SELECT-Auswahl mit der System-Domain und allen YRewrite-Domains (sofern installiert)
-* **Tabs** - Formular-Felder in Tabs gruppieren
+### Feldtypen
+
+| Feldtyp                | Beschreibung                                                                                     |
+|------------------------|--------------------------------------------------------------------------------------------------|
+| `be_hidden`            | Hidden-Feld im Backend verfügbar machen                                                          |
+| `be_manager_relation_set` | `be_manager_relation` mit Datenbankfeldtyp `SET`                                              |
+| `be_media_preview`     | Bildvorschau in der YForm-Datentabelle                                                           |
+| `be_user_select`       | Zuweisung von REDAXO-Benutzern                                                                   |
+| `choice_html`          | Erlaubt HTML innerhalb des Labels von `choice`                                                   |
+| `choice_status`        | Ein `choice`-Feld, das einen Status-Wechsler in der Übersicht anzeigt                            |
+| `custom_link`          | Stellt ein Link-Widget für mehrere Link-Typen bereit                                             |
+| `datestamp_offset`     | Ein `datestamp`-Feld, mit einem Offset in die Zukunft                                            |
+| `datetime_local`       | HTML5-Eingabefeld für Datum und Uhrzeit                                                          |
+| `domain`               | Auswahlfeld mit System-Domain und YRewrite-Domains                                               |
+| `form_url`             | Erfasst die URL, von der das Formular abgeschickt wurde                                          |
+| `number_lat`           | Eingabefeld für einen Breitengrad (-90°...90°)                                                   |
+| `number_lng`           | Eingabefeld für einen Längengrad (-180°...180°)                                                  |
+| `openai_prompt`        | Erweitert den Inhalt eines Feldes mithilfe der OpenAI API                                        |
+| `openai_spellcheck`    | Automatische Rechtschreib- und Grammatikprüfung mithilfe der OpenAI API                          |
+| `privacy_policy`       | Checkbox mit Link für Anwendungsfälle wie AGB und Datenschutzerklärung                           |
+| `radio`                | Das YForm 3 `radio`-Feld                                                                         |
+| `radio_sql`            | Das YForm 3  `radio`-Feld mit SQL-Abfrage                                                        |
+| `select`               | Das YForm 3  `select`-Feld                                                                       |
+| `select_sql`           | Das YForm 3  `select`-Feld mit SQL-Abfrage                                                       |
+| `seo_title`            | Ein `seo_title`-Feld, das Text aus Feldern mit eigenem Text kombiniert - perfekt fürs URL-Addon  |
+| `showvalue_extended`   | Ein erweitertes `showvalue`-Feld                                                                 |
+| `submit_once`          | Ein `submit`-Feld, das einen Doppelklick verhindert                                              |
+| `tabs`                 | Gruppiert Formular-Felder in Tabs                                                                |
+| `thumbnailws`          | Ein `thumbnailws`-Feld, das ein Vorschaubild von einer URL via thumbnail.ws-API generiert        |
+
+### Validierungen
+
+| Validierung           | Beschreibung                            |
+-------------------------|----------------------------------- ----|
+| `pwned`      | Passwörter gegen "Have I Been Pwned"-API prüfen  |
+
+### Aktionen
+
+| Aktion                | Beschreibung                                         |
+|------------------------|-----------------------------------------------------|
+| `attach`               | Anhänge an E-Mails hängen                           |
+| `attach_signature`     | Signatur aus Signatur-Feldtyp als Anhang hinzufügen |
+| `conversion_push`      | Conversion-Tracking für Google Ads                  |
+| `history_push`         | URL und Titel in den Browserverlauf einfügen        |
+| `to_session`           | Formularwerte in die Session speichern              |
 
 ![blaupause test_redaxo_index php_page=yform_manager_table_field table_name=rex_staff func=choosenadd list=731ec268](https://github.com/alexplusde/yform_field/assets/3855487/21f9cfe5-0900-48ee-bec0-a1608125e37f)
 
@@ -38,7 +77,7 @@ Stellt ein Select-Feld vom Typ `multiple` zur Verfügung, in dem als Auswahl die
 
 Erzeugt in der YForm Datentabelle eine Vorschau des aktuell gewählten Bilds
 
-![image](https://user-images.githubusercontent.com/3855487/209685003-546ac381-ad23-4d4e-a16d-79fcb855ba3f.png)
+Erlaubtes HTMLps://user-images.githubusercontent.com/3855487/209685003-546ac381-ad23-4d4e-a16d-79fcb855ba3f.png)
 
 ### be_manager_relation_set SET als Datenbankfeldtyp
 
@@ -83,10 +122,10 @@ Es müssen mindestens drei Tab-Values (derselben Gruppe) im Formular sein:
 Wenn in einem Tab ein Feld mit Fehlermeldung steckt, wird der Tab optisch markiert
 und aktiviert.
 
-Wurde das Formulat mit "Übernehmen" gespeichert, wird der zuletzt aktive Tab bei der
+Wurde das Formular mit "Übernehmen" gespeichert, wird der zuletzt aktive Tab bei der
 Wiederanzeige aktiv gesetzt. Ausnahme: in einem anderen Tab ist ein Feld mit Fehlermeldung.
 
-Ein Formular kann mehrere Tab-Sets enthalten, allerdings nicht geschachtelt. In dem Fall müssel alle zu einem Tab-Set gehörenden Tab-Value denselben Gruppennamen bekommen.
+Ein Formular kann mehrere Tab-Sets enthalten, allerdings nicht geschachtelt. In dem Fall müssen alle zu einem Tab-Set gehörenden Tab-Value denselben Gruppennamen bekommen.
 
 ### Actions
 
@@ -102,7 +141,7 @@ Die Aktion `conversion_push` sendet ein Conversion-Tracking-Event an Google Anal
 
 ##### Voraussetzung
 
-Der Google Tag Manager ist initialisiert, bspw. über einen Consent-Manager. Und dieser erstellt einen eigenen EventListener `gtagLoaded`, z.B. auf diese Art und Weise:
+Der Google Tag Manager ist initialisiert, bspw. über einen Consent-Manager. Und dieser erstellt einen eigenen EventListener `gtagLoaded`, z. B. auf diese Art und Weise:
 
 ```javascript
 script = document.createElement('script');
