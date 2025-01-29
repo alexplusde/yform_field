@@ -50,8 +50,6 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 | `history_push`         | URL und Titel in den Browserverlauf einfügen        |
 | `to_session`           | Formularwerte in die Session speichern              |
 
-![blaupause test_redaxo_index php_page=yform_manager_table_field table_name=rex_staff func=choosenadd list=731ec268](https://github.com/alexplusde/yform_field/assets/3855487/21f9cfe5-0900-48ee-bec0-a1608125e37f)
-
 ## Installation
 
 * Im REDAXO-Backend unter `Installer` abrufen und
