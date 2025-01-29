@@ -36,9 +36,9 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 
 ### Validierungen
 
-| Validierung           | Beschreibung                            |
--------------------------|----------------------------------- ----|
-| `pwned`      | Passwörter gegen "Have I Been Pwned"-API prüfen  |
+| Validierung            | Beschreibung                                     |
+-------------------------|--------------------------------------------------|
+| `pwned`                | Passwörter gegen "Have I Been Pwned"-API prüfen  |
 
 ### Aktionen
 
