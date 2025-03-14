@@ -14,7 +14,7 @@ class rex_yform_action_attach extends rex_yform_action_abstract
         $realPath = realpath($attachment['path']);
         $allowedPath = realpath(rex_path::addonData(''));
 
-        if ($realPath && strpos($realPath, $allowedPath) === 0 && file_exists($realPath)) {
+        if ($realPath && str_starts_with($realPath, $allowedPath) && file_exists($realPath)) {
             $attachment['path'] = $realPath;
             if ($override) {
                 $email_attachments = [];
