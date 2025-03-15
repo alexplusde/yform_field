@@ -2,16 +2,13 @@
 
 class rex_yform_value_time extends rex_yform_value_abstract
 {
-
     public function enterObject()
     {
         if ($this->needsOutput()) {
-
             $this->params['form_output'][$this->getId()] = $this->parse(
                 ['value.text.tpl.php'],
                 ['type' => 'time', 'min' => $this->getElement('min'), 'max' => $this->getElement('max'), 'value' => date('H:i')],
             );
-            
         }
 
         $this->params['value_pool']['email'][$this->getName()] = $this->getValue();
@@ -24,6 +21,7 @@ class rex_yform_value_time extends rex_yform_value_abstract
     {
         return 'time|name|label|min|max|[1/Aktuelles Datum voreingestellt]|[no_db]';
     }
+
     public function getDefinitions(): array
     {
         return [
@@ -44,5 +42,4 @@ class rex_yform_value_time extends rex_yform_value_abstract
             'famous' => false,
         ];
     }
-
 }
