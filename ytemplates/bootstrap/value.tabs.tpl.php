@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template für den privaten YForm-Datentyp "rex_yform_value_tabs".
  */

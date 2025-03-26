@@ -27,14 +27,14 @@ class rex_yform_value_number_lng extends rex_yform_value_number
         }
 
         $value = $this->getValue() ?? '';
-        if ('' === trim($value) ) {
+        if ('' === trim($value)) {
             return;
         }
 
         $value = is_numeric($value) ? (float) $value : 999;
         if ($value < -90.0 || $value > 90.0) {
             $this->params['warning'][$this->getId()] = $this->params['error_class'];
-            $this->params['warning_messages'][$this->getId()] = rex_i18n::msg('yform_values_numberlng_range_error',$this->getLabel());
+            $this->params['warning_messages'][$this->getId()] = rex_i18n::msg('yform_values_numberlng_range_error', $this->getLabel());
         }
     }
 
