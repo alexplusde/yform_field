@@ -65,7 +65,6 @@ class rex_yform_value_choice_status extends rex_yform_value_choice
     public static function getToken($data_id, $table_name)
     {
         $secret = rex_config::get('yform_field', 'choice_status_secret');
-
-        return password_hash($secret . $data_id . $table_name, PASSWORD_DEFAULT);
+        return hash_hmac('sha256', $data_id . $table_name, $secret);
     }
 }
