@@ -33,3 +33,4 @@ if (null == rex_config::get('yform_field', 'choice_status_secret')) {
 }
 
 include(__DIR__ .'/install/yform_choice_patch.php');
+include(__DIR__ .'/install/yform_field_list_patch.php');
