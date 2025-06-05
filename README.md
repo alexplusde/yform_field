@@ -50,6 +50,15 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 | `history_push`         | URL und Titel in den Browserverlauf einfügen        |
 | `to_session`           | Formularwerte in die Session speichern              |
 
+### Patches
+
+`yform_field` repariert Bugs und Funktionen in YForm, wenn Felder oder Add-ons mit `yform_field` darauf basieren. Mithilfe von Patches werden Probleme damit auch vor Releases von YForm gelöst.
+
+#### Patches für YForm < 5
+
+* Erhöhung der Darstellung von Feldern im Table Manager von 30 auf 200
+* Klonen von Datensätzen mit UUID-Feldern
+
 ## Installation
 
 * Im REDAXO-Backend unter `Installer` abrufen und
