@@ -32,5 +32,5 @@ if (null == rex_config::get('yform_field', 'choice_status_secret')) {
     rex_config::set('yform_field', 'choice_status_secret', bin2hex(random_bytes(16)));
 }
 
-include(__DIR__ .'/install/yform_choice_patch.php');
-include(__DIR__ .'/install/yform_field_list_patch.php');
+include __DIR__ . '/install/yform_choice_patch.php';
+include __DIR__ . '/install/yform_field_list_patch.php';
