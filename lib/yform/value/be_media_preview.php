@@ -29,7 +29,13 @@ class rex_yform_value_be_media_preview extends rex_yform_value_be_media
         $return = [];
         foreach ($files as $file) {
             if (rex_media::get($file)) {
-                $return[] = '<img style="width: 40px;" src="' . rex_media_manager::getUrl('rex_media_small', $files[0]) . '">';
+                if (rex_media::get($file)->isImageType('svg')) {
+                    $return[] = '<img style="width: 40px;" src="' . rex_media_manager::getUrl('default', $file) . '">';
+                } elseif (rex_media::get($file)->isImage()) {
+                    $return[] = '<img style="width: 40px;" src="' . rex_media_manager::getUrl('rex_media_small', $file) . '">';
+                } else {
+                    $return[] = '<span class="rex-icon rex-icon-file"></span> ' . htmlspecialchars($file);
+                }
             }
         }
 
