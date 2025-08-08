@@ -52,3 +52,9 @@ yform_values_tabs_setup_prio_error = {0} : Chevauchement avec le groupe d'onglet
 yform_email_list_send_preview = Envoyer l'aperçu à l'adresse de test
 yform_email_list_send_preview_success = L'aperçu du modèle d'e-mail "%s" a été envoyé à <b>%s</b>.
 yform_email_list_send_preview_subject = Aperçu du modèle d'e-mail "%s"
+
+# Champ YForm Time Plus
+yform_values_time_plus_description = 🧩 Champ YForm : Un champ <code>time</code> pour saisir les heures.
+yform_values_time_start = Heure de début
+yform_values_time_end = Heure de fin
+yform_values_time_current_time = Heure actuelle prédéfinie

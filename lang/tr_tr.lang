@@ -52,3 +52,9 @@ yform_values_tabs_setup_prio_error = {0}: «{1}» sekme grubu ile «{2} [{3}]» 
 yform_email_list_send_preview = Önizlemeyi test adresine gönder
 yform_email_list_send_preview_success = E-posta şablonunun "%s" önizlemesi <b>%s</b> adresine gönderildi.
 yform_email_list_send_preview_subject = E-posta şablonunun "%s" önizlemesi
+
+# YForm Time Plus Alanı
+yform_values_time_plus_description = 🧩 YForm Alanı: Zaman girişi için bir <code>time</code> alanı.
+yform_values_time_start = Başlangıç zamanı
+yform_values_time_end = Bitiş zamanı
+yform_values_time_current_time = Geçerli zaman önceden ayarlanmış
