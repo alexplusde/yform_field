@@ -60,8 +60,9 @@ class rex_yform_value_datalist extends rex_yform_value_abstract
             $result = $sql->getArray($choicesElement);
             
             foreach ($result as $row) {
-                $key = current($row);
-                $value = next($row) ?: $key;
+                $rowValues = array_values($row);
+                $key = $rowValues[0];
+                $value = $rowValues[1] ?? $key;
                 $choices[$key] = $value;
             }
         } elseif (is_string($choicesElement) && mb_strlen(trim($choicesElement)) > 0 && '{' == mb_substr(trim($choicesElement), 0, 1) && '{{' != mb_substr(trim($choicesElement), 0, 2)) {
