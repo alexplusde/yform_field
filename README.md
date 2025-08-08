@@ -15,6 +15,7 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 | `choice_html`          | Erlaubt HTML innerhalb des Labels von `choice`                                                   |
 | `choice_status`        | Ein `choice`-Feld, das einen Status-Wechsler in der Übersicht anzeigt                            |
 | `custom_link`          | Stellt ein Link-Widget für mehrere Link-Typen bereit                                             |
+| `datalist`             | HTML5-Textfeld mit Auswahlvorschlägen ohne Validierung                                           |
 | `datestamp_offset`     | Ein `datestamp`-Feld, mit einem Offset in die Zukunft                                            |
 | `datetime_local`       | HTML5-Eingabefeld für Datum und Uhrzeit                                                          |
 | `domain`               | Auswahlfeld mit System-Domain und YRewrite-Domains                                               |
@@ -50,6 +51,15 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 | `history_push`         | URL und Titel in den Browserverlauf einfügen        |
 | `to_session`           | Formularwerte in die Session speichern              |
 
+### Patches
+
+`yform_field` repariert Bugs und Funktionen in YForm, wenn Felder oder Add-ons mit `yform_field` darauf basieren. Mithilfe von Patches werden Probleme damit auch vor Releases von YForm gelöst.
+
+#### Patches für YForm < 5
+
+* Erhöhung der Darstellung von Feldern im Table Manager von 30 auf 200
+* Klonen von Datensätzen mit UUID-Feldern
+
 ## Installation
 
 * Im REDAXO-Backend unter `Installer` abrufen und
@@ -64,6 +74,18 @@ Die gewünschten Feldtypen, Validierungen und Actions stehen automatisch bereit.
 Stellt ein Eingabefeld für Datum + Uhrzeit zur Verfügung
 
 ![image](https://user-images.githubusercontent.com/3855487/209684368-44a136e7-5f75-4d72-b867-3d47eebf796e.png)
+
+### `datalist` HTML5-Textfeld mit Auswahlvorschlägen
+
+Stellt ein HTML5-Textfeld mit Datalist zur Verfügung, das Vorschläge anzeigt, aber jede Texteingabe ohne Validierung akzeptiert. Im Gegensatz zu `choice`-Feldern werden Eingaben nicht auf die vordefinierten Optionen beschränkt.
+
+![image](https://github.com/user-attachments/assets/b84f5c9c-6ced-4c8f-bfd0-fa1ac5c5f545)
+
+Das Feld zeigt Vorschläge an, während der Benutzer tippt:
+
+![image](https://github.com/user-attachments/assets/f3daf021-4f28-431f-b0ac-9e9ad1248ff4)
+
+Akzeptiert aber auch völlig freie Texteingaben, die nicht in der Vorschlagsliste stehen.
 
 ### `domain` Auswahlfeld
 

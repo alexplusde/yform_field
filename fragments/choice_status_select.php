@@ -9,7 +9,7 @@ $token = $this->getVar('token');
 <select data-table="<?= $table ?>"
 	data-token="<?= $token ?>"
 	data-field="<?= $field ?>"
-	data-id="<?= $data_id ?>" class="form-control btn btn-sm btn-default dropdown-toggle"
+	data-id="<?= $data_id ?>" class="form-control dropdown-toggle"
 	data-status="choice_status_select" style="width: auto;">
 	<?php foreach ($options as $value => $option) {
         ?>

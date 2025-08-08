@@ -144,4 +144,68 @@ class rex_yform_value_choice_html extends rex_yform_value_choice
             'famous' => true,
         ];
     }
+
+    private static function createChoiceList($elements)
+    {
+        $self = new self();
+
+        $options = [
+            'choices' => [],
+            'group_choices' => [],
+            'preferred_choices' => [],
+            'expanded' => false,
+            'multiple' => false,
+            'group_by' => null,
+            'placeholder' => null,
+            'choice_attributes' => [],
+            'choice_label' => [],
+        ];
+
+        if ('1' == $elements['expanded']) {
+            $options['expanded'] = true;
+        }
+        if ('1' == $elements['multiple']) {
+            $options['multiple'] = true;
+        }
+        if (false !== $elements['group_by']) {
+            $options['group_by'] = $elements['group_by'];
+        }
+        if (false !== $elements['preferred_choices']) {
+            $options['preferred_choices'] = $self->getArrayFromString($elements['preferred_choices']);
+        }
+        if (false !== $elements['placeholder'] && '' !== trim($elements['placeholder'])) {
+            $options['placeholder'] = rex_i18n::translate($elements['placeholder']);
+        }
+        if (false !== $elements['choice_attributes']) {
+            $options['choice_attributes'] = $elements['choice_attributes'];
+        }
+        if (false !== $elements['choice_label']) {
+            $options['choice_label'] = $elements['choice_label'];
+        }
+        $choicesElement = $elements['choices'];
+
+        $choiceList = new rex_yform_choice_list($options);
+
+        if (is_string($choicesElement) && 'SELECT' == rex_sql::getQueryType($choicesElement)) {
+            $sql = rex_sql::factory();
+            $sql->setDebug($self->getParam('debug'));
+            $choiceList->createListFromSqlArray(
+                $sql->getArray($choicesElement),
+            );
+        } elseif (is_string($choicesElement) && mb_strlen(trim($choicesElement)) > 0 && '{' == mb_substr(trim($choicesElement), 0, 1) && '{{' != mb_substr(trim($choicesElement), 0, 2)) {
+            $choiceList->createListFromJson($choicesElement);
+        } elseif (is_callable($choicesElement)) {
+            $res = call_user_func($choicesElement);
+            if (is_array($res)) {
+                $choiceList->createListFromStringArray($res);
+            } else {
+                $choiceList->createListFromJson($res);
+            }
+        } else {
+            $choiceList->createListFromStringArray(
+                $self->getArrayFromString($choicesElement),
+            );
+        }
+        return $choiceList;
+    }
 }

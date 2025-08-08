@@ -228,7 +228,6 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
             return false;
         }
 
-        $table = $self->params['main_table'];
         $tablename = '';
         $myGroup = '';
         foreach ($self->params['values'] as $id => $valueField) {
@@ -246,9 +245,8 @@ class rex_yform_value_tabs extends rex_yform_value_abstract
          * Die Tab-Felder derselben Tabelle aus rex_yform_field abrufen.
          */
         $sql = rex_sql::factory();
-        $query = 'SELECT `id`,`prio`,`label`,`name`,`group_by` FROM ' . $table . ' WHERE `table_name`=:tablename AND `type_name`=:typename AND `id`!=:id AND `group_by`!=:group ORDER BY `group_by`,`prio` ASC';
         $tabs = $sql->getArray(
-            'SELECT `id`,`prio`,`label`,`name`,`group_by` FROM ' . $table . ' WHERE `table_name`=:tablename AND `type_name`=:typename AND `id`!=:id AND `group_by`!=:group ORDER BY `group_by`,`prio` ASC',
+            'SELECT `id`,`prio`,`label`,`name`,`group_by` FROM ' . rex::getTable('yform_field') . ' WHERE `table_name`=:tablename AND `type_name`=:typename AND `id`!=:id AND `group_by`!=:group ORDER BY `group_by`,`prio` ASC',
             [
                 ':tablename' => $tablename,
                 ':typename' => substr(self::class, 16),

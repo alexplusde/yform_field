@@ -52,3 +52,13 @@ yform_values_tabs_setup_prio_error = {0}: Overlap with tab group «{1}» at fiel
 yform_email_list_send_preview = Send preview to test address
 yform_email_list_send_preview_success = The preview of the email template "%s" was sent to <b>%s</b>.
 yform_email_list_send_preview_subject = Preview of the email template "%s"
+
+
+# YForm Datalist-Field
+yform_values_datalist_description = 🧩 YForm Field: A <b>text field with HTML5 datalist</b> for suggestions without validation
+
+# YForm Time Plus Field
+yform_values_time_plus_description = 🧩 YForm Field: A <code>time</code> field for entering times.
+yform_values_time_start = Start time
+yform_values_time_end = End time
+yform_values_time_current_time = Current time preset

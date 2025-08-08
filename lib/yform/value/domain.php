@@ -98,12 +98,17 @@ class rex_yform_value_domain extends rex_yform_value_abstract
 
     public static function getSearchField(array $params): void
     {
-        $options = self::domains();
+        $options = [];
         $options['(empty)'] = '(empty)';
         $options['!(empty)'] = '!(empty)';
+        $options += self::domains();
 
         $new_select = new self();
-        $options = self::domains();
+
+        // Kürze jeden Wert in $options um `http://` und `htttps://`
+        foreach ($options as $key => $value) {
+            $options[$key] = str_replace(['http://', 'https://'], '', $value);
+        }
 
         $params['searchForm']->setValueField(
             'select',
