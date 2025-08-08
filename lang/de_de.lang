@@ -75,3 +75,9 @@ yform_values_numberlng_range_error = {0}: der Wert muss im Bereich -180°...180�
 
 # YForm Datalist-Field
 yform_values_datalist_description = 🧩 YForm Field: Ein <b>Textfeld mit HTML5-Datalist</b> für Vorschläge ohne Validierung
+
+# YForm Time Plus Field
+yform_values_time_plus_description = 🧩 YForm Field: Ein <code>time</code>-Feld für die Eingabe von Uhrzeiten.
+yform_values_time_start = Startzeit
+yform_values_time_end = Endzeit  
+yform_values_time_current_time = Aktuelle Zeit voreingestellt
