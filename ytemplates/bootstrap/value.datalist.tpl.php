@@ -39,7 +39,7 @@ $attributes['class'] = trim($attributes['class'] . ' ' . $this->getWarningClass(
     <?php endif ?>
 
     <input<?= rex_string::buildAttributes($attributes) ?> />
-    
+
     <datalist id="<?= rex_escape($datalist_id) ?>">
         <?php foreach ($choices as $value => $label): ?>
         <option value="<?= rex_escape($value) ?>"><?= rex_escape($label) ?></option>

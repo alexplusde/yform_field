@@ -6,7 +6,7 @@ class rex_yform_value_datalist extends rex_yform_value_abstract
     {
         // Get the choices for the datalist
         $choices = $this->getChoices();
-        
+
         $this->params['value_pool']['email'][$this->getName()] = $this->getValue();
         if ($this->saveInDb()) {
             $this->params['value_pool']['sql'][$this->getName()] = $this->getValue();
@@ -19,7 +19,7 @@ class rex_yform_value_datalist extends rex_yform_value_abstract
         if (!$this->isEditable()) {
             $this->params['form_output'][$this->getId()] = $this->parse(
                 ['value.datalist-view.tpl.php', 'value.view.tpl.php'],
-                ['value' => $this->getValue()]
+                ['value' => $this->getValue()],
             );
         } else {
             $attributes = [
@@ -29,13 +29,13 @@ class rex_yform_value_datalist extends rex_yform_value_abstract
                 'value' => $this->getValue(),
                 'list' => $this->getFieldId() . '_datalist',
             ];
-            
+
             if ($this->getElement('placeholder')) {
                 $attributes['placeholder'] = rex_i18n::translate($this->getElement('placeholder'));
             }
-            
+
             $attributes = $this->getAttributes('attributes', $attributes, [
-                'autocomplete', 'disabled', 'pattern', 'readonly', 'required', 'placeholder', 'maxlength'
+                'autocomplete', 'disabled', 'pattern', 'readonly', 'required', 'placeholder', 'maxlength',
             ]);
 
             $this->params['form_output'][$this->getId()] = $this->parse(
@@ -43,8 +43,8 @@ class rex_yform_value_datalist extends rex_yform_value_abstract
                 [
                     'attributes' => $attributes,
                     'choices' => $choices,
-                    'datalist_id' => $this->getFieldId() . '_datalist'
-                ]
+                    'datalist_id' => $this->getFieldId() . '_datalist',
+                ],
             );
         }
     }
@@ -58,7 +58,7 @@ class rex_yform_value_datalist extends rex_yform_value_abstract
             $sql = rex_sql::factory();
             $sql->setDebug($this->getParam('debug'));
             $result = $sql->getArray($choicesElement);
-            
+
             foreach ($result as $row) {
                 $rowValues = array_values($row);
                 $key = $rowValues[0];
