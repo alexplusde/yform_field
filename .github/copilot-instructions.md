@@ -16,7 +16,7 @@ Always reference these instructions first and fallback to search or bash command
 ### Bootstrap and Install Dependencies
 - Install PHP dependencies: `composer install --prefer-dist --no-progress --no-interaction`
   - Takes 17-50 seconds depending on network speed. NEVER CANCEL. Set timeout to 120+ seconds.
-  - May require authentication against GitHub; if fails, try: `COMPOSER_DISABLE_NETWORK=1 composer install`
+  - May require authentication against GitHub. If you encounter authentication errors, set up Composer authentication by creating a GitHub token and running `composer config --global github-oauth.github.com <your-token>`. Alternatively, you can try `composer install --no-dev` to reduce the number of packages fetched.
   - Installs PHP-CS-Fixer and related tools to `vendor/` directory (37 packages)
 
 ### Code Quality and Validation
