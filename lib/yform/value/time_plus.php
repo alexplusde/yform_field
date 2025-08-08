@@ -19,7 +19,7 @@ class rex_yform_value_time_plus extends rex_yform_value_abstract
 
     public function getDescription(): string
     {
-        return 'time_plus|name|label|min|max|[1/Aktuelles Datum voreingestellt]|[no_db]';
+        return 'time_plus|name|label|min|max|[1/Aktuelle Zeit voreingestellt]|[no_db]';
     }
 
     public function getDefinitions(): array
