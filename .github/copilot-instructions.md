@@ -20,10 +20,10 @@ Always reference these instructions first and fallback to search or bash command
   - Installs PHP-CS-Fixer and related tools to `vendor/` directory (37 packages)
 
 ### Code Quality and Validation
-- Check PHP syntax of all files: `find . -name "*.php" -exec php -l {} \;`
-  - Takes approximately 98 seconds for all 2520 PHP files (including vendor). NEVER CANCEL. Set timeout to 180+ seconds.
-  - For project files only (56 files): `find . -maxdepth 3 -name "*.php" -not -path "./vendor/*" -exec php -l {} \;`
-  - Should report "No syntax errors detected" for all files
+- Check PHP syntax of project files only (recommended for routine validation): `find . -maxdepth 3 -name "*.php" -not -path "./vendor/*" -exec php -l {} \;`
+  - Takes approximately 2 seconds for 56 project PHP files. Should report "No syntax errors detected" for all files.
+  - To check all files including vendor (comprehensive, slower): `find . -name "*.php" -exec php -l {} \;`
+  - Takes approximately 98 seconds for all 2520 PHP files (including vendor). Use only for full validation or troubleshooting.
 - Run code style dry-run: `composer cs-dry`
   - Takes approximately 1 second. Uses PHP-CS-Fixer with REDAXO config on 55 project files.
   - Should report "Found 0 of 55 files that can be fixed"
