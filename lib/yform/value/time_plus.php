@@ -1,6 +1,6 @@
 <?php
 
-class rex_yform_value_time extends rex_yform_value_abstract
+class rex_yform_value_time_plus extends rex_yform_value_abstract
 {
     public function enterObject()
     {
@@ -19,14 +19,14 @@ class rex_yform_value_time extends rex_yform_value_abstract
 
     public function getDescription(): string
     {
-        return 'time|name|label|min|max|[1/Aktuelles Datum voreingestellt]|[no_db]';
+        return 'time_plus|name|label|min|max|[1/Aktuelle Zeit voreingestellt]|[no_db]';
     }
 
     public function getDefinitions(): array
     {
         return [
             'type' => 'value',
-            'name' => 'time',
+            'name' => 'time_plus',
             'values' => [
                 'name' => ['type' => 'name', 'label' => rex_i18n::msg('yform_values_defaults_name')],
                 'label' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_label')],
@@ -37,8 +37,8 @@ class rex_yform_value_time extends rex_yform_value_abstract
                 'attributes' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_attributes'), 'notice' => rex_i18n::msg('yform_values_defaults_attributes_notice')],
                 'notice' => ['type' => 'text', 'label' => rex_i18n::msg('yform_values_defaults_notice')],
             ],
-            'description' => rex_i18n::msg('yform_values_datetime_local_description'),
-            'db_type' => ['varchar(5)'],
+            'description' => rex_i18n::msg('yform_values_time_plus_description'),
+            'db_type' => ['varchar(5)', 'time'],
             'famous' => false,
         ];
     }

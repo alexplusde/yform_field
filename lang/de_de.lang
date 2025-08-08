@@ -72,3 +72,9 @@ yform_values_numberlat_range_error = {0}: der Wert muss im Bereich -90°...90° 
 # YForm Lng-Field (Längengrade)
 yform_values_numberlng_description = 🧩 YForm Field: Eingabefeld für einen: <b>Längengrad (-180°...180°)</b>
 yform_values_numberlng_range_error = {0}: der Wert muss im Bereich -180°...180° liegen.
+
+# YForm Time Plus Field
+yform_values_time_plus_description = 🧩 YForm Field: Ein <code>time</code>-Feld für die Eingabe von Uhrzeiten.
+yform_values_time_start = Startzeit
+yform_values_time_end = Endzeit  
+yform_values_time_current_time = Aktuelle Zeit voreingestellt
