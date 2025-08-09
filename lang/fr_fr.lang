@@ -28,6 +28,11 @@ yform_values_submit_once_description = 🧩 Champ YForm : Un champ <code>submit<
 
 yform_validate_password_compromised_description = 🧩 Champ YForm : Vérifie si le mot de passe est contenu dans une base de données de mots de passe compromis.
 
+yform_validate_extension_point_description = 🧩 Champ YForm : Appelle un Point d'Extension après une validation réussie.
+yform_validate_extension_point_name = Nom
+yform_validate_extension_point_ep_name = Nom du Point d'Extension
+yform_validate_extension_point_label = Étiquette
+
 yform_field_config = Paramètres
 
 yform_values_submit_once_loading = Étiquette (par exemple "Veuillez attendre...")

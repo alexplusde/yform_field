@@ -28,6 +28,11 @@ yform_values_submit_once_description = 🧩 YForm Alanı: Çift tıklamayı önl
 
 yform_validate_password_compromised_description = 🧩 YForm Alanı: Parolanın, tehlikeye girmiş parolaların bir veritabanında olup olmadığını kontrol eder.
 
+yform_validate_extension_point_description = 🧩 YForm Alanı: Başarılı doğrulamadan sonra bir Uzantı Noktası çağırır.
+yform_validate_extension_point_name = Ad
+yform_validate_extension_point_ep_name = Uzantı Noktası Adı
+yform_validate_extension_point_label = Etiket
+
 yform_field_config = Ayarlar
 
 yform_values_submit_once_loading = Etiket (ör. "Lütfen bekleyin...")

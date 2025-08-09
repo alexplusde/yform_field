@@ -28,6 +28,11 @@ yform_values_submit_once_description = 🧩 YForm Field: A <code>submit</code> f
 
 yform_validate_password_compromised_description = 🧩 YForm Field: Checks if the password is contained in a database of compromised passwords.
 
+yform_validate_extension_point_description = 🧩 YForm Field: Calls an Extension Point after successful validation.
+yform_validate_extension_point_name = Name
+yform_validate_extension_point_ep_name = Extension Point Name
+yform_validate_extension_point_label = Label
+
 yform_field_config = Settings
 
 yform_values_submit_once_loading = Label (e.g. "Please wait...")
