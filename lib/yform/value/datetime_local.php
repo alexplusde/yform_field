@@ -38,11 +38,14 @@ class rex_yform_value_datetime_local extends rex_yform_value_abstract
                 ['type' => 'text', 'value' => $this->getValue()],
             );
         } else {
-            $dateValue = date_create($this->getValue());
-
             $this->params['form_output'][$this->getId()] = $this->parse(
                 ['value.text.tpl.php'],
-                ['type' => 'datetime-local', 'min' => $this->getElement('min'), 'max' => $this->getElement('max'), 'value' => date_format($dateValue, 'Y-m-d\TH:i')],
+                [
+                    'type' => 'datetime-local',
+                    'min' => $this->getElement('min'),
+                    'max' => $this->getElement('max'),
+                    'value' => $this->getValue() == '' ? '' : date_format(date_create($this->getValue()), 'Y-m-d\TH:i')
+                ],
             );
         }
     }
