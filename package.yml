@@ -13,7 +13,10 @@ requires:
         version: ">=8.3,<9"
         extensions: [intl]
 
-
+conflics:
+    packages:
+        yform_ui: '>=0.0.0'
+        
 page:
     hidden: true
     title: 'Zusätzliche Felder'
