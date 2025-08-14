@@ -38,7 +38,8 @@ Das Addon `yform_field` ergänzt YForm um weitere Feldtypen, Validierungen und A
 ### Validierungen
 
 | Validierung            | Beschreibung                                     |
--------------------------|--------------------------------------------------|
+|------------------------|--------------------------------------------------|
+| `extension_point`      | Extension Point nach erfolgreicher Validierung auslösen |
 | `pwned`                | Passwörter gegen "Have I Been Pwned"-API prüfen  |
 
 ### Aktionen
@@ -202,6 +203,36 @@ z.B.: `action|conversion_push|google_ads|conversion|AW-XXXXXXXXX/XXXXXXXXXXXXXXX
 if(rex_backend_login::createUser() == null) {
     echo conversion_push::google_ads('conversion', "AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX", 999, 'EUR');
 }
+```
+
+### Validierungen
+
+#### `extension_point` - Extension Points nach Validierung auslösen
+
+Die Validierung `extension_point` ermöglicht es, nach erfolgreicher Formular-Validierung Extension Points auszulösen. Dies ist nützlich, um zusätzliche Funktionen wie Dokumentenerstellung, ERP-Integration oder E-Mail-Benachrichtigungen in bestehende YForm-Formulare zu integrieren.
+
+##### Pipe-Schreibweise
+
+```text
+validate|extension_point|name|ep_name|label
+```
+
+- `name`: Optionaler Name für die Validierung
+- `ep_name`: Name des Extension Points (Standard: `YFORM_VALIDATE_EP`)
+- `label`: Optionales Label
+
+##### Verwendung im Extension Point Handler
+
+```php
+rex_extension::register('MY_CUSTOM_EP', function (rex_extension_point $ep) {
+    $form_object = $ep->getParam('form_object');
+    $label = $ep->getParam('label');
+    $name = $ep->getParam('name');
+    $params = $ep->getParam('params');
+    
+    // Hier können zusätzliche Aktionen durchgeführt werden
+    // z.B. Dokumentenerstellung, API-Aufrufe, etc.
+});
 ```
 
 ## Einstellungen
