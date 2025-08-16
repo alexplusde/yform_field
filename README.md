@@ -208,6 +208,92 @@ if(rex_backend_login::createUser() == null) {
 
 Es sind keine weiteren Einstellungen vorhanden.
 
+## YForm Datentabellen-Ausgabe modifizieren
+
+### `yform_field::modifyDatalistOutput()` - Statische Methode
+
+Diese statische Methode ermöglicht es, die Ausgabe von YForm-Datentabellen einfach zu modifizieren, ohne eigene Extension Points registrieren zu müssen.
+
+#### Syntax
+
+```php
+yform_field::modifyDatalistOutput($table, $fieldname, $callback);
+```
+
+#### Parameter
+
+- `$table` (string): Name der Tabelle
+- `$fieldname` (string): Name des Feldes, dessen Ausgabe modifiziert werden soll
+- `$callback` (callable): Callback-Funktion, die die Ausgabe modifiziert
+
+#### Callback-Parameter
+
+Die Callback-Funktion erhält ein Array mit folgenden Parametern:
+
+- `value`: Aktueller Feldwert
+- `table`: Table-Objekt
+- `fieldname`: Feldname
+- `list`: List-Objekt
+- `data_id`: Datensatz-ID
+- `dataset`: Dataset-Objekt (falls verfügbar)
+
+#### Beispiele
+
+##### Edit-Link zu Titel hinzufügen
+
+```php
+yform_field::modifyDatalistOutput('rex_article', 'title', function($params) {
+    $title = htmlspecialchars($params['value']);
+    $id = $params['data_id'];
+    
+    return $title . ' <a href="/edit/' . $id . '" class="btn btn-xs btn-edit">
+        <i class="rex-icon rex-icon-edit"></i>
+    </a>';
+});
+```
+
+##### Status-Feld mit farbigen Badges formatieren
+
+```php
+yform_field::modifyDatalistOutput('my_table', 'status', function($params) {
+    $status = (int)$params['value'];
+    
+    switch($status) {
+        case 1:
+            return '<span class="label label-success">Aktiv</span>';
+        case 0:
+        default:
+            return '<span class="label label-danger">Inaktiv</span>';
+    }
+});
+```
+
+##### Bild-Vorschau für Media-Felder
+
+```php
+yform_field::modifyDatalistOutput('my_gallery', 'image', function($params) {
+    $imageName = $params['value'];
+    
+    if (empty($imageName)) {
+        return '<span class="text-muted">Kein Bild</span>';
+    }
+    
+    $thumbnailUrl = rex_media_manager::getUrl('rex_thumbnail', $imageName);
+    
+    return '<img src="' . $thumbnailUrl . '" alt="' . htmlspecialchars($imageName) . '" 
+            style="max-width: 50px; max-height: 50px;">';
+});
+```
+
+##### Währungs-Formatierung
+
+```php
+yform_field::modifyDatalistOutput('my_orders', 'total_amount', function($params) {
+    $amount = (float)$params['value'];
+    return number_format($amount, 2, ',', '.') . ' €';
+});
+```
+
 ## Tipps und Tricks
 
 ### Weitere Tipps und Tricks
