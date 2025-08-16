@@ -3,24 +3,24 @@
 class yform_field
 {
     /**
-     * Array to store registered datalist output callbacks
+     * Array to store registered datalist output callbacks.
      * @var array
      */
     private static $dataListCallbacks = [];
-    
+
     /**
-     * Flag to ensure extension is only registered once
+     * Flag to ensure extension is only registered once.
      * @var bool
      */
     private static $extensionRegistered = false;
 
     /**
-     * Modifies the output of a specific field in YForm data tables
-     * 
-     * This method provides an easy way to customize how field values are displayed 
-     * in YForm data table lists. It registers a callback that will be called when 
+     * Modifies the output of a specific field in YForm data tables.
+     *
+     * This method provides an easy way to customize how field values are displayed
+     * in YForm data table lists. It registers a callback that will be called when
      * the specified field is rendered in the table view.
-     * 
+     *
      * @param string $table The table name (e.g., 'rex_article', 'my_table')
      * @param string $fieldname The field name to modify (e.g., 'title', 'status')
      * @param callable $callback The callback function to apply. Receives an array with:
@@ -31,13 +31,13 @@ class yform_field
      *                          - 'data_id': record ID
      *                          - 'dataset': dataset object (if available)
      * @return void
-     * 
-     * @example 
+     *
+     * @example
      * // Add edit link to title field
      * yform_field::modifyDatalistOutput('my_table', 'title', function($params) {
      *     return $params['value'] . ' <a href="/edit/' . $params['data_id'] . '">[Edit]</a>';
      * });
-     * 
+     *
      * @example
      * // Format status field with colored badges
      * yform_field::modifyDatalistOutput('my_table', 'status', function($params) {
@@ -51,18 +51,18 @@ class yform_field
         if (!is_string($table) || empty($table)) {
             throw new InvalidArgumentException('Table name must be a non-empty string');
         }
-        
+
         if (!is_string($fieldname) || empty($fieldname)) {
             throw new InvalidArgumentException('Field name must be a non-empty string');
         }
-        
+
         if (!is_callable($callback)) {
             throw new InvalidArgumentException('Callback must be callable');
         }
 
         // Store the callback for later use
         self::$dataListCallbacks[$table][$fieldname] = $callback;
-        
+
         // Register the extension point if not already registered
         if (!self::$extensionRegistered) {
             self::registerDataListExtension();
@@ -71,7 +71,7 @@ class yform_field
     }
 
     /**
-     * Register the YFORM_DATA_LIST extension point
+     * Register the YFORM_DATA_LIST extension point.
      * @return void
      */
     private static function registerDataListExtension()
@@ -79,32 +79,32 @@ class yform_field
         rex_extension::register('YFORM_DATA_LIST', static function ($ep) {
             $list = $ep->getSubject();
             $table = $ep->getParam('table');
-            
+
             if (!$table) {
                 return;
             }
-            
+
             $tableName = $table->getTableName();
-            
+
             // Check if we have callbacks for this table
             if (!isset(self::$dataListCallbacks[$tableName])) {
                 return;
             }
-            
+
             foreach (self::$dataListCallbacks[$tableName] as $fieldname => $callback) {
                 // Set custom column format that uses our callback
                 $list->setColumnFormat($fieldname, 'custom', [__CLASS__, 'executeCallback'], [
                     'callback' => $callback,
                     'table' => $table,
-                    'fieldname' => $fieldname
+                    'fieldname' => $fieldname,
                 ]);
             }
         });
     }
 
     /**
-     * Execute the registered callback for a field
-     * 
+     * Execute the registered callback for a field.
+     *
      * @param array $params Parameters from the list
      * @return string The modified output
      */
@@ -115,7 +115,7 @@ class yform_field
         $fieldname = $params['params']['fieldname'];
         $value = $params['value'];
         $list = $params['list'];
-        
+
         // Prepare callback parameters
         $callbackParams = [
             'value' => $value,
@@ -123,9 +123,9 @@ class yform_field
             'fieldname' => $fieldname,
             'list' => $list,
             'data_id' => $list->getValue('id'),
-            'dataset' => null
+            'dataset' => null,
         ];
-        
+
         // Try to get the dataset if possible
         try {
             if ($list->getValue('id')) {
@@ -134,7 +134,7 @@ class yform_field
         } catch (Exception $e) {
             // If dataset retrieval fails, continue without it
         }
-        
+
         return call_user_func($callback, $callbackParams);
     }
 
